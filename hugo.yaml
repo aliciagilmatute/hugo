@@ -9,9 +9,11 @@ outputs:
     - "HTML"
     - "RSS"
     - "JSON"
+    - "PDF"
   page:
     - "HTML"
     - "RSS"
+    - "PDF"
 
 Paginate: 3
 enableRobotsTXT: true
@@ -141,8 +143,8 @@ params:
     # roundImage: true # Make hero image circular | default false
     button:
       enable: true
-      name: "Resume"
-      url: "#"
+      name: "CV"
+      url: "/CV.pdf"
       download: true
       newPage: false
     socialLinks:
@@ -236,15 +238,7 @@ params:
   education:
     enable: true
     title: "CV"
-    index: falses
-    
-    button:
-      enable: true
-      name: "Descargar CV"
-      url: /blog/CV.md  # Ruta correcta al archivo PDF
-      download: true
-      newPage: false
-
+    index: false
     items:
       - title: "Máster en Ciencias del Comportamiento y de la Salud"
         school:
