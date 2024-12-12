@@ -236,7 +236,15 @@ params:
   education:
     enable: true
     title: "CV"
-    index: false
+    index: falses
+    
+    button:
+      enable: true
+      name: "Descargar CV"
+      url: /blog/CV.md  # Ruta correcta al archivo PDF
+      download: true
+      newPage: false
+
     items:
       - title: "Máster en Ciencias del Comportamiento y de la Salud"
         school:
@@ -273,14 +281,6 @@ params:
        # featuredLink:
        #   enable: true
         #  url: "https://example.com"
-
-    button:
-      enable: true
-      name: "Descargar CV"
-      url: "/pdfs/CV.pdf"
-      download: true
-      newPage: false
-
 
   # Achievements
   achievements:
