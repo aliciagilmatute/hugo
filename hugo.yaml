@@ -1,6 +1,6 @@
 baseURL: 'https://aliciagilmatute.github.io'
 languageCode: 'es'
-title: 'Alicia Gil Matute Web'
+title: 'Alicia Gil Matute'
 metaDataFormat: "yaml"
 theme: "guru"
 
@@ -28,12 +28,12 @@ Menus:
     - identifier: Blog
       name: Blog
       title: Blog posts
-      url: /Blogs
-      weight: 1
+      url: /blog       #/content/blog para hacer aparecer los blogs
+      weight: 2
     - identifier: Galería
       name: Galería
       title: Galería
-      url: /Galería
+      url: /galeria  #/content/galeria para hacer aparecer la galería
       weight: 2
     #Dropdown menu
     # - identifier: dropdown
@@ -54,10 +54,10 @@ Menus:
     #   weight: 2
 
 params:
-  title: "Alicia Gil Matute Web"
+  title: "Alicia Gil Matute"
   description: Text about my cool site
   # staticPath: ""  # The path to serve the static files from
-  favicon: "/fav.png"
+  #favicon: "/fav.png"
 
   # Whether to serve bootstrap css and js files from CDN or not. Can be set to true, "css" or "js" to choose between
   # serving both, only the css, or only the js files through the CDN. Any other value will make so that CDN is not used.
@@ -144,15 +144,17 @@ params:
       newPage: false
     socialLinks:
       fontAwesomeIcons:
+        - icon: fas fa-envelope
+          url: "mailto:aliciagilmatute@gmail.com"
         - icon: fab fa-linkedin
-          url: https://example.com
+          url: "https://www.linkedin.com/in/alicia-gil-matute/"
         - icon: fab fa-github
-          url: https://example.com
+          url: "https://github.com/aliciagilmatute"
         - icon: fab fa-x-twitter
-          url: https://example.com
-      customIcons:
-        - icon: /fav.png
-          url: "https://example.com"
+          url: "https://x.com/arrobarsandias"
+      #customIcons:
+        #- icon: /fav.png
+          #url: "https://example.com"
 
   # About
   about:
@@ -160,11 +162,14 @@ params:
     title: "Sobre mí"
     image: "/images/me.png"
     content: |-
-      Me llamo Alicia Gil Matute y como psicóloga estoy interesada en el análisis de conducta, del mismo modo que como metodóloga estoy interesada en la estadística. Me formé en la Universidad Autónoma de Madrid dónde me gradué en Psicología y dondé cursé el Máster en Ciencias del Comportamiento y la Salud en vinculación con la Universidad Complutense de Madrid y la UNED. 
+      Me llamo Alicia Gil Matute y como psicóloga estoy interesada en el análisis de conducta, del mismo modo que como metodóloga estoy interesada en la estadística. 
+
+
+      Me formé en la Universidad Autónoma de Madrid dónde me gradué en Psicología y dondé cursé el Máster en Ciencias del Comportamiento y la Salud en vinculación con la Universidad Complutense de Madrid y la UNED. 
 
     skills:
       enable: true
-      title: "Una muestra de algunos programas y lenguajes de programación que suelo usar:"
+      title: "Algunos programas y lenguajes de programación que suelo usar son:"
       items:
         - "R"
         - "Python"
@@ -310,10 +315,10 @@ params:
     items:
       - title: Estudio de Valores Perdidos en R
         content: Estudio de la Recuperación de un Análisis Factorial Confirmatorio sobre una matriz de varianzas y covarianzas cuyos datos presentaban valores perdidos.
-        image: /images/projects/profile.png
-        featured:
-          name: Demo
-          link: https://hugo-profile.netlify.app
+        #image: /images/projects/profile.png
+        #featured:
+          #name: Demo
+          #link: https://hugo-profile.netlify.app
         badges:
           - "R"
           - "mice"
@@ -321,41 +326,39 @@ params:
           - "missing  data"
           - "AFC"
         links:
-          - icon: fa fa-envelope
-            url: mailto:?subject=Hugo%20Profile%20Template&body=Check%20it%20out:%20https%3a%2f%2fhugo-profile.netlify.app%2fblog%2fmarkdown-syntax%2f
           - icon: fab fa-github
-            url: https://github.com/gurusabarish/hugo-profile
-          - icon: fab fa-twitter
-            url: https://twitter.com/intent/tweet?text=Check+it+out:&url=https%3A%2F%2Fgithub.com%2Fgurusabarish%2Fhugo-profile
+            url: https://github.com/aliciagilmatute/Estudio-Valores-Perdidos
+          #- icon: fab fa-twitter
+          #  url: https://twitter.com/intent/tweet?text=Check+it+out:&url=https%3A%2F%2Fgithub.com%2Fgurusabarish%2Fhugo-profile
 
       - title: Simulación
-        content: Una serie de proyectos de simulación relacionados con la estadística
-        image: /images/projects/converter.jpg
-        featured:
-          name: Demo
-          link: https://django-converter.herokuapp.com
+        content: Una serie de proyectos de simulación relacionados con la estadística.
+        #image: /images/projects/converter.jpg
+        #featured:
+          #name: Demo
+          #link: https://django-converter.herokuapp.com
         badges:
           - "R"
           - "simulación"
           - "Bootstrap"
           - "estadística"
         links:
-          - icon: fab fa-github
-            url: https://github.com/gurusabarish/converter
+         - icon: fab fa-github
+           url: https://github.com/aliciagilmatute/Simulacion
 
-      - title: Hugo Profile V2
-        content: A clean and simple Hugo template for personal portfolio and blog.
-        image: /images/projects/profile2.jpg
-        featured:
-          name: Demo V2
-          link: https://hugo-profile-2.netlify.app
-        badges:
-          - "Hugo"
-          - "Bootstrap"
-          - "Javascript"
-        links:
-          - icon: fab fa-github
-            url: https://github.com/gurusabarish/HugoProfileV2
+      #- title: Hugo Profile V2
+       # content: A clean and simple Hugo template for personal portfolio and blog.
+       # image: /images/projects/profile2.jpg
+        #featured:
+         # name: Demo V2
+          #link: https://hugo-profile-2.netlify.app
+        #badges:
+         # - "Hugo"
+         # - "Bootstrap"
+          #- "Javascript"
+        #links:
+         # - icon: fab fa-github
+          #  url: https://github.com/gurusabarish/HugoProfileV2
 
   #Contact
   contact:
@@ -363,7 +366,7 @@ params:
     title: "Contáctame"
     content: Mis redes están a tu entera disposición, no dudes en escribirme aunque solamente sea para saludar. Procuro contestar siempre.
     btnName: Contáctame
-    btnLink: aliciagilmatute@gmail.com
+    btnLink: "mailto:aliciagilmatute@gmail.com"
     # formspree:
     #   enable: true # `contact.email` value will be ignored
     #   formId: abcdefgh # Take it from your form's endpoint, like 'https://formspree.io/f/abcdefgh'
@@ -379,11 +382,11 @@ params:
       enable: true
       disableFeaturedImage: false
     socialNetworks:
-      github: https://github.com
-      linkedin: https://linkedin.com
-      twitter: https://twitter.com
-      instagram: https://instagram.com
-      facebook: https://facebook.com
+      linkedin: https://www.linkedin.com/in/alicia-gil-matute/
+      github: https://github.com/aliciagilmatute
+      twitter: https://x.com/arrobarsandias
+      #instagram: https://instagram.com
+      #facebook: https://facebook.com
 
   # List pages like blogs and posts
   listPages:
