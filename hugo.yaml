@@ -76,7 +76,7 @@ params:
   animate: true
 
   theme:
-    # disableThemeToggle: true
+    #disableThemeToggle: false
     # defaultTheme: "dark" # light
 
   font:
@@ -112,7 +112,7 @@ params:
     # showBrandLogo: false # Show brand logo in nav bar | default is true
     #brandName: "Hugo Profile" # Brand name for the brand | default is the title variable
     disableSearch: true
-    # searchPlaceholder: "Search"
+    #searchPlaceholder: "Search"
     stickyNavBar:
       enable : true
       showOnScrollUp : true
@@ -128,10 +128,13 @@ params:
   # Hero
   hero:
     enable: true
-    intro: "¡Hola!, mi nombre es"
-    title: "Alicia."
-    subtitle: "Soy psicóloga formada en metodología, análisis de datos y psicometría."
-    content: "Interesada en estadística, Machine Learning e Inteligencia Artificial, con experiencia en R, Python y SQL."
+    #intro: "¡Hola!, mi nombre es"
+    title: "¡Hola!, Mi nombre es Alicia"
+    subtitle: "Psicóloga formada en metodología, análisis de datos y psicometría."
+    content: | 
+      Interesada tanto en estadística como en Machine Learning e Inteligencia Artificial, con experiencia en R, Python y SQL.
+
+
     image: /images/hero.svg
     bottomImage:
       enable: true
@@ -183,108 +186,101 @@ params:
     enable: true
     title: "Experiencia"
     items:
-      - job: "Psicómetra y analista de datos"
+      - job: "Psicómetra en el Departamento de Certificación Lingüística"
         company: "Instituto Cervantes"
-        companyUrl: "https://example.com"
+        companyUrl: "https://cervantes.org/es"
+
         #date: "Jan 2022 - present"
         featuredLink:
           enable: true
-          name: "View the project"
-          url: "https://example.com"
-        content: "I am currently working as a software developer at [example org.](https://example.com) in San Francisco, CA. I am currently working on a project that will be used to help people find the best way to get around the city."
+          name: "Exámenes Cervantes"
+          url: "https://examenes.cervantes.es"
+        content: |-
+          Actualmente estoy realizando informes sobre las garantías psicométricas de los exámenes DELE que sirven para superar las auditorías de ALTE.
 
-      - job: "Software Developer"
-        company: "Amazon"
-        companyUrl: "https://example.com"
-        date: "Sep 2020 - Dec 2021"
-        featuredLink:
-          enable: true
-          url: "https://example.com"
-        info:
-          enable: true
-          content: I worked as a software developer for more than one year in Amazon.
-        content: |
-          I am currently working as a software developer at [example org.](https://example.com) in San Francisco, CA. I am currently working on a project that will be used to help people find the best way to get around the city.
 
-          - Lead backend developer for a product.
-          - Created a frontend design for a product.
 
-      - job: "Junior Software Developer"
-        company: "Apple"
-        companyUrl: "https://example.com"
-        date: "Jan 2020 - Aug 2020"
-        info:
-          enable: false
-        featuredLink:
-          enable: true
-          url: "https://example.com"
-        content: |
-          I am currently working as a software developer at [example org.](https://example.com) in San Francisco, CA. I am currently working on a project that will be used to help people find the best way to get around the city.
+          También he contribuido a la creación de un banco de ítems del examen DELE.
 
-          - Lead backend developer for a product.
-          - Created a frontend design for a product.
+      #- job: "Software Developer"
+       # company: "Amazon"
+        #companyUrl: "https://example.com"
+        #date: "Sep 2020 - Dec 2021"
+        #featuredLink:
+         # enable: true
+          #url: "https://example.com"
+       # info:
+        #  enable: true
+        #  content: I worked as a software developer for more than one year in Amazon.
+        #content: |
+        #  I am currently working as a software developer at [example org.](https://example.com) in San Francisco, CA. I am currently working on a project that will be used to help people find the best way to get around the city.
 
-      - job: "UI/UX Designer"
-        company: "Netflix"
-        companyUrl: "https://example.com"
-        date: "June 2017 - Nov 2019"
-        featuredLink:
-          enable: true
-          url: "https://example.com"
-        content: |
-          I am currently working as a software developer at [example org.](https://example.com) in San Francisco, CA. I am currently working on a project that will be used to help people find the best way to get around the city.
+          #- Lead backend developer for a product.
+         # - Created a frontend design for a product.
 
-          - Lead backend developer for a product.
-          - Created a frontend design for a product.
-
-      - job: "Product Designer"
-        company: "Google"
-        companyUrl: "https://example.com"
-        date: "Feb 2016 - Mar 2017"
-        content: "I am currently working as a software developer at [example org.](https://example.com) in San Francisco, CA. I am currently working on a project that will be used to help people find the best way to get around the city."
-
+      #- job: "Junior Software Developer"
+       # company: "Apple"
+       # companyUrl: "https://example.com"
+        #date: "Jan 2020 - Aug 2020"
+        #info:
+        #  enable: false
+        #featuredLink:
+          #enable: true
+          #url: "https://example.com"
+        #content: |
+         #I am currently working as a software developer at [example org.](https://example.com) in San Francisco, CA. I am currently working on a project that will be used to help people find the best way to get around the city.
+          #- Lead backend developer for a product.
+          #- Created a frontend design for a product.
+   
   # Education
   education:
     enable: true
     title: "CV"
     index: false
     items:
-      - title: "Master en Ciencias del Comportamiento y de la Salud"
+      - title: "Máster en Ciencias del Comportamiento y de la Salud"
         school:
           name: "Universidad Autónoma de Madrid (UAM), Universidad Complutense de Madrid (UCM) y Universidad Nacional de Educación a Distancia (UNED)"
-          url: "https://example.org"
-        date: "2013 - 2015"
-        GPA: "3.8 out of 5.0"
-        content: |-
-          Extracurricular Activities
-            - Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            - Tempora esse, eaque delectus nulla quo doloribus itaque expedita alias natus optio totam maxime nihil excepturi velit a animi laborum hic similique.
+          url: "https://www.metodologiaccs.es"
+        date: "2023 - 2025"
+        #content: |-
+          #Extracurricular Activities
+            #- Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            #- Tempora esse, eaque delectus nulla quo doloribus itaque expedita alias natus optio totam maxime nihil excepturi velit a animi laborum hic similique.
+
       - title: "Grado en Psicología"
         school:
           name: "Universidad Autónoma de Madrid (UAM)"
-          url: "https://example.org"
-        date: "2009 - 2013"
-        GPA: "3.9 out of 5.0"
-        content: |-
-          I Publiced two papers in the ACM SIGCHI Conference on Artificial Intelligence.
-          - [Fast and Accurate Object Detection with a Single Convolutional Neural Network](https://example.com)
-          - Face mask detection using a single convolutional neural network.
+          url: "https://www.uam.es/Psicologia/Home.htm"
+        date: "2017 - 2021"
+        #content: |-
+         # I Publiced two papers in the ACM SIGCHI Conference on Artificial Intelligence.
+          #- [Fast and Accurate Object Detection with a Single Convolutional Neural Network](https://example.com)
+          #- Face mask detection using a single convolutional neural network.
 
-          Extracurricular Activities
-            - Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            - Tempora esse, eaque delectus nulla quo doloribus itaque expedita alias natus optio totam maxime nihil excepturi velit a animi laborum hic similique.
-        featuredLink:
-          enable: true
-          name: "My academic record"
-          url: "https://example.com"
-      - title: "High School"
-        school:
-          name: "Thomas Jefferson High School for Science and Technology."
-          url: "https://example.org"
-        GPA: "4.2 out of 5.0"
-        featuredLink:
-          enable: true
-          url: "https://example.com"
+         # Extracurricular Activities
+          #  - Lorem ipsum dolor sit amet consectetur adipisicing elit.
+           # - Tempora esse, eaque delectus nulla quo doloribus itaque expedita alias natus optio totam maxime nihil excepturi velit a animi laborum hic similique.
+        #featuredLink:
+         # enable: true
+          #name: "My academic record"
+          #url: "https://example.com"
+      #- title: "High School"
+       # school:
+        #  name: "Thomas Jefferson High School for Science and Technology."
+         # url: "https://example.org"
+      #  GPA: "4.2 out of 5.0"
+       # featuredLink:
+       #   enable: true
+        #  url: "https://example.com"
+
+    button:
+      enable: true
+      name: "Descargar CV"
+      url: "/pdfs/CV.pdf"
+      download: true
+      newPage: false
+
 
   # Achievements
   achievements:
