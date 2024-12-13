@@ -165,12 +165,13 @@ params:
   about:
     enable: true
     title: "Sobre mí"
-    image: "/images/me.png"
+    image: "/photo_me.jpg"
     content: |-
       Me llamo Alicia Gil Matute y como psicóloga estoy interesada en el análisis de conducta, del mismo modo que como metodóloga estoy interesada en la estadística. 
 
 
-      Me formé en la Universidad Autónoma de Madrid dónde me gradué en Psicología y dondé cursé el Máster en Ciencias del Comportamiento y la Salud en vinculación con la Universidad Complutense de Madrid y la UNED. 
+      Me formé en la Universidad Autónoma de Madrid dónde me gradué en Psicología y descubrí que quería dedicarme al análisis de datos. Por ello cursé el Máster en Ciencias del Comportamiento de la Universidad Autónoma de Madrid (UAM), la Universidad Complutense de Madrid (UCM) y la Universidad Nacional de Educación a Distancia (UNED). 
+      Un máster que me ha permitido descubir e interesarme por temas que desbordan el campo de la metodología y del análisis de datos, desde la estadística bayesiana hasta las técnicas de Procesamiento Natural del Lenguaje (NLP).
 
     skills:
       enable: true
