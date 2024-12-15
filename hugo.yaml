@@ -32,10 +32,15 @@ Menus:
       title: Blog posts
       url: /blog       #/content/blog para hacer aparecer los blogs
       weight: 2
-    - identifier: Galería
-      name: Galería
-      title: Galería
-      url: /galeria  #/content/galeria para hacer aparecer la galería
+    - identifier: Recursos
+      name: Recursos
+      title: Recursos de psicología y metodología
+      url: /recursos
+      weight: 2
+    - identifier: Fotos
+      name: Fotos
+      title: Fotos
+      url: /fotos #/content/galeria para hacer aparecer la galería
       weight: 2
     #Dropdown menu
     # - identifier: dropdown
@@ -166,6 +171,7 @@ params:
     enable: true
     title: "Sobre mí"
     image: "/photo_me.jpg"
+    imageClass: "img-responsive" # Clase personalizada (si es soportada)
     content: |-
       Me llamo Alicia Gil Matute y como psicóloga estoy interesada en el análisis de conducta, del mismo modo que como metodóloga estoy interesada en la estadística. 
 
