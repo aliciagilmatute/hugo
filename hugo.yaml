@@ -63,6 +63,7 @@ Menus:
 params:
   title: "Alicia Gil Matute"
   description: Text about my cool site
+  customCSS: ["css/custom.css"]
   # staticPath: ""  # The path to serve the static files from
   #favicon: "/fav.png"
 
