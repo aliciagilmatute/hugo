@@ -172,7 +172,7 @@ params:
     enable: true
     title: "Sobre mí"
     image: "/photo_me.jpg"
-    imageClass: "img-responsive" # Clase personalizada (si es soportada)
+    imageClass: "img-fluid" # Clase personalizada (si es soportada)
     content: |-
       Me llamo Alicia Gil Matute y como psicóloga estoy interesada en el análisis de conducta, del mismo modo que como metodóloga estoy interesada en la estadística. 
 
