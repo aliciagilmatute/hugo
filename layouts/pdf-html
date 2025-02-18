@@ -1,19 +1,20 @@
 <!-- Asignar la URL del archivo PDF -->
 {{ $pdf_url := "/CV (AD-2025). Alicia Gil Matute.pdf" }}
 
-<!-- Embed PDF -->
-<object
-    data="{{ $pdf_url }}"
-    width="100%" height="600px"
-    type="application/pdf"
->
-    <p>
-        Unable to display PDF file. 
-        <a href="{{ $pdf_url }}">Download</a> instead.
-    </p>
-</object>
+<!-- Mostrar el PDF embebido -->
+<div class="pdf-container">
+    <object
+        data="{{ $pdf_url }}"
+        width="100%" height="600px"
+        type="application/pdf">
+        <p>
+            No se puede mostrar el archivo PDF. 
+            <a href="{{ $pdf_url }}" download>Descargar PDF</a> en su lugar.
+        </p>
+    </object>
+</div>
 
-<!-- Enlace para descarga -->
+<!-- Enlace para la descarga del archivo PDF -->
 <div class="quarto-alternate-formats">
     <h2>Descarga mi CV</h2>
     <ul>
