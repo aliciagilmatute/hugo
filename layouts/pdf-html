@@ -1,5 +1,5 @@
 <!-- Asignar la URL del archivo PDF -->
-{{ $pdf_url := "/CV.pdf" }}
+{{ $pdf_url := "/CV (AD-2025). Alicia Gil Matute.pdf" }}
 
 <!-- Embed PDF -->
 <object
