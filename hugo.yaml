@@ -149,7 +149,7 @@ params:
     button:
       enable: true
       name: "CV"
-      url: "/CV (AD-2025). Alicia Gil Matute.pdf"
+      url: "/static/CV (AD-2025). Alicia Gil Matute.pdf"
       download: true
       newPage: false
       
