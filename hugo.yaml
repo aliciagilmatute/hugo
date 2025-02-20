@@ -313,7 +313,7 @@ params:
       - title: Estudio de Valores Perdidos en R
         content: >
           Estudio de la Recuperación de un Análisis Factorial Confirmatorio sobre una matriz de varianzas y covarianzas cuyos datos presentaban valores perdidos.
-        image: /RStudio.png
+        image: /rstudio.png
         #featured:
           #name: Demo
           #link: https://hugo-profile.netlify.app
@@ -332,7 +332,7 @@ params:
       - title: Simulación
         content: >
          Una serie de proyectos de simulación relacionados con la estadística.
-        image: /RStudio.png
+        image: /rstudio.png
         #featured:
           #name: Demo
           #link: https://django-converter.herokuapp.com
@@ -349,7 +349,7 @@ params:
         content: >
           Una serie de proyectos de clustering y reducción de dimensionalidad.
 
-        image: /python.png
+        image: /Python.png
         #featured:
           #name: Demo
           #link: https://django-converter.herokuapp.com
