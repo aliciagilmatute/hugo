@@ -329,7 +329,7 @@ params:
           #- icon: fab fa-twitter
           #  url: https://twitter.com/intent/tweet?text=Check+it+out:&url=https%3A%2F%2Fgithub.com%2Fgurusabarish%2Fhugo-profile
 
-      - title: Simulación
+      - title: Simulación Estadística
         content: >
          Una serie de proyectos de simulación relacionados con la estadística.
         image: /rstudio.png
