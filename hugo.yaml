@@ -383,7 +383,7 @@ params:
           - "Data Analysis"
         links:
          - icon: fab fa-github fa-2x
-           url: https://github.com/aliciagilmatute/Analisis-Multinivel-Bayesiano-
+           url: https://github.com/aliciagilmatute/Analisis-Multinivel-Bayesiano
 
       #- title: Hugo Profile V2
        # content: A clean and simple Hugo template for personal portfolio and blog.
