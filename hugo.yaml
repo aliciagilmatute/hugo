@@ -356,14 +356,34 @@ params:
         badges:
           - "Python"
           - "Machine Learning"
-          - DBSCAN
-          - PCA
-          - GMM
+          - "DBSCAN"
+          - "PCA"
+          - "GMM"
           - "clustering"
           - "dimensionalidad"
         links:
          - icon: fab fa-github fa-2x
            url: https://github.com/aliciagilmatute/Machine-Learning--unsupervised-
+      
+      - title: Análisis Multinivel Bayesiano
+        content: >
+          Este estudio explora el análisis multinivel desde un enfoque bayesiano para evaluar la variabilidad del rendimiento en matemáticas entre 10 centros educativos
+
+        image: /rstudio.png
+        #featured:
+          #name: Demo
+          #link: https://django-converter.herokuapp.com
+        badges:
+          - "RStudio"
+          - "Multilevel Models"
+          - "Bayesian"
+          - "Statistics"
+          - "Stan"
+          - "Hierarchical Models"
+          - "Data Analysis"
+        links:
+         - icon: fab fa-github fa-2x
+           url: https://github.com/aliciagilmatute/Analisis-Multinivel-Bayesiano-
 
       #- title: Hugo Profile V2
        # content: A clean and simple Hugo template for personal portfolio and blog.
