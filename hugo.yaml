@@ -344,6 +344,26 @@ params:
         links:
          - icon: fab fa-github fa-2x
            url: https://github.com/aliciagilmatute/Simulacion
+
+      - title: Machine Learning (Supervised)
+        content: >
+          Una serie de proyectos de clasificación con técnicas de Machine Learning Supervised
+
+        image: /Python.png
+        #featured:
+          #name: Demo
+          #link: https://django-converter.herokuapp.com
+        badges:
+          - "Python"
+          - "Machine Learning"
+          - "KNN"
+          - "MVS"
+          - "Random Forest"
+          - "Random Trees"
+          - "Classifier"
+        links:
+         - icon: fab fa-github fa-2x
+           url: https://github.com/aliciagilmatute/Machine-Learning-supervised-
         
       - title: Machine Learning (Unsupervised)
         content: >
@@ -384,6 +404,27 @@ params:
         links:
          - icon: fab fa-github fa-2x
            url: https://github.com/aliciagilmatute/Analisis-Multinivel-Bayesiano
+
+      - title: Algoritmo Genético
+        content: >
+          Algoritmo Genético que pretende resolver el problema del viajante (TSP) desde dos lógicas diferentes.
+
+        image: /Python.png
+        #featured:
+          #name: Demo
+          #link: https://django-converter.herokuapp.com
+        badges:
+          - "Python"
+          - "Genetic Algorithm"
+          - "Genetic Analysis"
+          - "Linear Regression"
+          - "Linear Models"
+          - "Genetic Optimitation Algorithm"
+        links:
+         - icon: fab fa-github fa-2x
+           url: https://github.com/aliciagilmatute/Algoritmo-Genetico
+      
+      
 
       #- title: Hugo Profile V2
        # content: A clean and simple Hugo template for personal portfolio and blog.
