@@ -177,7 +177,7 @@ params:
 
 
       Me formé en la Universidad Autónoma de Madrid dónde me gradué en Psicología y descubrí que quería dedicarme al análisis de datos. Por ello cursé el Máster en Ciencias del Comportamiento de la Universidad Autónoma de Madrid (UAM), la Universidad Complutense de Madrid (UCM) y la Universidad Nacional de Educación a Distancia (UNED). 
-      Un máster que me ha permitido descubir e interesarme por temas que desbordan el campo de la metodología y del análisis de datos, desde la estadística bayesiana hasta las técnicas de Procesamiento Natural del Lenguaje (NLP).
+      Un máster que me ha permitido descubir e interesarme por temas que desbordan el campo de la metodología y del análisis de datos, desde la estadística bayesiana hasta las técnicas de los Grandes Modelos del Lenguaje (LLMs).
 
     skills:
       enable: true
@@ -188,7 +188,7 @@ params:
         - "SPSS"
         - "SQL"
         - "MPLUS"
-        - "AMOS"
+        - "Power BI"
 
   # Experience
   experience:
@@ -359,8 +359,9 @@ params:
           - "KNN"
           - "MVS"
           - "Random Forest"
-          - "Random Trees"
-          - "Classifier"
+          - "sklearn"
+          - "pandas"
+          - "numpy"
         links:
          - icon: fab fa-github fa-2x
            url: https://github.com/aliciagilmatute/Machine-Learning-supervised-
@@ -380,7 +381,9 @@ params:
           - "PCA"
           - "GMM"
           - "clustering"
-          - "dimensionalidad"
+          - "sklearn"
+          - "pandas"
+          - "numpy"
         links:
          - icon: fab fa-github fa-2x
            url: https://github.com/aliciagilmatute/Machine-Learning--unsupervised-
@@ -420,6 +423,9 @@ params:
           - "Linear Regression"
           - "Linear Models"
           - "Genetic Optimitation Algorithm"
+          - "sklearn"
+          - "pandas"
+          - "numpy"
         links:
          - icon: fab fa-github fa-2x
            url: https://github.com/aliciagilmatute/Algoritmo-Genetico
