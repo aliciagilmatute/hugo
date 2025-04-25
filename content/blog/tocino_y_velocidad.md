@@ -85,7 +85,7 @@ Imaginemos lo segundo: a mayor consumo de tocino, menor velocidad de desplazamie
 
 La correlación daba una señal clara, pero los resultados no fueron tan extremos como se esperaba. Esto es porque **la correlación es una ilusión**, y no cuenta toda la historia. Puede haber un tercer factor que no estamos considerando. 
 
-Por ejemplo, el sujeto pudo haber usado zapatillas de fibra de carbono que practicamente hacen volar y el experimentador no lo sabía. En este caso, el tocino no sería el único “culpable”. Esto es una **correlación espuria**.
+Por ejemplo, el sujeto pudo haber usado zapatillas de fibra de carbono que practicamente le hacen volar y el experimentador no lo sabía. En este caso, el tocino no sería el único “culpable”. Esto es una **correlación espuria**.
 <br><br><br>
 
 ## *That graph is so crazzzzy (and real)!! Love her!!!!*
