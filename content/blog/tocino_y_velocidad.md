@@ -22,8 +22,9 @@ Sin embargo, en mi caso, la sorpresa fue aún mayor cuando me fijé en las varia
 ## Agent Cooper… it’s happening again: Vacunas y autismo
 <br>
 A lo mejor al lector le suena haber escuchado algo similar a finales del siglo pasado, cuando aparecieron “estudios científicos” que afirmaban haber descubierto la causa del autismo: las vacunas. 
+<br><br>
 
-Por si alguien todavía le quedaba alguna duda: esa “teoría” ya fue desmentida hace años, el estudio que lo afirmaba fue retractado y su autor quedó desacreditado. Fue un escándalo enorme en la comunidad científica. Pero de eso no vamos a hablar hoy.
+Por si a alguien todavía le quedaba alguna duda: esa “teoría” ya fue desmentida hace años, el estudio que lo afirmaba fue retractado y su autor quedó desacreditado. Fue un escándalo enorme en la comunidad científica. Pero de eso no vamos a hablar hoy.
 
 Aun así, ese gráfico parece mostrar lo contrario en pleno 2025. 
 
