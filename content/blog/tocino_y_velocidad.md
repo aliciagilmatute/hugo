@@ -25,7 +25,7 @@ A lo mejor al lector le suena haber escuchado algo similar a finales del siglo p
 
 Por si alguien todavía le quedaba alguna duda: esa “teoría” ya fue desmentida hace años, el estudio que lo afirmaba fue retractado y su autor quedó desacreditado. Fue un escándalo enorme en la comunidad científica. Pero de eso no vamos a hablar hoy.
 
-Aun así, ese gráfico parece mostrar lo contrario en 2025. 
+Aun así, ese gráfico parece mostrar lo contrario en pleno 2025. 
 
 ¿Por qué parece que puede ser una nueva prueba a favor de que las vacunas sí provocan autismo?, ¿Se equivocó la comunidad científica en su momento?, ¿Estamos poniendo en riesgo a nuestros niños? 
 
@@ -99,7 +99,7 @@ Y porque ya sabemos cuál es la causa real del calentamiento global. Aunque los 
 Otro ejemplo loco: el número de películas protagonizadas por Nicolas Cage correlaciona con el número de inspectores de seguridad de transporte en Dakota del Norte. ¡Correlación de 0.902!
 <br><br>
     
-[![Tweet de Jessica Rose](/5837_the-number-of-movies-nicolas-cage-appeared-in_correlates-with_the-number-of-transportation-security-screeners-in-north-dakota.png)](https://www.tylervigen.com/spurious/correlation/5837_the-number-of-movies-nicolas-cage-appeared-in_correlates-with_the-number-of-transportation-security-screeners-in-north-dakota)
+[![Grafico Nicolas Cage](/5837_the-number-of-movies-nicolas-cage-appeared-in_correlates-with_the-number-of-transportation-security-screeners-in-north-dakota.png)](https://www.tylervigen.com/spurious/correlation/5837_the-number-of-movies-nicolas-cage-appeared-in_correlates-with_the-number-of-transportation-security-screeners-in-north-dakota)
 <br><br>
 
 Si tienes curiosidad por descubrir que otras muchas correlaciones locas pero reales se dan en el mundo, la web 👉 https://www.tylervigen.com/spurious-correlations está plagada de ellas.
@@ -118,12 +118,12 @@ Ese tweet refuerza un discurso que atenta contra las personas con autismo y da a
 
 Si te interesa cómo el mal uso del conocimiento científico y la mala interpretación de los datos se utiliza para legitimar discursos ideológicos dañinos, te recomiendo este vídeo de @aldemial (En Twitter y en Youtube):
 
-👉 https://www.youtube.com/watch?v=rw-hup4TFvU&t=727s
+[![Vídeo @aldemial](/@aldemial.jpg)](https://youtu.be/rw-hup4TFvU?si=GxwyxNvL0_lUjKsK)
 
 Por si algún día te toca defender que los progres no estamos locos. Que, tal y como va el patio… nos va a tocar más pronto que tarde.
 <br><br><br>
 
-## El que saca la ciencia pa enseñarla es un parguela
+## El que saca la ciencia pa enseñarla (mal) es un parguela
 <br>
 
 Yo más que una pregunta tengo un par de reflexiones respecto al tweet que ha inspirado este texto.
