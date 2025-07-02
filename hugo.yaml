@@ -27,6 +27,7 @@ markup:
 
 Menus:
   main:
+    
     - identifier: Blog
       name: Blog
       title: Blog posts
@@ -309,6 +310,12 @@ params:
   projects:
     enable: true
     title: "Proyectos"
+
+    moreProjects:
+    enable: true
+    name: "Ver más"
+    url: "/proyectos"
+
     items:
       - title: Estudio de Valores Perdidos en R
         content: >
