@@ -1,3 +1,4 @@
 ---
 title: "Proyectos"
+layout: "proyectos"
 ---
