@@ -1,0 +1,15 @@
+{{ define "head" }}
+  {{- partial "head.html" . -}}
+  
+  <!-- CSS específicos para la sección de proyectos -->
+  <link rel="stylesheet" href="{{ .Site.Params.staticPath }}/css/index.css" media="all">
+  <link rel="stylesheet" href="{{ .Site.Params.staticPath }}/css/projects.css" media="all">
+{{ end }}
+
+{{ define "title" }}
+  {{ .Site.Params.projects.title | default "Proyectos" }}
+{{ end }}
+
+{{ define "main" }}
+  {{ partial "sections/projects-full.html" . }}
+{{ end }}
