@@ -1,6 +1,6 @@
 {{ define "head" }}
   {{- partial "head.html" . -}}
-  
+
   <!-- CSS específicos para la sección de proyectos -->
   <link rel="stylesheet" href="{{ .Site.Params.staticPath }}/css/index.css" media="all">
   <link rel="stylesheet" href="{{ .Site.Params.staticPath }}/css/projects.css" media="all">
@@ -11,5 +11,6 @@
 {{ end }}
 
 {{ define "main" }}
+  {{/* Pasamos la sección actual como Page para que projects-full.html pueda usar .Pages */}}
   {{ partial "sections/projects-full.html" . }}
 {{ end }}

@@ -1,45 +1,56 @@
-{{ if .Site.Params.projects.enable | default false }}
+{{ with .Pages }}
 <section id="projects" class="py-5">
   <div class="container">
-    <h3 class="text-center">{{ .Site.Params.projects.title | default "Proyectos" }}</h3>
-    <!-- Botón "Ver más" eliminado en la versión full -->
-  </div> <!-- cierre correcto del container -->
+    <h3 class="text-center">{{ $.Title | default "Proyectos" }}</h3>
+  </div>
 
   <div class="row justify-content-center px-3 px-md-5">
 
-    {{/* Sacar lista de clusters únicos */}}
-    {{ $items := .Site.Params.projects.items }}
+    {{/* Sacar lista de clusters únicos desde el front matter */}}
     {{ $clusters := slice }}
-    {{ range $items }}
-      {{ $clusters = $clusters | append .cluster }}
+    {{ range . }}
+      {{ with .Params.cluster }}
+        {{ $clusters = $clusters | append . }}
+      {{ end }}
     {{ end }}
     {{ $clusters = uniq $clusters | sort }}
 
-    {{/* Mostrar todos los elementos de cada cluster */}}
+    {{/* Mostrar todos los proyectos agrupados por cluster */}}
     {{ range $cluster := $clusters }}
       <div class="col-12 mt-5">
         <h4 class="text-center">{{ $cluster }}</h4>
       </div>
 
-      {{ range where $items "cluster" $cluster }}
-      <div class="col-lg-4 col-md-6 my-3">
-        <div class="card my-3 h-100" title="{{ .title }}">
-          <div class="card-head">
-            <img class="card-img-top" src="{{ .image }}" alt="{{ .title }}">
-          </div>
-          <div class="card-body bg-transparent p-3">
-            <div class="pb-2 bg-transparent">
-              {{ range .badges }}
-              <span class="badge badge-secondary">{{ . }}</span>
+      {{/* Iterar sobre las páginas filtradas por cluster */}}
+      {{ range where $.Pages "Params.cluster" $cluster }}
+        {{ $p := . }} <!-- Guardamos el Page original -->
+        <div class="col-lg-4 col-md-6 my-3">
+          <div class="card my-3 h-100" title="{{ $p.Title }}">
+            <div class="card-head">
+              {{ with $p.Params.image }}
+                {{ if $p.Params.repo }}
+                  <a href="{{ $p.Params.repo }}" target="_blank">
+                    <img class="card-img-top" src="{{ . }}" alt="{{ $p.Title }}">
+                  </a>
+                {{ else }}
+                  <img class="card-img-top" src="{{ . }}" alt="{{ $p.Title }}">
+                {{ end }}
               {{ end }}
             </div>
-            <h5 class="card-title bg-transparent mt-1">{{ .title }}</h5>
-            <div class="card-text bg-transparent secondary-font">
-              {{ .content }}
+
+            <div class="card-body bg-transparent p-3">
+              <div class="pb-2 bg-transparent">
+                {{ range $p.Params.badges }}
+                  <span class="badge badge-secondary">{{ . }}</span>
+                {{ end }}
+              </div>
+              <h5 class="card-title bg-transparent mt-1">{{ $p.Title }}</h5>
+              <div class="card-text bg-transparent secondary-font">
+                {{ $p.Summary }}
+              </div>
             </div>
           </div>
         </div>
-      </div>
       {{ end }}
     {{ end }}
 
