@@ -1,7 +1,8 @@
 ---
-title: "Machine Learning (Supervised)"
+title: "Machine Learning Supervisado"
 description: "Una serie de proyectos de clasificación con técnicas de Machine Learning Supervised"
 cluster: "Python"
-image: "/Python.png"
 badges: ["Python", "Machine Learning", "Supervised"]
+slug: "ML_supervised"
+draft: false
 ---

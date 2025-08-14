@@ -30,6 +30,8 @@
       text-decoration: none;
       display: inline-block;
       margin-top: 1rem;
+      border: none;
+      cursor: pointer;
     }
     .btn-project:hover {
       background-color: #0056b3;
@@ -68,6 +70,45 @@
       background-color: #ccc;
       color: var(--background-color-dark);
     }
+
+    /* Botón Copy heredando estética de btn-project */
+    .copy-btn {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      border-radius: 0.5rem;
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .copy-btn:hover {
+      background-color: #0056b3;
+      color: white;
+    }
+    body.dark .copy-btn {
+      background-color: var(--primary-color-dark);
+      color: var(--background-color-dark);
+    }
+    body.dark .copy-btn:hover {
+      background-color: #ccc;
+      color: var(--background-color-dark);
+    }
+
+    .code-container {
+      position: relative;
+    }
+
+    /* Márgenes ampliados para celdas de código */
+    .code-container pre {
+      padding: 1.5rem; /* aumenta el espacio interno */
+      overflow: auto;
+      border-radius: 0.5rem;
+      background-color: rgba(255,255,255,0.05); /* opción ligera de fondo */
+    }
+
   </style>
 
   <!-- Imagen del proyecto -->
@@ -101,6 +142,30 @@
   <div class="text-center mt-4">
     <a href="/proyectos" class="btn-project"> Volver a Proyectos</a>
   </div>
+
+  <!-- Script para añadir botones Copy -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      document.querySelectorAll("pre > code").forEach((codeBlock) => {
+        const pre = codeBlock.parentNode;
+        const container = document.createElement("div");
+        container.classList.add("code-container");
+        pre.parentNode.insertBefore(container, pre);
+        container.appendChild(pre);
+
+        const button = document.createElement("button");
+        button.className = "copy-btn";
+        button.textContent = "Copy";
+        button.addEventListener("click", () => {
+          navigator.clipboard.writeText(codeBlock.innerText);
+          button.textContent = "Copied!";
+          setTimeout(() => (button.textContent = "Copy"), 2000);
+        });
+
+        container.appendChild(button);
+      });
+    });
+  </script>
 
 </main>
 {{ end }}

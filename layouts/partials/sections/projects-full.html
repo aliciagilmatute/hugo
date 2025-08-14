@@ -23,9 +23,17 @@
       font-weight: 700;
       margin-bottom: 1.5rem;
       color: var(--text-color);
+      display: flex;
+      align-items: center;
+      gap: 10px; /* espacio entre imagen y texto */
     }
     body.dark .cluster-title {
       color: var(--text-color-dark);
+    }
+    .cluster-icon {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
     }
     .project-item {
       border-bottom: 1px solid var(--text-secondary-color);
@@ -71,42 +79,16 @@
   </style>
 </head>
 <body class="light">
-  
-  <!-- Header
-  <header id="profileHeader">
-    <nav class="pt-3 navbar navbar-expand-lg animate">
-      <div class="container-fluid mx-xs-2 mx-sm-5 mx-md-5 mx-lg-5">
-        <a class="navbar-brand primary-font text-wrap" href="/">
-          <img src="/normal_fav_icon.png" width="30" height="30" class="d-inline-block align-top">
-          Alicia Gil Matute
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse text-wrap primary-font" id="navbarContent">
-          <ul class="navbar-nav ms-auto text-center">
-            <li class="nav-item"><a class="nav-link" href="/">Inicio</a></li>
-            <li class="nav-item"><a class="nav-link active" href="/proyectos">Proyectos</a></li>
-            <li class="nav-item"><a class="nav-link" href="/#contact">Contacto</a></li>
-            <li class="nav-item">
-              <button id="theme-toggle" class="btn btn-sm ms-3">
-                <i class="fas fa-moon" id="moon"></i>
-                <i class="fas fa-sun" id="sun" style="display:none;"></i>
-              </button>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-  </header> -->
 
-  <!-- Contenido -->
   <main class="container project-list">
     <h1 class="mb-4 text-center">Proyectos</h1>
 
     <!-- Cluster: Proyectos en R -->
     <div class="project-cluster">
-      <h2 class="cluster-title">Proyectos en R</h2>
+      <h2 class="cluster-title">
+        <img src="/rstudio.png" alt="Logo R" class="cluster-icon">
+        Proyectos en R
+      </h2>
 
       <div class="project-item">
         <h3 class="project-title">Análisis Multinivel Bayesiano</h3>
@@ -117,71 +99,99 @@
       </div>
 
       <div class="project-item">
-        <h3 class="project-title">Visualización Interactiva con Shiny</h3>
+        <h3 class="project-title">Estudio de Valores Perdidos en R</h3>
         <p class="project-description">
-          Creación de dashboards interactivos para comunicar resultados de estudios estadísticos.
+          Estudio de la Recuperación de un Análisis Factorial Confirmatorio sobre una matriz de varianzas y covarianzas cuyos datos presentaban valores perdidos.
         </p>
-        <a href="#" class="btn-project">Ver más</a>
+        <a href="/proyectos/valores_perdidos/" class="btn-project">Ver más</a>
+      </div>
+
+      <div class="project-item">
+        <h3 class="project-title">Simulación Estadística</h3>
+        <p class="project-description">
+          Una serie de proyectos de simulación relacionados con la estadística.
+        </p>
+        <a href="/proyectos/simulacion/" class="btn-project">Ver más</a>
       </div>
     </div>
 
     <!-- Cluster: Proyectos en Python -->
     <div class="project-cluster">
-      <h2 class="cluster-title">Proyectos en Python</h2>
+      <h2 class="cluster-title">
+        <img src="/Python.png" alt="Logo Python" class="cluster-icon">
+        Proyectos en Python
+      </h2>
 
       <div class="project-item">
         <h3 class="project-title">Machine Learning Supervisado</h3>
         <p class="project-description">
           Implementación de modelos de clasificación y regresión utilizando scikit-learn y pandas.
         </p>
-        <a href="#" class="btn-project">Ver más</a>
+        <a href="/proyectos/ML_supervised" class="btn-project">Ver más</a>
       </div>
 
       <div class="project-item">
-        <h3 class="project-title">Automatización y Scraping de Datos</h3>
+        <h3 class="project-title">Machine Learning No Supervisado</h3>
         <p class="project-description">
-          Extracción de datos de múltiples fuentes web y procesamiento automático con Python.
+          Una serie de proyectos de clustering y reducción de dimensionalidad.
         </p>
-        <a href="#" class="btn-project">Ver más</a>
+        <a href="/proyectos/ML_unsupervised/" class="btn-project">Ver más</a>
+      </div>
+
+      <div class="project-item">
+        <h3 class="project-title">Procesamiento de Lenguaje Natural</h3>
+        <p class="project-description">
+          Análisis y modelado de texto con técnicas de NLP, incluyendo tokenización, lematización y modelos de clasificación de texto usando NLTK y spaCy.
+        </p>
+        <a href="/proyectos/nlp_reviews/" class="btn-project">Ver más</a>
+      </div>
+
+      <div class="project-item">
+        <h3 class="project-title">Algoritmo Genético</h3>
+        <p class="project-description">
+          Algoritmo Genético que pretende resolver el problema del viajante (TSP) desde dos lógicas diferentes.
+        </p>
+        <a href="/proyectos/algoritmo_genetico/" class="btn-project">Ver más</a>
       </div>
     </div>
 
-    <!-- Cluster: Proyectos Multilenguaje -->
+    <!-- Cluster: Proyectos Estratégicos -->
     <div class="project-cluster">
-      <h2 class="cluster-title">Proyectos Multilenguaje</h2>
+      <h2 class="cluster-title">
+        <img src="/data-visualization.png" alt="Logo Data Visualization" class="cluster-icon">
+        Proyectos Estratégicos
+      </h2>
 
       <div class="project-item">
-        <h3 class="project-title">Psicometría Aplicada</h3>
+        <h3 class="project-title">Análisis Fuga de Empleados</h3>
         <p class="project-description">
-          Combinación de R y Python para diseño y validación de pruebas psicométricas, análisis factorial y coeficientes de fiabilidad.
+          Proyecto de análisis y machine learning para predecir la fuga de empleados, medir su impacto económico y proponer estrategias de retención.
         </p>
-        <a href="#" class="btn-project">Ver más</a>
+        <a href="/proyectos/fuga_empleados/" class="btn-project">Ver más</a>
       </div>
 
-      <div class="project-item">
+      <!-- <div class="project-item">
         <h3 class="project-title">Visualización Avanzada de Datos</h3>
         <p class="project-description">
           Uso combinado de Python y R para generar visualizaciones interactivas y dashboards multidimensionales.
         </p>
         <a href="#" class="btn-project">Ver más</a>
       </div>
-    </div>
+    </div> -->
 
   </main>
 
-  <!-- Footer -->
   <footer class="py-4 text-center">
     <p>&copy; 2025 Alicia Gil Matute</p>
   </footer>
 
   <script src="/bootstrap-5/js/bootstrap.bundle.min.js"></script>
   <script>
-    // Cambio de tema claro/oscuro
     const toggleBtn = document.getElementById('theme-toggle');
     const body = document.body;
     const moonIcon = document.getElementById('moon');
     const sunIcon = document.getElementById('sun');
-    toggleBtn.addEventListener('click', () => {
+    toggleBtn?.addEventListener('click', () => {
       body.classList.toggle('dark');
       moonIcon.style.display = body.classList.contains('dark') ? 'none' : 'inline-block';
       sunIcon.style.display = body.classList.contains('dark') ? 'inline-block' : 'none';
