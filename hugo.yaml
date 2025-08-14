@@ -66,8 +66,8 @@ Menus:
       url: /fotos #/content/galeria para hacer aparecer la galería
       weight: 7
 
-    - identifier: Contáctame
-      name: Contáctame
+    - identifier: Contacto
+      name: Contacto
       url: /#contact
       weight: 8
 
@@ -492,7 +492,7 @@ params:
   #Contact
   contact:
     enable: true
-    title: "Contáctame"
+    title: "Contacto"
     content: Mis redes están a tu entera disposición, no dudes en escribirme aunque solamente sea para saludar. Procuro contestar siempre.
     btnName: Contáctame
     btnLink: "mailto:aliciagilmatute@gmail.com"

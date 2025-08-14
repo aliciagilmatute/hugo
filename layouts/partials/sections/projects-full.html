@@ -1,59 +1,192 @@
-{{ with .Pages }}
-<section id="projects" class="py-5">
-  <div class="container">
-    <h3 class="text-center">{{ $.Title | default "Proyectos" }}</h3>
-  </div>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proyectos - Alicia Gil Matute</title>
+  <link rel="stylesheet" href="/bootstrap-5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/theme.css">
+  <link rel="stylesheet" href="/css/header.css">
+  <link rel="stylesheet" href="/css/footer.css">
+  <link rel="stylesheet" href="/css/font.css">
+  <script defer src="/fontawesome-6/all-6.4.2.js"></script>
+  <style>
+    .project-list {
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+    }
+    .project-cluster {
+      margin-bottom: 3rem;
+    }
+    .cluster-title {
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: var(--text-color);
+    }
+    body.dark .cluster-title {
+      color: var(--text-color-dark);
+    }
+    .project-item {
+      border-bottom: 1px solid var(--text-secondary-color);
+      padding: 1.5rem 0;
+    }
+    body.dark .project-item {
+      border-color: var(--text-secondary-color-dark);
+    }
+    .project-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--text-color);
+    }
+    body.dark .project-title {
+      color: var(--text-color-dark);
+    }
+    .project-description {
+      color: var(--text-secondary-color);
+      margin-bottom: 0.75rem;
+    }
+    body.dark .project-description {
+      color: var(--text-secondary-color-dark);
+    }
+    .btn-project {
+      background-color: var(--primary-color);
+      color: white;
+      border-radius: 0.5rem;
+      padding: 0.4rem 1rem;
+      text-decoration: none;
+    }
+    .btn-project:hover {
+      background-color: #0056b3;
+      color: white;
+    }
+    body.dark .btn-project {
+      background-color: var(--primary-color-dark);
+      color: var(--background-color-dark);
+    }
+    body.dark .btn-project:hover {
+      background-color: #ccc;
+      color: var(--background-color-dark);
+    }
+  </style>
+</head>
+<body class="light">
+  
+  <!-- Header
+  <header id="profileHeader">
+    <nav class="pt-3 navbar navbar-expand-lg animate">
+      <div class="container-fluid mx-xs-2 mx-sm-5 mx-md-5 mx-lg-5">
+        <a class="navbar-brand primary-font text-wrap" href="/">
+          <img src="/normal_fav_icon.png" width="30" height="30" class="d-inline-block align-top">
+          Alicia Gil Matute
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse text-wrap primary-font" id="navbarContent">
+          <ul class="navbar-nav ms-auto text-center">
+            <li class="nav-item"><a class="nav-link" href="/">Inicio</a></li>
+            <li class="nav-item"><a class="nav-link active" href="/proyectos">Proyectos</a></li>
+            <li class="nav-item"><a class="nav-link" href="/#contact">Contacto</a></li>
+            <li class="nav-item">
+              <button id="theme-toggle" class="btn btn-sm ms-3">
+                <i class="fas fa-moon" id="moon"></i>
+                <i class="fas fa-sun" id="sun" style="display:none;"></i>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header> -->
 
-  <div class="row justify-content-center px-3 px-md-5">
+  <!-- Contenido -->
+  <main class="container project-list">
+    <h1 class="mb-4 text-center">Proyectos</h1>
 
-    {{/* Sacar lista de clusters únicos desde el front matter */}}
-    {{ $clusters := slice }}
-    {{ range . }}
-      {{ with .Params.cluster }}
-        {{ $clusters = $clusters | append . }}
-      {{ end }}
-    {{ end }}
-    {{ $clusters = uniq $clusters | sort }}
+    <!-- Cluster: Proyectos en R -->
+    <div class="project-cluster">
+      <h2 class="cluster-title">Proyectos en R</h2>
 
-    {{/* Mostrar todos los proyectos agrupados por cluster */}}
-    {{ range $cluster := $clusters }}
-      <div class="col-12 mt-5">
-        <h4 class="text-center">{{ $cluster }}</h4>
+      <div class="project-item">
+        <h3 class="project-title">Análisis Multinivel Bayesiano</h3>
+        <p class="project-description">
+          Este estudio explora el análisis multinivel desde un enfoque bayesiano para evaluar la variabilidad del rendimiento en matemáticas entre 10 centros educativos
+        </p>
+        <a href="/proyectos/analisis_multinivel/" class="btn-project">Ver más</a>
       </div>
 
-      {{/* Iterar sobre las páginas filtradas por cluster */}}
-      {{ range where $.Pages "Params.cluster" $cluster }}
-        {{ $p := . }} <!-- Guardamos el Page original -->
-        <div class="col-lg-4 col-md-6 my-3">
-          <div class="card my-3 h-100" title="{{ $p.Title }}">
-            <div class="card-head">
-              {{ with $p.Params.image }}
-                {{ if $p.Params.repo }}
-                  <a href="{{ $p.Params.repo }}" target="_blank">
-                    <img class="card-img-top" src="{{ . }}" alt="{{ $p.Title }}">
-                  </a>
-                {{ else }}
-                  <img class="card-img-top" src="{{ . }}" alt="{{ $p.Title }}">
-                {{ end }}
-              {{ end }}
-            </div>
+      <div class="project-item">
+        <h3 class="project-title">Visualización Interactiva con Shiny</h3>
+        <p class="project-description">
+          Creación de dashboards interactivos para comunicar resultados de estudios estadísticos.
+        </p>
+        <a href="#" class="btn-project">Ver más</a>
+      </div>
+    </div>
 
-            <div class="card-body bg-transparent p-3">
-              <div class="pb-2 bg-transparent">
-                {{ range $p.Params.badges }}
-                  <span class="badge badge-secondary">{{ . }}</span>
-                {{ end }}
-              </div>
-              <h5 class="card-title bg-transparent mt-1">{{ $p.Title }}</h5>
-              <div class="card-text bg-transparent secondary-font">
-                {{ $p.Summary }}
-              </div>
-            </div>
-          </div>
-        </div>
-      {{ end }}
-    {{ end }}
+    <!-- Cluster: Proyectos en Python -->
+    <div class="project-cluster">
+      <h2 class="cluster-title">Proyectos en Python</h2>
 
-  </div>
-</section>
-{{ end }}
+      <div class="project-item">
+        <h3 class="project-title">Machine Learning Supervisado</h3>
+        <p class="project-description">
+          Implementación de modelos de clasificación y regresión utilizando scikit-learn y pandas.
+        </p>
+        <a href="#" class="btn-project">Ver más</a>
+      </div>
+
+      <div class="project-item">
+        <h3 class="project-title">Automatización y Scraping de Datos</h3>
+        <p class="project-description">
+          Extracción de datos de múltiples fuentes web y procesamiento automático con Python.
+        </p>
+        <a href="#" class="btn-project">Ver más</a>
+      </div>
+    </div>
+
+    <!-- Cluster: Proyectos Multilenguaje -->
+    <div class="project-cluster">
+      <h2 class="cluster-title">Proyectos Multilenguaje</h2>
+
+      <div class="project-item">
+        <h3 class="project-title">Psicometría Aplicada</h3>
+        <p class="project-description">
+          Combinación de R y Python para diseño y validación de pruebas psicométricas, análisis factorial y coeficientes de fiabilidad.
+        </p>
+        <a href="#" class="btn-project">Ver más</a>
+      </div>
+
+      <div class="project-item">
+        <h3 class="project-title">Visualización Avanzada de Datos</h3>
+        <p class="project-description">
+          Uso combinado de Python y R para generar visualizaciones interactivas y dashboards multidimensionales.
+        </p>
+        <a href="#" class="btn-project">Ver más</a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-4 text-center">
+    <p>&copy; 2025 Alicia Gil Matute</p>
+  </footer>
+
+  <script src="/bootstrap-5/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Cambio de tema claro/oscuro
+    const toggleBtn = document.getElementById('theme-toggle');
+    const body = document.body;
+    const moonIcon = document.getElementById('moon');
+    const sunIcon = document.getElementById('sun');
+    toggleBtn.addEventListener('click', () => {
+      body.classList.toggle('dark');
+      moonIcon.style.display = body.classList.contains('dark') ? 'none' : 'inline-block';
+      sunIcon.style.display = body.classList.contains('dark') ? 'inline-block' : 'none';
+      localStorage.setItem("pref-theme", body.classList.contains('dark') ? "dark" : "light");
+    });
+  </script>
+</body>
+</html>

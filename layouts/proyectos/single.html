@@ -1,0 +1,106 @@
+{{ define "main" }}
+<main class="container project-list">
+
+  <style>
+    .project-list {
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+    }
+    .project-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--text-color);
+      margin-bottom: 0.75rem;
+    }
+    body.dark .project-title {
+      color: var(--text-color-dark);
+    }
+    .project-description {
+      color: var(--text-secondary-color);
+      margin-bottom: 1rem;
+    }
+    body.dark .project-description {
+      color: var(--text-secondary-color-dark);
+    }
+    .btn-project {
+      background-color: var(--primary-color);
+      color: white;
+      border-radius: 0.5rem;
+      padding: 0.4rem 1rem;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 1rem;
+    }
+    .btn-project:hover {
+      background-color: #0056b3;
+      color: white;
+    }
+    body.dark .btn-project {
+      background-color: var(--primary-color-dark);
+      color: var(--background-color-dark);
+    }
+    body.dark .btn-project:hover {
+      background-color: #ccc;
+      color: var(--background-color-dark);
+    }
+
+    /* Badges con la misma estética que los botones */
+    .badge-project {
+      background-color: var(--primary-color);
+      color: white;
+      border-radius: 0.5rem;
+      padding: 0.2rem 0.5rem;
+      display: inline-block;
+      margin-right: 0.5rem;
+      margin-bottom: 0.5rem;
+      text-decoration: none;
+      font-size: 0.8rem;
+    }
+    .badge-project:hover {
+      background-color: #0056b3;
+      color: white;
+    }
+    body.dark .badge-project {
+      background-color: var(--primary-color-dark);
+      color: var(--background-color-dark);
+    }
+    body.dark .badge-project:hover {
+      background-color: #ccc;
+      color: var(--background-color-dark);
+    }
+  </style>
+
+  <!-- Imagen del proyecto -->
+  <div class="text-center mb-4">
+    {{ with .Params.image }}
+      <img src="{{ . }}" alt="{{ $.Title }}" style="max-width:150px; margin-bottom:1rem;">
+    {{ end }}
+
+    <!-- Título -->
+    <h1 class="project-title">{{ .Title }}</h1>
+
+    <!-- Descripción -->
+    {{ with .Params.description }}
+      <p class="project-description">{{ . }}</p>
+    {{ end }}
+
+    <!-- Badges -->
+    <div>
+      {{ range .Params.badges }}
+        <span class="badge-project">{{ . }}</span>
+      {{ end }}
+    </div>
+  </div>
+
+  <!-- Contenido completo del proyecto -->
+  <div class="project-content">
+    {{ .Content }}
+  </div>
+
+  <!-- Botón volver a proyectos -->
+  <div class="text-center mt-4">
+    <a href="/proyectos" class="btn-project"> Volver a Proyectos</a>
+  </div>
+
+</main>
+{{ end }}
