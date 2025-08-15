@@ -11,174 +11,35 @@
   <link rel="stylesheet" href="/css/font.css">
   <script defer src="/fontawesome-6/all-6.4.2.js"></script>
   <style>
-    .project-list {
-      padding-top: 2rem;
-      padding-bottom: 2rem;
-    }
-    .project-cluster {
-      margin-bottom: 3rem;
-    }
-    .cluster-title {
-      font-size: 1.75rem;
-      font-weight: 700;
-      margin-bottom: 1.5rem;
-      color: var(--text-color);
-      display: flex;
-      align-items: center;
-      gap: 10px; /* espacio entre imagen y texto */
-    }
-    body.dark .cluster-title {
-      color: var(--text-color-dark);
-    }
-    .cluster-icon {
-      width: 40px;
-      height: 40px;
-      object-fit: contain;
-    }
-    .project-item {
-      border-bottom: 1px solid var(--text-secondary-color);
-      padding: 1.5rem 0;
-    }
-    body.dark .project-item {
-      border-color: var(--text-secondary-color-dark);
-    }
-    .project-title {
-      font-size: 1.5rem;
-      font-weight: 600;
-      color: var(--text-color);
-    }
-    body.dark .project-title {
-      color: var(--text-color-dark);
-    }
-    .project-description {
-      color: var(--text-secondary-color);
-      margin-bottom: 0.75rem;
-    }
-    body.dark .project-description {
-      color: var(--text-secondary-color-dark);
-    }
-    .btn-project {
-      background-color: var(--primary-color);
-      color: white;
-      border-radius: 0.5rem;
-      padding: 0.4rem 1rem;
-      text-decoration: none;
-    }
-    .btn-project:hover {
-      background-color: #0056b3;
-      color: white;
-    }
-    body.dark .btn-project {
-      background-color: var(--primary-color-dark);
-      color: var(--background-color-dark);
-    }
-    body.dark .btn-project:hover {
-      background-color: #ccc;
-      color: var(--background-color-dark);
-    }
+    .project-list { padding-top: 2rem; padding-bottom: 2rem; }
+    .project-cluster { margin-bottom: 3rem; }
+    .cluster-title { font-size: 1.75rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--text-color); display: flex; align-items: center; gap: 10px; }
+    body.dark .cluster-title { color: var(--text-color-dark); }
+    .cluster-icon { width: 40px; height: 40px; object-fit: contain; }
+    .project-item { border-bottom: 1px solid var(--text-secondary-color); padding: 1.5rem 0; }
+    body.dark .project-item { border-color: var(--text-secondary-color-dark); }
+    .project-title { font-size: 1.5rem; font-weight: 600; color: var(--text-color); }
+    body.dark .project-title { color: var(--text-color-dark); }
+    .project-title a.project-link { color: var(--text-color); text-decoration: none; }
+    .project-title a.project-link:hover { text-decoration: underline; }
+    body.dark .project-title a.project-link { color: var(--text-color-dark); }
+    .project-description { color: var(--text-secondary-color); margin-bottom: 0.5rem; }
+    body.dark .project-description { color: var(--text-secondary-color-dark); }
+    .project-badges span { margin-right: 0.5rem; margin-top: 0.25rem; display: inline-block; color: #333; padding: 0.25em 0.5em; border-radius: 0.25rem; font-size: 0.85rem; }
+
+    /* Badges por categoría */
+    .badge-lang    { background-color: #a8dadc; color: #1d3557; } /* azul */
+    .badge-stat    { background-color: #c7f9cc; color: #1d3557; } /* verde */
+    .badge-tech    { background-color: #d8b4fe; color: #1d3557; } /* morado */
+    .badge-tool    { background-color: #ffb49a; color: #1d3557; } /* naranja */
+    .badge-general { background-color: #fff3b0; color: #1d3557; } /* amarillo */
   </style>
 </head>
 <body class="light">
 
   <main class="container project-list">
     <h1 class="mb-4 text-center">Proyectos</h1>
-
-    <!-- Cluster: Proyectos en R -->
-    <div class="project-cluster">
-      <h2 class="cluster-title">
-        <img src="/rstudio.png" alt="Logo R" class="cluster-icon">
-        Proyectos en R
-      </h2>
-
-      <div class="project-item">
-        <h3 class="project-title">Análisis Multinivel Bayesiano</h3>
-        <p class="project-description">
-          Este estudio explora el análisis multinivel desde un enfoque bayesiano para evaluar la variabilidad del rendimiento en matemáticas entre 10 centros educativos
-        </p>
-        <a href="/proyectos/analisis_multinivel/" class="btn-project">Ver más</a>
-      </div>
-
-      <div class="project-item">
-        <h3 class="project-title">Estudio de Valores Perdidos en R</h3>
-        <p class="project-description">
-          Estudio de la Recuperación de un Análisis Factorial Confirmatorio sobre una matriz de varianzas y covarianzas cuyos datos presentaban valores perdidos.
-        </p>
-        <a href="/proyectos/valores_perdidos/" class="btn-project">Ver más</a>
-      </div>
-
-      <div class="project-item">
-        <h3 class="project-title">Simulación Estadística</h3>
-        <p class="project-description">
-          Una serie de proyectos de simulación relacionados con la estadística.
-        </p>
-        <a href="/proyectos/simulacion/" class="btn-project">Ver más</a>
-      </div>
-    </div>
-
-    <!-- Cluster: Proyectos en Python -->
-    <div class="project-cluster">
-      <h2 class="cluster-title">
-        <img src="/Python.png" alt="Logo Python" class="cluster-icon">
-        Proyectos en Python
-      </h2>
-
-      <div class="project-item">
-        <h3 class="project-title">Machine Learning Supervisado</h3>
-        <p class="project-description">
-          Implementación de modelos de clasificación y regresión utilizando scikit-learn y pandas.
-        </p>
-        <a href="/proyectos/ML_supervised" class="btn-project">Ver más</a>
-      </div>
-
-      <div class="project-item">
-        <h3 class="project-title">Machine Learning No Supervisado</h3>
-        <p class="project-description">
-          Una serie de proyectos de clustering y reducción de dimensionalidad.
-        </p>
-        <a href="/proyectos/ML_unsupervised/" class="btn-project">Ver más</a>
-      </div>
-
-      <div class="project-item">
-        <h3 class="project-title">Procesamiento de Lenguaje Natural</h3>
-        <p class="project-description">
-          Análisis y modelado de texto con técnicas de NLP, incluyendo tokenización, lematización y modelos de clasificación de texto usando NLTK y spaCy.
-        </p>
-        <a href="/proyectos/nlp_reviews/" class="btn-project">Ver más</a>
-      </div>
-
-      <div class="project-item">
-        <h3 class="project-title">Algoritmo Genético</h3>
-        <p class="project-description">
-          Algoritmo Genético que pretende resolver el problema del viajante (TSP) desde dos lógicas diferentes.
-        </p>
-        <a href="/proyectos/algoritmo_genetico/" class="btn-project">Ver más</a>
-      </div>
-    </div>
-
-    <!-- Cluster: Proyectos Estratégicos -->
-    <div class="project-cluster">
-      <h2 class="cluster-title">
-        <img src="/data-visualization.png" alt="Logo Data Visualization" class="cluster-icon">
-        Proyectos Estratégicos
-      </h2>
-
-      <div class="project-item">
-        <h3 class="project-title">Análisis Fuga de Empleados</h3>
-        <p class="project-description">
-          Proyecto de análisis y machine learning para predecir la fuga de empleados, medir su impacto económico y proponer estrategias de retención.
-        </p>
-        <a href="/proyectos/fuga_empleados/" class="btn-project">Ver más</a>
-      </div>
-
-      <!-- <div class="project-item">
-        <h3 class="project-title">Visualización Avanzada de Datos</h3>
-        <p class="project-description">
-          Uso combinado de Python y R para generar visualizaciones interactivas y dashboards multidimensionales.
-        </p>
-        <a href="#" class="btn-project">Ver más</a>
-      </div>
-    </div> -->
-
+    <div id="projects-container"></div>
   </main>
 
   <footer class="py-4 text-center">
@@ -187,14 +48,108 @@
 
   <script src="/bootstrap-5/js/bootstrap.bundle.min.js"></script>
   <script>
+    // --- Aquí defines tus proyectos ---
+    const projectClusters = [
+      {
+        title: "Proyectos en R",
+        icon: "/rstudio.png",
+        projects: [
+          {
+            name: "Análisis Multinivel Bayesiano",
+            link: "/proyectos/analisis_multinivel/",
+            description: "Estudio sobre análisis multinivel bayesiano de rendimiento en matemáticas entre 10 centros educativos.",
+            badges: [{name:"R", type:"lang"}, {name:"Stan",type:"tool"},{name:"Bayesiano", type:"tech"}, {name:"Estadística", type:"stat"}]
+          },
+          {
+            name: "Estudio de Valores Perdidos en R",
+            link: "/proyectos/valores_perdidos/",
+            description: "Recuperación de un análisis factorial confirmatorio con datos faltantes.",
+            badges: [{name:"R", type:"lang"}, {name:"Factorial", type:"general"}, {name:"Estadística", type:"stat"}]
+          },
+          {
+            name: "Simulación Estadística",
+            link: "/proyectos/simulacion/",
+            description: "Serie de proyectos de simulación estadística.",
+            badges: [{name:"R", type:"lang"}, {name:"Simulación", type:"tech"}, {name:"Estadística", type:"stat"}]
+          }
+        ]
+      },
+      {
+        title: "Proyectos en Python",
+        icon: "/Python.png",
+        projects: [
+          {
+            name: "Machine Learning Supervisado",
+            link: "/proyectos/ML_supervised",
+            description: "Modelos de clasificación y regresión usando scikit-learn y pandas.",
+            badges: [{name:"Python", type:"lang"}, {name:"ML", type:"tech"}, {name:"Supervisado", type:"tech"}]
+          },
+          {
+            name: "Machine Learning No Supervisado",
+            link: "/proyectos/ML_unsupervised/",
+            description: "Proyectos de clustering y reducción de dimensionalidad.",
+            badges: [{name:"Python", type:"lang"}, {name:"ML", type:"tech"}, {name:"No Supervisado", type:"tech"}]
+          },
+          {
+            name: "Procesamiento de Lenguaje Natural",
+            link: "/proyectos/nlp_reviews/",
+            description: "Análisis y modelado de texto con NLP usando NLTK y spaCy.",
+            badges: [{name:"Python", type:"lang"}, {name:"NLP", type:"general"}, {name:"Text Mining", type:"tech"}]
+          },
+          {
+            name: "Algoritmo Genético",
+            link: "/proyectos/algoritmo_genetico/",
+            description: "Resolviendo el problema del viajante con algoritmo genético.",
+            badges: [{name:"Python", type:"lang"}, {name:"Algoritmo Genético", type:"tech"}, {name:"Optimización", type:"tech"}]
+          }
+        ]
+      },
+      {
+        title: "Proyectos Estratégicos",
+        icon: "/data-visualization.png",
+        projects: [
+          {
+            name: "Análisis Fuga de Empleados",
+            link: "/proyectos/fuga_empleados/",
+            description: "Predicción de rotación de personal con análisis y ML.",
+            badges: [{name:"Python", type:"lang"}, {name:"Tableau", type:"tool"}, {name:"ML", type:"stat"}]
+          }
+        ]
+      }
+    ];
+
+    // --- Generador de HTML dinámico ---
+    const container = document.getElementById('projects-container');
+    projectClusters.forEach(cluster => {
+      const clusterDiv = document.createElement('div');
+      clusterDiv.className = 'project-cluster';
+      clusterDiv.innerHTML = `
+        <h2 class="cluster-title">
+          <img src="${cluster.icon}" alt="${cluster.title}" class="cluster-icon">
+          ${cluster.title}
+        </h2>
+      `;
+
+      cluster.projects.forEach(project => {
+        const badgesHTML = project.badges.map(b => `<span class="badge badge-${b.type}">${b.name}</span>`).join('');
+        const projectHTML = `
+          <div class="project-item">
+            <h3 class="project-title"><a href="${project.link}" class="project-link">${project.name}</a></h3>
+            <p class="project-description">${project.description}</p>
+            <div class="project-badges">${badgesHTML}</div>
+          </div>
+        `;
+        clusterDiv.innerHTML += projectHTML;
+      });
+
+      container.appendChild(clusterDiv);
+    });
+
+    // --- Tema oscuro ---
     const toggleBtn = document.getElementById('theme-toggle');
     const body = document.body;
-    const moonIcon = document.getElementById('moon');
-    const sunIcon = document.getElementById('sun');
     toggleBtn?.addEventListener('click', () => {
       body.classList.toggle('dark');
-      moonIcon.style.display = body.classList.contains('dark') ? 'none' : 'inline-block';
-      sunIcon.style.display = body.classList.contains('dark') ? 'inline-block' : 'none';
       localStorage.setItem("pref-theme", body.classList.contains('dark') ? "dark" : "light");
     });
   </script>

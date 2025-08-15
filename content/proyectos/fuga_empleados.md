@@ -2,19 +2,12 @@
 title: "Análisis Fuga de Empleados"
 description: "Proyecto de análisis y machine learning para predecir la fuga de empleados, medir su impacto económico y proponer estrategias de retención."
 cluster: "Python"
-badges: ["Python", "Tableau","Business Intelligence","Random Forest","Machine Learning"]
 slug: "fuga_empleados"
 draft: false
+github: "https://github.com/tu_usuario/tu_repositorio"
+kaggle: "https://www.kaggle.com/code/arrobarsandias/an-lisis-fuga-empleados"
+
 ---
-<!-- Botones al repositorio de GitHub y Kaggle -->
-<p style="text-align: center; margin-bottom: 2rem;">
-  <a href="https://github.com/tu_usuario/tu_repositorio" target="_blank" class="btn-project" style="margin-right:1rem;">
-    Repositorio en GitHub
-  </a>
-  <a href="https://www.kaggle.com/code/arrobarsandias/an-lisis-fuga-empleados" target="_blank" class="btn-project">
-    Repositorio en Kaggle
-  </a>
-</p>
 
 <!-- # Emulación de una semana de trabajo en DataScientist -->
 <br><br>
@@ -187,9 +180,11 @@ df.sort_values(by='scoring_abandono', ascending=False).head(10)
     </a>
   </p>
 
-  <!-- Iframe del dashboard sin scroll -->
-  <iframe src="https://public.tableau.com/views/DashboardAbandonoEmpleados_17549150031180/Dashboard1?:showVizHome=no&:embed=true"
-          width="100%" height="900" frameborder="0" scrolling="no" allowfullscreen
-          style="margin: 0 auto; display: block;">
+<!-- Dashboard centrado manualmente -->
+<div style="width: 90%; max-width: 1200px; margin: 0 auto;">
+  <iframe 
+      src="https://public.tableau.com/views/DashboardAbandonoEmpleados_17549150031180/Dashboard1?:showVizHome=no&:embed=true"
+      width="100%" height="900" frameborder="0" scrolling="no" allowfullscreen
+      style="margin: 0 auto; display: block;">
   </iframe>
 </div>
