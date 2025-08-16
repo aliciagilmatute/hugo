@@ -384,7 +384,7 @@ params:
          - icon: fab fa-github fa-2x
            url: https://github.com/aliciagilmatute/Simulacion
 
-      - title: Machine Learning (Supervised)
+      - title: Machine Learning Supervisado
         cluster: "Python"
         content: >
           Una serie de proyectos de clasificación con técnicas de Machine Learning Supervised
@@ -406,7 +406,7 @@ params:
          - icon: fab fa-github fa-2x
            url: https://github.com/aliciagilmatute/Machine-Learning-supervised-
         
-      - title: Machine Learning (Unsupervised)
+      - title: Machine Learning No Supervisado
         cluster: "Python"
         content: >
           Una serie de proyectos de clustering y reducción de dimensionalidad.
@@ -473,8 +473,21 @@ params:
          - icon: fab fa-github fa-2x
            url: https://github.com/aliciagilmatute/Algoritmo-Genetico
       
-      
+      - title: Análisis Fuga de Empleados
+        cluster: "Estratégicos"
+        content: >
+          Predicción de rotación de personal con análisis y Machine Learning.
+        image: /data-visualization.png
+        badges:
+          - "Python"
+          - "Tableau"
+          - "ML"
+        links:
+          - icon: fab fa-github fa-2x
+            url: https://github.com/aliciagilmatute/Fuga-Empleados
 
+      
+    
       #- title: Hugo Profile V2
        # content: A clean and simple Hugo template for personal portfolio and blog.
        # image: /images/projects/profile2.jpg
