@@ -201,14 +201,6 @@
 
       container.appendChild(clusterDiv);
     });
-
-    // --- Tema oscuro ---
-    const toggleBtn = document.getElementById('theme-toggle');
-    const body = document.body;
-    toggleBtn?.addEventListener('click', () => {
-      body.classList.toggle('dark');
-      localStorage.setItem("pref-theme", body.classList.contains('dark') ? "dark" : "light");
-    });
     
   </script>
 </body>
