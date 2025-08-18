@@ -175,7 +175,7 @@ df.sort_values(by='scoring_abandono', ascending=False).head(10)
   <!-- Enlace al dashboard con estilo de botón -->
   <p>
     <a href="https://public.tableau.com/app/profile/alicia.gil.matute/viz/DashboardAbandonoEmpleados_17549150031180/Dashboard1" 
-       target="_blank" class="btn-project">
+       target="_blank" class="btn-contact">
        Ver Dashboard
     </a>
   </p>

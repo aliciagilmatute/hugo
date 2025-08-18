@@ -16,9 +16,30 @@
     .cluster-title { font-size: 1.75rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--text-color); display: flex; align-items: center; gap: 10px; }
     body.dark .cluster-title { color: var(--text-color-dark); }
     .cluster-icon { width: 40px; height: 40px; object-fit: contain; }
-    .project-item { border-bottom: 1px solid var(--text-secondary-color); padding: 1.5rem 0; }
+    
+    .project-item { 
+      border-bottom: 1px solid var(--text-secondary-color); 
+      padding: 1.5rem 0; 
+      display: flex; 
+      gap: 1rem; 
+      align-items: flex-start; 
+      justify-content: space-between; 
+      flex-wrap: wrap; /* en móviles se apilan */
+    }
     body.dark .project-item { border-color: var(--text-secondary-color-dark); }
-    .project-title { font-size: 1.5rem; font-weight: 600; color: var(--text-color); }
+
+    .project-thumb { 
+      width: 220px; 
+      height: auto; 
+      object-fit: cover; 
+      border-radius: 0.5rem; 
+      flex-shrink: 0; 
+      transition: transform 0.2s ease;
+    }
+    .project-thumb:hover { transform: scale(1.05); }
+
+    .project-content { flex: 1; min-width: 250px; }
+    .project-title { font-size: 1.5rem; font-weight: 600; color: var(--text-color); margin-bottom: 0.25rem; }
     body.dark .project-title { color: var(--text-color-dark); }
     .project-title a.project-link { color: var(--text-color); text-decoration: none; }
     .project-title a.project-link:hover { text-decoration: underline; }
@@ -28,11 +49,11 @@
     .project-badges span { margin-right: 0.5rem; margin-top: 0.25rem; display: inline-block; color: #333; padding: 0.25em 0.5em; border-radius: 0.25rem; font-size: 0.85rem; }
 
     /* Badges por categoría */
-    .badge-lang    { background-color: #a8dadc; color: #1d3557; } /* azul */
-    .badge-stat    { background-color: #c7f9cc; color: #1d3557; } /* verde */
-    .badge-tech    { background-color: #d8b4fe; color: #1d3557; } /* morado */
-    .badge-tool    { background-color: #ffb49a; color: #1d3557; } /* naranja */
-    .badge-general { background-color: #fff3b0; color: #1d3557; } /* amarillo */
+    .badge-lang    { background-color: #a8dadc; color: #1d3557; }
+    .badge-stat    { background-color: #c7f9cc; color: #1d3557; }
+    .badge-tech    { background-color: #d8b4fe; color: #1d3557; }
+    .badge-tool    { background-color: #ffb49a; color: #1d3557; }
+    .badge-general { background-color: #fff3b0; color: #1d3557; }
     
      /* --- Botón Volver a Inicio --- */
     .btn-contact {
@@ -48,14 +69,8 @@
       font-weight: 500;
     }
 
-    .btn-contact:hover {
-      opacity: 0.7;
-    }
-
-    .btn-contact:focus {
-      box-shadow: none !important;
-      outline: none;
-    }
+    .btn-contact:hover { opacity: 0.7; }
+    .btn-contact:focus { box-shadow: none !important; outline: none; }
   </style>
 
 </head>
@@ -66,7 +81,7 @@
     <div id="projects-container"></div>
   </main>
 
-    <!-- Botón volver a inicio, colocado encima del footer -->
+  <!-- Botón volver a inicio -->
   <div class="text-center mt-4">
     <a href="/#about" class="btn-contact">Volver a Inicio</a>
   </div>
@@ -77,7 +92,7 @@
 
   <script src="/bootstrap-5/js/bootstrap.bundle.min.js"></script>
   <script>
-    // --- Aquí defines tus proyectos ---
+    // --- Definición de proyectos ---
     const projectClusters = [
       {
         title: "Proyectos en R",
@@ -87,18 +102,21 @@
             name: "Análisis Multinivel Bayesiano",
             link: "/proyectos/analisis_multinivel/",
             description: "Estudio sobre análisis multinivel bayesiano de rendimiento en matemáticas entre 10 centros educativos.",
+            image: "/multinivel_bayesiano.png",
             badges: [{name:"R", type:"lang"}, {name:"Stan",type:"tool"},{name:"Bayesiano", type:"tech"}, {name:"Estadística", type:"stat"}]
           },
           {
             name: "Estudio de Valores Perdidos en R",
             link: "/proyectos/valores_perdidos/",
             description: "Recuperación de un análisis factorial confirmatorio con datos faltantes.",
+            image: "/missing-values.jfif",
             badges: [{name:"R", type:"lang"}, {name:"Factorial", type:"general"}, {name:"Estadística", type:"stat"}]
           },
           {
             name: "Simulación Estadística",
             link: "/proyectos/simulacion/",
             description: "Serie de proyectos de simulación estadística.",
+            image: "/simulation.png",
             badges: [{name:"R", type:"lang"}, {name:"Simulación", type:"tech"}, {name:"Estadística", type:"stat"}]
           }
         ]
@@ -111,24 +129,28 @@
             name: "Machine Learning Supervisado",
             link: "/proyectos/ML_supervised",
             description: "Modelos de clasificación y regresión usando scikit-learn y pandas.",
+            image: "/RF.png",
             badges: [{name:"Python", type:"lang"}, {name:"ML", type:"tech"}, {name:"Supervisado", type:"tech"}]
           },
           {
             name: "Machine Learning No Supervisado",
             link: "/proyectos/ML_unsupervised/",
             description: "Proyectos de clustering y reducción de dimensionalidad.",
+            image: "/PCA.jfif",
             badges: [{name:"Python", type:"lang"}, {name:"ML", type:"tech"}, {name:"No Supervisado", type:"tech"}]
           },
           {
             name: "Procesamiento de Lenguaje Natural",
             link: "/proyectos/nlp_reviews/",
             description: "Análisis y modelado de texto con NLP usando NLTK y spaCy.",
+            image: "/NLP-reviews.png",
             badges: [{name:"Python", type:"lang"}, {name:"NLP", type:"general"}, {name:"Text Mining", type:"tech"}]
           },
           {
             name: "Algoritmo Genético",
             link: "/proyectos/algoritmo_genetico/",
             description: "Resolviendo el problema del viajante con algoritmo genético.",
+            image: "/algoritmo-genetico.png",
             badges: [{name:"Python", type:"lang"}, {name:"Algoritmo Genético", type:"tech"}, {name:"Optimización", type:"tech"}]
           }
         ]
@@ -141,13 +163,14 @@
             name: "Análisis Fuga de Empleados",
             link: "/proyectos/fuga_empleados/",
             description: "Predicción de rotación de personal con análisis y ML.",
+            image: "/fuga-empleados.png",
             badges: [{name:"Python", type:"lang"}, {name:"Tableau", type:"tool"}, {name:"ML", type:"tech"}]
           }
         ]
       }
     ];
 
-    // --- Generador de HTML dinámico ---
+    // --- Generador dinámico ---
     const container = document.getElementById('projects-container');
     projectClusters.forEach(cluster => {
       const clusterDiv = document.createElement('div');
@@ -163,9 +186,14 @@
         const badgesHTML = project.badges.map(b => `<span class="badge badge-${b.type}">${b.name}</span>`).join('');
         const projectHTML = `
           <div class="project-item">
-            <h3 class="project-title"><a href="${project.link}" class="project-link">${project.name}</a></h3>
-            <p class="project-description">${project.description}</p>
-            <div class="project-badges">${badgesHTML}</div>
+            <div class="project-content">
+              <h3 class="project-title"><a href="${project.link}" class="project-link">${project.name}</a></h3>
+              <p class="project-description">${project.description}</p>
+              <div class="project-badges">${badgesHTML}</div>
+            </div>
+            <a href="${project.link}">
+              <img src="${project.image}" alt="${project.name}" class="project-thumb">
+            </a>
           </div>
         `;
         clusterDiv.innerHTML += projectHTML;
@@ -181,7 +209,7 @@
       body.classList.toggle('dark');
       localStorage.setItem("pref-theme", body.classList.contains('dark') ? "dark" : "light");
     });
+    
   </script>
 </body>
 </html>
-

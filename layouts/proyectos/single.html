@@ -230,10 +230,37 @@
     {{ .Content }}
   </div>
 
+    <!-- Estilos del botón -->
+  <style>
+    /* --- Botón Volver a proyectos --- */
+    .btn-contact {
+      transition: none;
+      transition: opacity 0.3s;
+      border-radius: .5rem !important;
+      border: 1px solid var(--primary-color) !important;
+      background-color: var(--secondary-color) !important;
+      color: var(--text-color) !important;
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .btn-contact:hover {
+      opacity: 0.7;
+    }
+
+    .btn-contact:focus {
+      box-shadow: none !important;
+      outline: none;
+    }
+  </style>
+
   <!-- Botón volver a proyectos -->
   <div class="text-center mt-4">
-    <a href="/proyectos" class="btn-project">Volver a Proyectos</a>
+    <a href="/proyectos" class="btn-contact">Volver a Proyectos</a>
   </div>
+  
 
   <!-- Script para añadir botones Copy -->
   <script>

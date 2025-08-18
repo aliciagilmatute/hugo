@@ -44,8 +44,8 @@ Menus:
       url: /#experience
       weight: 3
     
-    - identifier: CV
-      name: CV
+    - identifier: Formación
+      name: Formación
       url: /#education
       weight: 4
 
@@ -160,7 +160,7 @@ params:
       disableEducation: true
       disableProjects: true
       disableAchievements: false
-      disableContact: t
+      disableContact: true
 
   # Hero
   hero:
@@ -274,7 +274,7 @@ params:
   # Education
   education:
     enable: true
-    title: "CV"
+    title: "Formación"
     index: false
     items:
       - title: "Máster en Ciencias del Comportamiento y de la Salud"
@@ -338,7 +338,7 @@ params:
   # projects
   projects:
     enable: True
-    title: "Proyectos"
+    title: "Algunos Proyectos"
     url: /proyectos
 
     moreProjects:
@@ -387,7 +387,7 @@ params:
       - title: Machine Learning Supervisado
         cluster: "Python"
         content: >
-          Una serie de proyectos de clasificación con técnicas de Machine Learning Supervised
+          Una serie de proyectos de clasificación con técnicas de Machine Learning Supervised.
 
         image: /Python.png
         #featured:
@@ -432,7 +432,7 @@ params:
       - title: Análisis Multinivel Bayesiano
         cluster: "R"
         content: >
-          Este estudio explora el análisis multinivel desde un enfoque bayesiano para evaluar la variabilidad del rendimiento en matemáticas entre 10 centros educativos
+          Análisis multinivel bayesiano de rendimiento en matemáticas en 10 centros educativos.
 
         image: /rstudio.png
         #featured:
