@@ -111,6 +111,16 @@
       fill: var(--background-color-dark);
     }
 
+    .container, .row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.col-sm-12, .col-md-12, .col-lg-9, .col-lg-3 {
+  width: 100%; /* Para que no haya desplazamiento */
+}
+
+  
    
 </style>
 {{ end }}
@@ -199,7 +209,7 @@
 
 
           <!-- Contenido -->
-          <article class="page-content p- project-content">
+          <article class="page-content p-2 project-content">
             {{ .Content | emojify }}
           </article>
 

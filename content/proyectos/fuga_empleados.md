@@ -180,11 +180,13 @@ df.sort_values(by='scoring_abandono', ascending=False).head(10)
     </a>
   </p>
 
+
 <!-- Dashboard centrado manualmente -->
-<div style="width: 90%; max-width: 1200px; margin: 0 auto;">
+<!-- <div style="text-align: center; margin: 2rem 0;">
+<div style="width: 100%; max-width: 1200px; margin: 0 auto;">
   <iframe 
       src="https://public.tableau.com/views/DashboardAbandonoEmpleados_17549150031180/Dashboard1?:showVizHome=no&:embed=true"
       width="100%" height="900" frameborder="0" scrolling="no" allowfullscreen
       style="margin: 0 auto; display: block;">
   </iframe>
-</div>
+</div> -->
