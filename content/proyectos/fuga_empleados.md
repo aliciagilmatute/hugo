@@ -6,7 +6,7 @@ slug: "fuga_empleados"
 draft: false
 github: "https://github.com/tu_usuario/tu_repositorio"
 kaggle: "https://www.kaggle.com/code/arrobarsandias/an-lisis-fuga-empleados"
-
+tableau: "https://public.tableau.com/views/DashboardAbandonoEmpleados_17549150031180/Dashboard1?:showVizHome=no&:embed=true"
 ---
 
 <!-- # Emulación de una semana de trabajo en DataScientist -->
@@ -181,8 +181,8 @@ df.sort_values(by='scoring_abandono', ascending=False).head(10)
   </p>
 
 
-<!-- Dashboard centrado manualmente -->
-<!-- <div style="text-align: center; margin: 2rem 0;">
+<!-- Dashboard centrado manualmente
+<div style="text-align: center; margin: 2rem 0;">
 <div style="width: 100%; max-width: 1200px; margin: 0 auto;">
   <iframe 
       src="https://public.tableau.com/views/DashboardAbandonoEmpleados_17549150031180/Dashboard1?:showVizHome=no&:embed=true"

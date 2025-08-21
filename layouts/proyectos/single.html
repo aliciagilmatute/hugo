@@ -5,7 +5,7 @@
 <!-- fontawesome -->
 <script defer src="{{.Site.Params.staticPath}}/fontawesome-6/all-6.4.2.js"></script>
 
-<!-- Estilos del botón Volver a Proyectos -->
+<!-- Estilos del botón Volver a Proyectos y extras -->
 <style>
   .btn-contact {
     transition: none;
@@ -19,99 +19,74 @@
     text-decoration: none;
     font-weight: 500;
   }
+  .btn-contact:hover { opacity: 0.7; }
+  .btn-contact:focus { box-shadow: none !important; outline: none; }
 
-  .btn-contact:hover {
-    opacity: 0.7;
+  /* Copy button */
+  .copy-btn {
+    font-family: "Inter", Arial, sans-serif;
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    padding: 0.025rem 0.6rem;
+    font-size: 0.75rem;
+    border-radius: 0.5rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  .copy-btn:hover { background-color: #0056b3; }
+  body.dark .copy-btn { background-color: rgba(255,255,255,0.05); color: white; }
+  body.dark .copy-btn:hover { background-color: #ccc; }
+
+  .code-container { position: relative; }
+  .code-container pre {
+    padding: 1.5rem;
+    overflow: auto;
+    border-radius: 0.5rem;
+    background-color: rgba(255,255,255,0.05);
+    position: relative;
   }
 
-  .btn-contact:focus {
-    box-shadow: none !important;
-    outline: none;
+  /* Materiales */
+  .materiales { text-align: left; margin: 2rem 0 1rem; font-size: 1rem; color: var(--text-color); }
+  .materiales strong { display: block; margin-bottom: 0.75rem; }
+  .materiales-botones { display: flex; gap: 0.75rem; }
+  .materiales-botones a {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 48px; height: 48px;
+    background-color: var(--primary-color);
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+    transition: background-color 0.2s ease, transform 0.1s ease;
   }
+  .materiales-botones a:hover { background-color: #0056b3; transform: translateY(-2px); }
+  .materiales-botones svg { width: 24px; height: 24px; fill: white; }
+  body.dark .materiales-botones a { background-color: var(--primary-color-dark); }
+  body.dark .materiales-botones a:hover { background-color: #ccc; }
+  body.dark .materiales-botones svg { fill: var(--background-color-dark); }
 
-      /* Copy button */
-    .copy-btn {
-      font-family: "Inter", Arial, sans-serif;
-      position: absolute;
-      top: 0.5rem;
-      right: 0.5rem;
-      padding: 0.025rem 0.6rem;
-      font-size: 0.75rem;
-      border-radius: 0.5rem;
-      background-color: var(--primary-color);
-      color: white;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      cursor: pointer;
-      transition: background-color 0.2s;
-    }
-    .copy-btn:hover {
-      background-color: #0056b3;
-    }
-    body.dark .copy-btn {
-      background-color: rgba(255,255,255,0.05);
-      color: white;
-    }
-    body.dark .copy-btn:hover {
-      background-color: #ccc;
-    }
-
-    .code-container {
-      position: relative;
-    }
-    .code-container pre {
-      padding: 1.5rem;
-      overflow: auto;
-      border-radius: 0.5rem;
-      background-color: rgba(255,255,255,0.05);
-      position: relative;
-    }
-
-      /* Materiales */
-    .materiales {
-      text-align: left;
-      margin: 2rem 0 1rem;
-      font-size: 1rem;
-      color: var(--text-color);
-    }
-    .materiales strong {
-      display: block;
-      margin-bottom: 0.75rem;
-    }
-    .materiales-botones {
-      display: flex;
-      gap: 0.75rem;
-    }
-    .materiales-botones a {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 48px;
-      height: 48px;
-      background-color: var(--primary-color);
-      border-radius: 0.5rem;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.15);
-      transition: background-color 0.2s ease, transform 0.1s ease;
-    }
-    .materiales-botones a:hover {
-      background-color: #0056b3;
-      transform: translateY(-2px);
-    }
-    .materiales-botones svg {
-      width: 24px;
-      height: 24px;
-      fill: white;
-    }
-    body.dark .materiales-botones a {
-      background-color: var(--primary-color-dark);
-    }
-    body.dark .materiales-botones a:hover {
-      background-color: #ccc;
-    }
-    body.dark .materiales-botones svg {
-      fill: var(--background-color-dark);
-    }
-
-   
+  /* Tableau Section */
+  .tableau-section { text-align: center; margin: 3rem 0; }
+  .tableau-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 65%; /* proporción 16:10 */
+    height: 0;
+    overflow: hidden;
+    border-radius: none;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+  }
+  .tableau-container iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 150%; height: 150%;
+    transform: scale(0.75); /* 0.8 = 80% del tamaño original */
+    transform-origin: top left;
+    border: none;
+  }
 </style>
 {{ end }}
 
@@ -137,16 +112,10 @@
           <div class="title mb-5">
             <h1 class="project-title text-center mb-4">{{ .Title }}</h1>
             <div class="text-center">
-              {{ if .Params.author }}
-                {{ .Params.author }}
-                <small>|</small>
-              {{ end }}
+              {{ if .Params.author }}{{ .Params.author }} <small>|</small>{{ end }}
               {{ .Date.Format (.Site.Params.datesFormat.article | default "Jan 20, 20") }}
-
               {{ if or (.Site.Params.singlePages.readTime.enable | default true) (.Params.enableReadingTime) }}
-              <span id="readingTime">
-                {{ .Site.Params.singlePages.readTime.content | default "min read" }}
-              </span>
+              <span id="readingTime">{{ .Site.Params.singlePages.readTime.content | default "min read" }}</span>
               {{ end }}
             </div>
           </div>
@@ -203,6 +172,16 @@
             {{ .Content | emojify }}
           </article>
 
+          <!-- Dashboard Tableau -->
+          {{ with .Params.tableau }}
+          <div class="tableau-section">
+            <h2 class="mb-4"></h2>
+            <div class="tableau-container">
+              <iframe src="{{ . }}" allowfullscreen></iframe>
+            </div>
+          </div>
+          {{ end }}
+
           <!-- Botón volver -->
           <div class="text-center mt-4">
             <a href="/proyectos" class="btn-contact">Volver a Proyectos</a>
@@ -215,12 +194,8 @@
         <div id="stickySideBar" class="sticky-sidebar">
           {{ if .Params.toc | default true}}
           <aside class="toc">
-              <h5>
-                {{ .Site.Params.terms.toc | default "Table Of Contents" }}
-              </h5>
-              <div class="toc-content">
-                {{.TableOfContents}}
-              </div>
+              <h5>{{ .Site.Params.terms.toc | default "Table Of Contents" }}</h5>
+              <div class="toc-content">{{.TableOfContents}}</div>
           </aside>
           {{ end }}
 
@@ -229,9 +204,7 @@
             <h5>{{ .Site.Params.terms.tags | default "Tags" }}</h5>
             <ul class="tags-ul list-unstyled list-inline">
               {{range .Params.tags}}
-              <li class="list-inline-item"><a href="{{`tags` | absURL}}/{{.| urlize}}"
-                {{ if site.Params.singlePages.tags.openInNewTab | default true }}target="_blank"{{ end }}
-              >{{.}}</a></li>
+              <li class="list-inline-item"><a href="{{`tags` | absURL}}/{{.| urlize}}" {{ if site.Params.singlePages.tags.openInNewTab | default true }}target="_blank"{{ end }}>{{.}}</a></li>
               {{end}}
             </ul>
           </aside>
@@ -242,26 +215,10 @@
             <h5>{{ .Site.Params.terms.social | default "Social" }}</h5>
             <div class="social-content">
               <ul class="list-inline">
-                <li class="list-inline-item text-center">
-                  <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url={{ .Site.Params.hostName }}{{ .Permalink | absURL }}">
-                    <i class="fab fa-linkedin"></i>
-                  </a>
-                </li>
-                <li class="list-inline-item text-center">
-                  <a target="_blank" href="https://twitter.com/share?text={{ .Title }}&url={{ .Site.Params.hostName }}{{ .Permalink | absURL }}">
-                    <i class="fab fa-twitter"></i>
-                  </a>
-                </li>
-                <li class="list-inline-item text-center">
-                  <a target="_blank" href="https://api.whatsapp.com/send?text={{ .Title }}: {{ .Site.Params.hostName }}{{ .Permalink | absURL }}">
-                    <i class="fab fa-whatsapp"></i>
-                  </a>
-                </li>
-                <li class="list-inline-item text-center">
-                  <a target="_blank" href='mailto:?subject={{ .Title }}&amp;body={{ .Site.Params.terms.emailText | default "Check out this site" }} {{ .Site.Params.hostName }}{{ .Permalink | absURL }}'>
-                    <i class="fa fa-envelope"></i>
-                  </a>
-                </li>
+                <li class="list-inline-item text-center"><a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url={{ .Site.Params.hostName }}{{ .Permalink | absURL }}"><i class="fab fa-linkedin"></i></a></li>
+                <li class="list-inline-item text-center"><a target="_blank" href="https://twitter.com/share?text={{ .Title }}&url={{ .Site.Params.hostName }}{{ .Permalink | absURL }}"><i class="fab fa-twitter"></i></a></li>
+                <li class="list-inline-item text-center"><a target="_blank" href="https://api.whatsapp.com/send?text={{ .Title }}: {{ .Site.Params.hostName }}{{ .Permalink | absURL }}"><i class="fab fa-whatsapp"></i></a></li>
+                <li class="list-inline-item text-center"><a target="_blank" href='mailto:?subject={{ .Title }}&amp;body={{ .Site.Params.terms.emailText | default "Check out this site" }} {{ .Site.Params.hostName }}{{ .Permalink | absURL }}'><i class="fa fa-envelope"></i></a></li>
               </ul>
             </div>
           </aside>
@@ -270,18 +227,13 @@
       </div>
     </div>
 
-
   <!-- Scroll top -->
-  <button class="p-2 px-3" onclick="topFunction()" id="topScroll">
-    <i class="fas fa-angle-up"></i>
-  </button>
+  <button class="p-2 px-3" onclick="topFunction()" id="topScroll"><i class="fas fa-angle-up"></i></button>
 </section>
 
 <!-- Barra de progreso -->
 {{ if or (.Site.Params.singlePages.scrollprogress.enable | default true) (.Params.enableScrollProgress) }}
-<div class="progress">
-  <div id="scroll-progress-bar" class="progress-bar" role="progressbar"></div>
-</div>
+<div class="progress"><div id="scroll-progress-bar" class="progress-bar" role="progressbar"></div></div>
 <script src="{{.Site.Params.staticPath}}/js/scrollProgressBar.js"></script>
 {{ end }}
 
@@ -289,21 +241,13 @@
 <script>
   var topScroll = document.getElementById("topScroll");
   window.onscroll = function() {scrollFunction()};
-
   function scrollFunction() {
-    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-      topScroll.style.display = "block";
-    } else {
-      topScroll.style.display = "none";
-    }
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) { topScroll.style.display = "block"; }
+    else { topScroll.style.display = "none"; }
   }
+  function topFunction() { document.body.scrollTop = 0; document.documentElement.scrollTop = 0; }
 
-  function topFunction() {
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
-  }
-
-  <!-- // Sticky sidebar height
+  // Sticky sidebar height
   let stickySideBarElem = document.getElementById("stickySideBar");
   let stickyNavBar = {{ .Site.Params.navbar.stickyNavBar.enable | default false }};
   if(stickyNavBar) {
@@ -312,7 +256,7 @@
     stickySideBarElem.style.top = headerHeight + "px";
   } else {
     stickySideBarElem.style.top = "50px";
-  } -->
+  }
 </script>
 
 <!-- Tiempo de lectura -->
@@ -329,17 +273,13 @@
       container.classList.add("code-container");
       pre.parentNode.insertBefore(container, pre);
       container.appendChild(pre);
-
       const button = document.createElement("button");
-      button.className = "copy-btn";
-      button.textContent = "Copy";
+      button.className = "copy-btn"; button.textContent = "Copy";
       button.addEventListener("click", () => {
         navigator.clipboard.writeText(codeBlock.innerText).then(() => {
-          button.textContent = "Copied!";
-          setTimeout(() => (button.textContent = "Copy"), 2000);
+          button.textContent = "Copied!"; setTimeout(() => (button.textContent = "Copy"), 2000);
         });
       });
-
       container.appendChild(button);
     });
   });
