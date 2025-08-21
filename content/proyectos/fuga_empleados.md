@@ -1,6 +1,7 @@
 ---
 title: "Análisis Fuga de Empleados"
 description: "Proyecto de análisis y machine learning para predecir la fuga de empleados, medir su impacto económico y proponer estrategias de retención."
+date: "2025-08-21"
 cluster: "Python"
 slug: "fuga_empleados"
 draft: false
@@ -179,6 +180,11 @@ df.sort_values(by='scoring_abandono', ascending=False).head(10)
        Ver Dashboard
     </a>
   </p>
+
+
+  
+
+<!-- No es necesario porque se gestiona el tamaño en single.html -->
 
 
 <!-- Dashboard centrado manualmente
