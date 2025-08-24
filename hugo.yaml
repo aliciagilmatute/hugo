@@ -201,7 +201,7 @@ params:
   about:
     enable: true
     title: "Sobre mí"
-    image: "/photo_me.jpg"
+    image: "/photo_me_2.jpg"
     content: |-
       Me llamo Alicia Gil Matute y como psicóloga estoy interesada en el análisis de conducta, del mismo modo que como metodóloga estoy interesada en la estadística. 
 
@@ -389,7 +389,8 @@ params:
         content: >
           Una serie de proyectos de clasificación con técnicas de Machine Learning Supervised.
 
-        image: /Python.png
+        image: /media/ml_supervised.png
+
         #featured:
           #name: Demo
           #link: https://django-converter.herokuapp.com
@@ -434,7 +435,7 @@ params:
         content: >
           Análisis multinivel bayesiano de rendimiento en matemáticas en 10 centros educativos.
 
-        image: /rstudio.png
+        image: /media/bayesiano.png
         #featured:
           #name: Demo
           #link: https://django-converter.herokuapp.com
@@ -477,7 +478,8 @@ params:
         cluster: "Estratégicos"
         content: >
           Predicción de rotación de personal con análisis y Machine Learning.
-        image: /data-visualization.png
+        image: /media/fuga_empleados.png
+
         badges:
           - "Python"
           - "Tableau"

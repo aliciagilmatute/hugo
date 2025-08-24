@@ -1,0 +1,178 @@
+<!-- <!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proyectos - Alicia Gil Matute</title>
+  <link rel="stylesheet" href="/bootstrap-5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/theme.css">
+  <link rel="stylesheet" href="/css/header.css">
+  <link rel="stylesheet" href="/css/footer.css">
+  <link rel="stylesheet" href="/css/font.css">
+  <script defer src="/fontawesome-6/all-6.4.2.js"></script>
+  <style>
+    .project-list { padding-top: 2rem; padding-bottom: 2rem; }
+    .project-cluster { margin-bottom: 3rem; }
+    .cluster-title { font-size: 1.75rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--text-color); display: flex; align-items: center; gap: 10px; }
+    body.dark .cluster-title { color: var(--text-color-dark); }
+    .cluster-icon { width: 40px; height: 40px; object-fit: contain; }
+    
+    .project-item { 
+      border-bottom: 1px solid var(--text-secondary-color); 
+      padding: 1.5rem 0; 
+      display: flex; 
+      gap: 1rem; 
+      align-items: flex-start; 
+      justify-content: space-between; 
+      flex-wrap: wrap;
+    }
+    body.dark .project-item { border-color: var(--text-secondary-color-dark); }
+
+    .project-thumb { 
+      width: 220px; 
+      height: auto; 
+      object-fit: cover; 
+      border-radius: 0.5rem; 
+      flex-shrink: 0; 
+      transition: transform 0.2s ease;
+    }
+    .project-thumb:hover { transform: scale(1.05); }
+
+    .project-content { flex: 1; min-width: 250px; }
+    .project-title { font-size: 1.5rem; font-weight: 600; color: var(--text-color); margin-bottom: 0.25rem; }
+    body.dark .project-title { color: var(--text-color-dark); }
+    .project-title a.project-link { color: var(--text-color); text-decoration: none; }
+    .project-title a.project-link:hover { text-decoration: underline; }
+    body.dark .project-title a.project-link { color: var(--text-color-dark); }
+    .project-description { color: var(--text-secondary-color); margin-bottom: 0.5rem; }
+    body.dark .project-description { color: var(--text-secondary-color-dark); }
+    .project-badges span { margin-right: 0.5rem; margin-top: 0.25rem; display: inline-block; color: #333; padding: 0.25em 0.5em; border-radius: 0.25rem; font-size: 0.85rem; }
+
+    .badge-lang    { background-color: #a8dadc; color: #1d3557; }
+    .badge-stat    { background-color: #c7f9cc; color: #1d3557; }
+    .badge-tech    { background-color: #d8b4fe; color: #1d3557; }
+    .badge-tool    { background-color: #ffb49a; color: #1d3557; }
+    .badge-general { background-color: #fff3b0; color: #1d3557; }
+
+    .btn-contact {
+      transition: none;
+      transition: opacity 0.3s;
+      border-radius: .5rem !important;
+      border: 1px solid var(--primary-color) !important;
+      background-color: var(--secondary-color) !important;
+      color: var(--text-color) !important;
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .btn-contact:hover { opacity: 0.7; }
+    .btn-contact:focus { box-shadow: none !important; outline: none; }
+
+       /* Botón Scroll Top */
+    #topScroll {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 99;
+      border: none;
+      outline: none;
+      background-color: var(--secondary-color);
+      color: var(--primary-color);
+      cursor: pointer;
+      border-radius: 10px;
+      padding: 10px 15px;
+      font-size: 18px;
+      transition: all 0.3s ease;
+    }
+    #topScroll:hover {
+      background-color: var(--primary-color);
+      color: var(--secondary-color);
+      box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+    }
+
+  </style>
+</head>
+<body class="light">
+
+  <main class="container project-list">
+    <h1 class="mb-4 text-center">Proyectos</h1>
+    <div id="projects-container"></div>
+  </main>
+
+  <div class="text-center mt-4">
+    <a href="/#about" class="btn-contact">Volver a Inicio</a>
+  </div>
+
+  <footer class="py-4 text-center">
+    <p>&copy; 2025 Alicia Gil Matute</p>
+  </footer>
+
+   Botón Scroll Top -->
+  <!-- <button id="topScroll" onclick="topFunction()"><i class="fas fa-angle-up"></i></button>
+
+  <script src="/bootstrap-5/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // --- Generador de proyectos ---
+    const projectClusters = [
+      {
+        title: "Proyectos en R",
+        icon: "/rstudio.png",
+        projects: [
+          { name: "Análisis Multinivel Bayesiano", link: "/proyectos/analisis_multinivel/", description: "Estudio sobre análisis multinivel bayesiano de rendimiento en matemáticas entre 10 centros educativos.", image: "/multinivel_bayesiano.png", badges: [{name:"R", type:"lang"}, {name:"Stan",type:"tool"},{name:"Bayesiano", type:"tech"}, {name:"Estadística", type:"stat"}] },
+          { name: "Estudio de Valores Perdidos en R", link: "/proyectos/valores_perdidos/", description: "Recuperación de un análisis factorial confirmatorio con datos faltantes.", image: "/missing-values.jfif", badges: [{name:"R", type:"lang"}, {name:"Factorial", type:"general"}, {name:"Estadística", type:"stat"}] },
+          { name: "Simulación Estadística", link: "/proyectos/simulacion/", description: "Serie de proyectos de simulación estadística.", image: "/simulation.png", badges: [{name:"R", type:"lang"}, {name:"Simulación", type:"tech"}, {name:"Estadística", type:"stat"}] }
+        ]
+      },
+      {
+        title: "Proyectos en Python",
+        icon: "/Python.png",
+        projects: [
+          { name: "Machine Learning Supervisado", link: "/proyectos/ML_supervised", description: "Modelos de clasificación y regresión usando scikit-learn y pandas.", image: "/RF.png", badges: [{name:"Python", type:"lang"}, {name:"ML", type:"tech"}, {name:"Supervisado", type:"tech"}] },
+          { name: "Machine Learning No Supervisado", link: "/proyectos/ML_unsupervised/", description: "Proyectos de clustering y reducción de dimensionalidad.", image: "/PCA.jfif", badges: [{name:"Python", type:"lang"}, {name:"ML", type:"tech"}, {name:"No Supervisado", type:"tech"}] },
+          { name: "Procesamiento de Lenguaje Natural", link: "/proyectos/nlp_reviews/", description: "Análisis y modelado de texto con NLP usando NLTK y spaCy.", image: "/NLP-reviews.png", badges: [{name:"Python", type:"lang"}, {name:"NLP", type:"general"}, {name:"Text Mining", type:"tech"}] },
+          { name: "Algoritmo Genético", link: "/proyectos/algoritmo_genetico/", description: "Resolviendo el problema del viajante con algoritmo genético.", image: "/algoritmo-genetico.png", badges: [{name:"Python", type:"lang"}, {name:"Algoritmo Genético", type:"tech"}, {name:"Optimización", type:"tech"}] }
+        ]
+      },
+      {
+        title: "Proyectos Estratégicos",
+        icon: "/data-visualization.png",
+        projects: [
+          { name: "Análisis Fuga de Empleados", link: "/proyectos/fuga_empleados/", description: "Predicción de rotación de personal con análisis y ML.", image: "/fuga-empleados.png", badges: [{name:"Python", type:"lang"}, {name:"Tableau", type:"tool"}, {name:"ML", type:"tech"}] }
+        ]
+      }
+    ];
+
+    const container = document.getElementById('projects-container');
+    projectClusters.forEach(cluster => {
+      const clusterDiv = document.createElement('div');
+      clusterDiv.className = 'project-cluster';
+      clusterDiv.innerHTML = `<h2 class="cluster-title"><img src="${cluster.icon}" alt="${cluster.title}" class="cluster-icon">${cluster.title}</h2>`;
+      cluster.projects.forEach(project => {
+        const badgesHTML = project.badges.map(b => `<span class="badge badge-${b.type}">${b.name}</span>`).join('');
+        const projectHTML = `<div class="project-item"><div class="project-content"><h3 class="project-title"><a href="${project.link}" class="project-link">${project.name}</a></h3><p class="project-description">${project.description}</p><div class="project-badges">${badgesHTML}</div></div><a href="${project.link}"><img src="${project.image}" alt="${project.name}" class="project-thumb"></a></div>`;
+        clusterDiv.innerHTML += projectHTML;
+      });
+      container.appendChild(clusterDiv);
+    });
+    
+    // Mostrar/ocultar botón al hacer scroll
+    const topScroll = document.getElementById("topScroll");
+    window.onscroll = function() {
+      if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        topScroll.style.display = "block";
+      } else {
+        topScroll.style.display = "none";
+      }
+    };
+
+    // Función para subir al top
+    function topFunction() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+  </script>
+</body>
+</html> --> 
