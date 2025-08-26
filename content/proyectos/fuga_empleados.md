@@ -5,7 +5,7 @@ date: "2025-08-21"
 cluster: "Python"
 slug: "fuga_empleados"
 draft: false
-github: "https://github.com/tu_usuario/tu_repositorio"
+github: "https://github.com/aliciagilmatute/Analisis-Fuga-Empleados"
 kaggle: "https://www.kaggle.com/code/arrobarsandias/an-lisis-fuga-empleados"
 tableau: "https://public.tableau.com/views/DashboardAbandonoEmpleados_17549150031180/Dashboard1?:showVizHome=no&:embed=true"
 ---
