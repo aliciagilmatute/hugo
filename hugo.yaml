@@ -225,7 +225,7 @@ params:
     enable: true
     title: "Experiencia"
     items:
-      - job: "Psicómetra en el Departamento de Certificación Lingüística"
+      - job: "Analista de Datos en el Departamento de Certificación Lingüística"
         company: "Instituto Cervantes"
         companyUrl: "https://cervantes.org/es"
 
@@ -235,7 +235,7 @@ params:
           name: "Exámenes Cervantes"
           url: "https://examenes.cervantes.es"
         content: |-
-          Durante mi periodo en el Institudo Cervantes he podido realizar varios informes sobre las garantías psicométricas de los exámenes DELE para superar las auditorías de ALTE.
+          Durante mi periodo en el Instituto Cervantes he podido realizar varios informes sobre las garantías psicométricas de los exámenes DELE para superar las auditorías de ALTE.
 
 
 
@@ -550,7 +550,7 @@ params:
   # For translations
   terms:
     read: "Read"
-    toc: "Table Of Contents"
+    toc: "Tabla de Contenidos"
     copyright: "All rights reserved"
     pageNotFound: "Page not found"
     emailText: "Check out this site"

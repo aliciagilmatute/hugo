@@ -1,0 +1,135 @@
+¡Genial! 🙌 Entonces lo que quieres es un flujo reproducible tipo **Hugo + Jupyter Notebooks**, donde escribes y ejecutas tu notebook en Python, y luego ese notebook se convierte automáticamente en un `.md` con el **código + el output**, listo para que Hugo lo renderice con tu plantilla.
+
+Aquí te dejo los pasos claros:
+
+---
+
+# 🚀 Flujo Hugo + Jupyter + nbconvert
+
+### 1. Instalar dependencias
+
+Necesitas Jupyter y nbconvert (y opcionalmente pandoc):
+
+```bash
+pip install notebook nbconvert pandoc
+```
+
+---
+
+### 2. Crear tu notebook
+
+Ejemplo: `fuga_empleados.ipynb`
+Ahí escribes tus celdas de código y cuando las ejecutes, los **outputs** quedan guardados en el notebook.
+
+---
+
+### 3. Convertir notebook a Markdown
+
+Ejecuta:
+
+```bash
+jupyter nbconvert --to markdown --output fuga_empleados.md fuga_empleados.ipynb
+```
+
+Esto generará un archivo `fuga_empleados.md` en la misma carpeta (con imágenes en una subcarpeta `fuga_empleados_files/`).
+
+---
+
+### 4. Ajustar el Markdown para Hugo
+
+El `.md` generado tiene ya bloques como:
+
+````markdown
+```python
+df.head()
+````
+
+```
+   id  edad  salario_mes  abandono
+0   1    34        2500        No
+1   2    41        3200       Yes
+2   3    29        2800        No
+```
+
+````
+
+👉 Exacto lo que necesitas: **bloques de código + bloques de salida**.  
+Lo único que debes hacer es añadirle el **front matter** de Hugo arriba del `.md`:
+
+```yaml
+---
+title: "Análisis Fuga de Empleados"
+description: "Proyecto de análisis y machine learning..."
+date: "2025-08-21"
+cluster: "Python"
+slug: "fuga_empleados"
+draft: false
+github: "https://github.com/tu_usuario/tu_repositorio"
+kaggle: "https://www.kaggle.com/code/arrobarsandias/an-lisis-fuga-empleados"
+tableau: "https://public.tableau.com/views/DashboardAbandonoEmpleados_17549150031180/Dashboard1?:showVizHome=no&:embed=true"
+---
+````
+
+---
+
+### 5. Integrar con Hugo
+
+* Copias el `.md` generado dentro de `content/proyectos/` (o donde tengas tus posts).
+* Copias también la carpeta `fuga_empleados_files/` a `static/` para que las imágenes aparezcan.
+  (ejemplo: `static/notebooks/fuga_empleados_files/` y luego ajustas rutas en el `.md`).
+
+---
+
+### 6. Mejorar el CSS de “outputs”
+
+Agrega en tu CSS (como ya vimos antes):
+
+```css
+/* Bloques de output (salida de código) */
+pre code.language-none {
+  background-color: #f8f9fa !important;
+  color: #333 !important;
+  border: 1px solid #ddd;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  display: block;
+  white-space: pre-wrap;
+}
+body.dark pre code.language-none {
+  background-color: #1e1e1e !important;
+  border-color: #444;
+  color: #ddd !important;
+}
+```
+
+Así, el código se verá con el botón **Copy**, y las salidas (`language-none` en nbconvert) se verán como consola limpia.
+
+---
+
+### 7. Automatizar con Makefile o script
+
+Para no hacerlo a mano cada vez, puedes crear un script:
+
+`build_notebooks.sh`:
+
+```bash
+#!/bin/bash
+for nb in notebooks/*.ipynb; do
+  jupyter nbconvert --to markdown "$nb" --output-dir content/proyectos/
+done
+```
+
+Así cada notebook en `notebooks/` se convierte en post de Hugo.
+
+---
+
+✅ Con esto tendrías un flujo completo:
+
+* Escribes en Jupyter.
+* Ejecutas para que los outputs se guarden.
+* `nbconvert` te genera `.md` + outputs.
+* Hugo los renderiza con tu plantilla.
+
+---
+
+¿Quieres que te prepare un **ejemplo mínimo funcional** (`.ipynb` + `.md` convertido + CSS) para que lo copies tal cual a tu repo de Hugo y lo veas funcionando ya?

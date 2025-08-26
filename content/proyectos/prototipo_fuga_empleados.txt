@@ -1,0 +1,2763 @@
+---
+title: "Análisis Fuga de Empleados"
+description: "Proyecto de análisis y machine learning para predecir la fuga de empleados, medir su impacto económico y proponer estrategias de retención."
+date: "2025-08-21"
+cluster: "Python"
+slug: "fuga_empleados"
+draft: false
+github: "https://github.com/tu_usuario/tu_repositorio"
+kaggle: "https://www.kaggle.com/code/arrobarsandias/an-lisis-fuga-empleados"
+tableau: "https://public.tableau.com/views/DashboardAbandonoEmpleados_17549150031180/Dashboard1?:showVizHome=no&:embed=true"
+---
+
+<br><br>
+El gran objetivo del proyecto en el que vas a trabajar es reducir la fuga de empleados de la empresa. El principal problema es la rotación de empleados. Deberás trabajar en un sistema que consiga reducir la fuga de empleados. La empresa no tiene una metrica clara de abandono, además de la perdida de talento, le está ocasionado a la empresa grandes gastos en costes de reemplazo. No saben siquiera si hay un perfil claro de empleados que puedan estar en riesgo.
+
+La empresa necesita entender cuantitativamente qué está pasando a nivel de negocio, y crear un sistema basado en datos que ayude a solucinar el problema.
+
+Para ello durante esta semana vas a trabajar en 3 grandes cosas:
+
+- Entender y cuantificar el problema desde el punto de vista de negocio
+- Desarrollar un sistema automatizado de machine learning que identifique a los empleados que están en mayor riesgo de fuga
+- Comunicar los resultados de forma exitosa a la dirección
+<br><br>
+
+#### *IMPORTANTE* : Entender el tipo de solución de data science que vamos a construir
+<br><br>
+
+## **FASES DEL PROYECTO**
+<br><br>
+
+**BUSINESS ANALYTICS**: generar insights, conclusiones que permitan entender y cuantificar el problema desde el punto de vista del negocio.
+
+**MACHINE LEARNING**: desarrollar un modelo de Machine Learning que automatice la predicción de lo que nos está interesando en cada proyecto.
+
+**VISUALIZACIÓN y COMUNICACIÓN**: generar un producto de datos sobre las conclusiones y resultados de las dos fases anteriores. Una vez que realizas el trabajo, hay que "paquetizarlo" o "productivizarlo". Generalmente un cuadro de mando.
+<br><br>
+
+- Fase de BUSINESS ANALYTICS
+
+Necesitamos unos datos, hacemos análisis para señalar la Señal del Ruido (la parte importante de la que no dentro de los datos).
+
+En nuestro ejemplo necesitamos saber cual es la tasa de abandono, cuales son las razones, etc...
+
+Los insights son las conclusiones que tienen mucha importancia o relevancia para la empresa.
+
+- Fase de MACHINE LEARNING
+Generalmente se accede a la fase de datos que tendrá un cierto histórico (por ejemplo los últimos 3 años), a partir de ahí generamos los modelos de Machine Learning. Una vez que el modelo está entrenado, lo utilizamos para generar predicciones sobre nuevos datos.
+
+- Fase de VISUALIZACIÓN y COMUNICACIÓN
+Se genera un producto de datos. Generalmente es un cuadro de mando que graficamente nos permita realizar la toma de decisiones.
+
+## **BUSINESS ANALYTICS**
+
+Las tareas para hoy son entender la tasa de abandono, ver si hay un perfil de empleado que se va de la empresa, cuanto le está costando a la empresa esta perdida de personal, y por último estimar cuanto dinero podría ahorrarse fidelizando mejor a los empleados.
+
+Tenemos entonces que encontrar insights de valor.
+
+Nuestra tarea de Bussiness Analytics sigue 3 grandes subfases:
+
+1) Análisis de la calidad de los datos: entender los datos con los que estamos trabajando, aplicando una serie de técnicas para "garantizar" que la calidad de esos datos es correcta. Con esos errores podemos buscar soluciones con nuevas extracciones o datos alternativos. La intención es intentar no arrastrar errores a los siguientes pasos.
+
+2) Análisis exploratorio de Variables: EDA, entender qué variables tenemos en el DataSet y qué información nos ofrecen. Y
+
+3) Análisis y generación de insights: la idea es buscar las preguntas semillas. Con el conocimiento que tenemos buscamos las "preguntas más importantes", cuyas respuestas nos ayudarán a encontrar nuevos focos de atención.
+
+### Cargamos las librerias y el dataset
+
+
+```python
+#!pip install requirements.txt
+```
+
+
+```python
+import numpy as np
+import pandas as pd 
+import matplotlib.pyplot as plt
+```
+
+
+```python
+import os
+```
+
+
+```python
+ruta=os.path.join(os.getcwd())
+ruta
+```
+
+
+
+
+    'c:\\Users\\alici\\Desktop\\Programación\\Kaggle'
+
+
+
+
+```python
+df=pd.read_csv(ruta+r'/data/AbandonoEmpleados.csv', sep=';',na_values='#N/D')  #index_col='id'
+df.head()
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>edad</th>
+      <th>abandono</th>
+      <th>viajes</th>
+      <th>departamento</th>
+      <th>distancia_casa</th>
+      <th>educacion</th>
+      <th>carrera</th>
+      <th>empleados</th>
+      <th>id</th>
+      <th>satisfaccion_entorno</th>
+      <th>...</th>
+      <th>satisfaccion_companeros</th>
+      <th>horas_quincena</th>
+      <th>nivel_acciones</th>
+      <th>anos_experiencia</th>
+      <th>num_formaciones_ult_ano</th>
+      <th>conciliacion</th>
+      <th>anos_compania</th>
+      <th>anos_en_puesto</th>
+      <th>anos_desde_ult_promocion</th>
+      <th>anos_con_manager_actual</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>41</td>
+      <td>Yes</td>
+      <td>Travel_Rarely</td>
+      <td>Sales</td>
+      <td>1</td>
+      <td>Universitaria</td>
+      <td>Life Sciences</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Media</td>
+      <td>...</td>
+      <td>Baja</td>
+      <td>80</td>
+      <td>0</td>
+      <td>8</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>6</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>49</td>
+      <td>No</td>
+      <td>Travel_Frequently</td>
+      <td>Research &amp; Development</td>
+      <td>8</td>
+      <td>Secundaria</td>
+      <td>Life Sciences</td>
+      <td>1</td>
+      <td>2</td>
+      <td>Alta</td>
+      <td>...</td>
+      <td>Muy_Alta</td>
+      <td>80</td>
+      <td>1</td>
+      <td>10</td>
+      <td>3</td>
+      <td>NaN</td>
+      <td>10</td>
+      <td>NaN</td>
+      <td>1</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>37</td>
+      <td>Yes</td>
+      <td>Travel_Rarely</td>
+      <td>Research &amp; Development</td>
+      <td>2</td>
+      <td>Secundaria</td>
+      <td>Other</td>
+      <td>1</td>
+      <td>4</td>
+      <td>Muy_Alta</td>
+      <td>...</td>
+      <td>Media</td>
+      <td>80</td>
+      <td>0</td>
+      <td>7</td>
+      <td>3</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>2.0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>33</td>
+      <td>No</td>
+      <td>Travel_Frequently</td>
+      <td>Research &amp; Development</td>
+      <td>3</td>
+      <td>Universitaria</td>
+      <td>Life Sciences</td>
+      <td>1</td>
+      <td>5</td>
+      <td>Muy_Alta</td>
+      <td>...</td>
+      <td>Alta</td>
+      <td>80</td>
+      <td>0</td>
+      <td>8</td>
+      <td>3</td>
+      <td>NaN</td>
+      <td>8</td>
+      <td>3.0</td>
+      <td>3</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>27</td>
+      <td>No</td>
+      <td>Travel_Rarely</td>
+      <td>Research &amp; Development</td>
+      <td>2</td>
+      <td>Universitaria</td>
+      <td>Medical</td>
+      <td>1</td>
+      <td>7</td>
+      <td>Baja</td>
+      <td>...</td>
+      <td>Muy_Alta</td>
+      <td>80</td>
+      <td>1</td>
+      <td>6</td>
+      <td>3</td>
+      <td>NaN</td>
+      <td>2</td>
+      <td>NaN</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 32 columns</p>
+</div>
+
+
+
+
+```python
+df.info()
+```
+
+    <class 'pandas.core.frame.DataFrame'>
+    RangeIndex: 1470 entries, 0 to 1469
+    Data columns (total 32 columns):
+     #   Column                    Non-Null Count  Dtype  
+    ---  ------                    --------------  -----  
+     0   edad                      1470 non-null   int64  
+     1   abandono                  1470 non-null   object 
+     2   viajes                    1470 non-null   object 
+     3   departamento              1470 non-null   object 
+     4   distancia_casa            1470 non-null   int64  
+     5   educacion                 1369 non-null   object 
+     6   carrera                   1470 non-null   object 
+     7   empleados                 1470 non-null   int64  
+     8   id                        1470 non-null   int64  
+     9   satisfaccion_entorno      1470 non-null   object 
+     10  sexo                      1271 non-null   float64
+     11  implicacion               1452 non-null   object 
+     12  nivel_laboral             1470 non-null   int64  
+     13  puesto                    1470 non-null   object 
+     14  satisfaccion_trabajo      1394 non-null   object 
+     15  estado_civil              1470 non-null   object 
+     16  salario_mes               1470 non-null   int64  
+     17  num_empresas_anteriores   1470 non-null   int64  
+     18  mayor_edad                1470 non-null   object 
+     19  horas_extra               1470 non-null   object 
+     20  incremento_salario_porc   1470 non-null   int64  
+     21  evaluacion                1470 non-null   object 
+     22  satisfaccion_companeros   1470 non-null   object 
+     23  horas_quincena            1470 non-null   int64  
+     24  nivel_acciones            1470 non-null   int64  
+     25  anos_experiencia          1470 non-null   int64  
+     26  num_formaciones_ult_ano   1470 non-null   int64  
+     27  conciliacion              459 non-null    object 
+     28  anos_compania             1470 non-null   int64  
+     29  anos_en_puesto            232 non-null    float64
+     30  anos_desde_ult_promocion  1470 non-null   int64  
+     31  anos_con_manager_actual   1470 non-null   int64  
+    dtypes: float64(2), int64(15), object(15)
+    memory usage: 367.6+ KB
+    
+
+Abandono es la variable target
+
+### Análisis de Nulos
+
+
+```python
+df.isnull().sum().sort_values(ascending=False)
+```
+
+
+
+
+    anos_en_puesto              1238
+    conciliacion                1011
+    sexo                         199
+    educacion                    101
+    satisfaccion_trabajo          76
+    implicacion                   18
+    departamento                   0
+    edad                           0
+    empleados                      0
+    carrera                        0
+    distancia_casa                 0
+    satisfaccion_entorno           0
+    id                             0
+    nivel_laboral                  0
+    viajes                         0
+    abandono                       0
+    estado_civil                   0
+    puesto                         0
+    salario_mes                    0
+    num_empresas_anteriores        0
+    incremento_salario_porc        0
+    evaluacion                     0
+    mayor_edad                     0
+    horas_extra                    0
+    horas_quincena                 0
+    satisfaccion_companeros        0
+    anos_experiencia               0
+    nivel_acciones                 0
+    num_formaciones_ult_ano        0
+    anos_compania                  0
+    anos_desde_ult_promocion       0
+    anos_con_manager_actual        0
+    dtype: int64
+
+
+
+Hay valores perdidos en:
+- años en el puesto: 1238
+- conciliacion: 1011
+- sexo: 199
+- educacion: 101
+- satisfaccion trabajo: 76
+- implicacion: 18
+
+Conclusiones:
+
+- Eliminamos "años en el puesto" y "conciliacion" porque tienen muchos valores perdidos
+- sexo, educacion, satisfaccion e implicacion las sobrescribirimos con un valor mas probable (imputacion)
+
+
+```python
+df.drop(columns = ['anos_en_puesto','conciliacion'], inplace = True)
+df.info()
+```
+
+    <class 'pandas.core.frame.DataFrame'>
+    RangeIndex: 1470 entries, 0 to 1469
+    Data columns (total 30 columns):
+     #   Column                    Non-Null Count  Dtype  
+    ---  ------                    --------------  -----  
+     0   edad                      1470 non-null   int64  
+     1   abandono                  1470 non-null   object 
+     2   viajes                    1470 non-null   object 
+     3   departamento              1470 non-null   object 
+     4   distancia_casa            1470 non-null   int64  
+     5   educacion                 1369 non-null   object 
+     6   carrera                   1470 non-null   object 
+     7   empleados                 1470 non-null   int64  
+     8   id                        1470 non-null   int64  
+     9   satisfaccion_entorno      1470 non-null   object 
+     10  sexo                      1271 non-null   float64
+     11  implicacion               1452 non-null   object 
+     12  nivel_laboral             1470 non-null   int64  
+     13  puesto                    1470 non-null   object 
+     14  satisfaccion_trabajo      1394 non-null   object 
+     15  estado_civil              1470 non-null   object 
+     16  salario_mes               1470 non-null   int64  
+     17  num_empresas_anteriores   1470 non-null   int64  
+     18  mayor_edad                1470 non-null   object 
+     19  horas_extra               1470 non-null   object 
+     20  incremento_salario_porc   1470 non-null   int64  
+     21  evaluacion                1470 non-null   object 
+     22  satisfaccion_companeros   1470 non-null   object 
+     23  horas_quincena            1470 non-null   int64  
+     24  nivel_acciones            1470 non-null   int64  
+     25  anos_experiencia          1470 non-null   int64  
+     26  num_formaciones_ult_ano   1470 non-null   int64  
+     27  anos_compania             1470 non-null   int64  
+     28  anos_desde_ult_promocion  1470 non-null   int64  
+     29  anos_con_manager_actual   1470 non-null   int64  
+    dtypes: float64(1), int64(15), object(14)
+    memory usage: 344.7+ KB
+    
+
+### EDA de las Variables Categóricas
+
+
+```python
+variables_categoricas=df.select_dtypes('O')
+
+variables_categoricas.info()
+```
+
+    <class 'pandas.core.frame.DataFrame'>
+    RangeIndex: 1470 entries, 0 to 1469
+    Data columns (total 14 columns):
+     #   Column                   Non-Null Count  Dtype 
+    ---  ------                   --------------  ----- 
+     0   abandono                 1470 non-null   object
+     1   viajes                   1470 non-null   object
+     2   departamento             1470 non-null   object
+     3   educacion                1369 non-null   object
+     4   carrera                  1470 non-null   object
+     5   satisfaccion_entorno     1470 non-null   object
+     6   implicacion              1452 non-null   object
+     7   puesto                   1470 non-null   object
+     8   satisfaccion_trabajo     1394 non-null   object
+     9   estado_civil             1470 non-null   object
+     10  mayor_edad               1470 non-null   object
+     11  horas_extra              1470 non-null   object
+     12  evaluacion               1470 non-null   object
+     13  satisfaccion_companeros  1470 non-null   object
+    dtypes: object(14)
+    memory usage: 160.9+ KB
+    
+
+
+```python
+# Problema:
+# Si divides directamente: n_vars / n_cols → te da un número decimal (que no sirve para subplots).
+
+# Necesitas hacer una división entera hacia arriba (lo que en matemáticas sería "ceil(n_vars / n_cols)").
+```
+
+
+```python
+# reset.index(): convierte el índice actual (que son los valores únicos de col) en una columna normal.
+
+# El índice de la Serie pasa a ser numérico (0, 1, 2, ...).
+
+# Resultado: un DataFrame con dos columnas.
+
+# La primera columna son los valores únicos.
+
+# La segunda columna es la frecuencia (con un nombre automático, por ejemplo, color).
+```
+
+
+```python
+import math
+
+def plot_var_categoricas(df,variables):
+    n_vars=len(variables_categoricas)
+    n_cols=2 #columnas del grafico
+    n_rows=math.ceil(n_vars/n_cols) # Ahora sí, redondea hacia arriba
+
+    plt.figure(figsize=(15,n_rows*8))
+
+    for idx, col in enumerate(variables_categoricas):
+        plt.subplot(n_rows,n_cols, idx+1)
+
+        frecuencias=df[col].value_counts().reset_index()
+        frecuencias.columns=[col,'frecuencia']
+
+        plt.barh(frecuencias[col],frecuencias['frecuencia'])
+        plt.title(f'Frecuencia Vs {col}')
+        plt.xlabel('Frecuencia')
+        plt.ylabel(col)
+    plt.show()
+```
+
+
+```python
+plot_var_categoricas(df,variables_categoricas)
+```
+
+
+    
+![png](fuga_empleados_files/fuga_empleados_27_0.png)
+    
+
+
+Conclusiones:
+1. La variable mayor_edad solo tiene un valor unico. Decidimos eliminarla.
+2. Las variables pendientes por imputar las imputaremos por su categoria mas numerosa:
+    - Implicacion: NA's --> Alta
+    - Educacion: NA's --> Universitaria
+    - Satisfaccion trabajo: NA's --> Alta
+
+3. La variable target "abandono" tiene desbalanceo de clases y puede que tengamos que balancearlos mediante algun metodo en la fase de machine learning
+
+NOTA: hoy otros métodos más complejos de imputacion que se podrían explorar
+
+
+```python
+df.drop(columns='mayor_edad',inplace=True)  #NO: df=df.drop(columns='mayor_edad',inplace=True)
+```
+
+
+```python
+df['educacion']=df['educacion'].fillna('Universitaria')
+df['implicacion']=df['implicacion'].fillna('Alta')
+df['satisfaccion_trabajo']=df['satisfaccion_trabajo'].fillna('Alta')
+```
+
+### EDA de las Variables Numéricas
+
+
+```python
+variables_numericas=df.select_dtypes('number')
+```
+
+
+```python
+variables_numericas.describe(include='all').T
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>count</th>
+      <th>mean</th>
+      <th>std</th>
+      <th>min</th>
+      <th>25%</th>
+      <th>50%</th>
+      <th>75%</th>
+      <th>max</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>edad</th>
+      <td>1470.0</td>
+      <td>36.923810</td>
+      <td>9.135373</td>
+      <td>18.0</td>
+      <td>30.00</td>
+      <td>36.0</td>
+      <td>43.00</td>
+      <td>60.0</td>
+    </tr>
+    <tr>
+      <th>distancia_casa</th>
+      <td>1470.0</td>
+      <td>9.192517</td>
+      <td>8.106864</td>
+      <td>1.0</td>
+      <td>2.00</td>
+      <td>7.0</td>
+      <td>14.00</td>
+      <td>29.0</td>
+    </tr>
+    <tr>
+      <th>empleados</th>
+      <td>1470.0</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>1.0</td>
+      <td>1.00</td>
+      <td>1.0</td>
+      <td>1.00</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>id</th>
+      <td>1470.0</td>
+      <td>1024.865306</td>
+      <td>602.024335</td>
+      <td>1.0</td>
+      <td>491.25</td>
+      <td>1020.5</td>
+      <td>1555.75</td>
+      <td>2068.0</td>
+    </tr>
+    <tr>
+      <th>sexo</th>
+      <td>1271.0</td>
+      <td>2.727773</td>
+      <td>0.720788</td>
+      <td>1.0</td>
+      <td>2.00</td>
+      <td>3.0</td>
+      <td>3.00</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>nivel_laboral</th>
+      <td>1470.0</td>
+      <td>2.063946</td>
+      <td>1.106940</td>
+      <td>1.0</td>
+      <td>1.00</td>
+      <td>2.0</td>
+      <td>3.00</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>salario_mes</th>
+      <td>1470.0</td>
+      <td>6502.931293</td>
+      <td>4707.956783</td>
+      <td>1009.0</td>
+      <td>2911.00</td>
+      <td>4919.0</td>
+      <td>8379.00</td>
+      <td>19999.0</td>
+    </tr>
+    <tr>
+      <th>num_empresas_anteriores</th>
+      <td>1470.0</td>
+      <td>2.693197</td>
+      <td>2.498009</td>
+      <td>0.0</td>
+      <td>1.00</td>
+      <td>2.0</td>
+      <td>4.00</td>
+      <td>9.0</td>
+    </tr>
+    <tr>
+      <th>incremento_salario_porc</th>
+      <td>1470.0</td>
+      <td>15.209524</td>
+      <td>3.659938</td>
+      <td>11.0</td>
+      <td>12.00</td>
+      <td>14.0</td>
+      <td>18.00</td>
+      <td>25.0</td>
+    </tr>
+    <tr>
+      <th>horas_quincena</th>
+      <td>1470.0</td>
+      <td>80.000000</td>
+      <td>0.000000</td>
+      <td>80.0</td>
+      <td>80.00</td>
+      <td>80.0</td>
+      <td>80.00</td>
+      <td>80.0</td>
+    </tr>
+    <tr>
+      <th>nivel_acciones</th>
+      <td>1470.0</td>
+      <td>0.793878</td>
+      <td>0.852077</td>
+      <td>0.0</td>
+      <td>0.00</td>
+      <td>1.0</td>
+      <td>1.00</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>anos_experiencia</th>
+      <td>1470.0</td>
+      <td>11.279592</td>
+      <td>7.780782</td>
+      <td>0.0</td>
+      <td>6.00</td>
+      <td>10.0</td>
+      <td>15.00</td>
+      <td>40.0</td>
+    </tr>
+    <tr>
+      <th>num_formaciones_ult_ano</th>
+      <td>1470.0</td>
+      <td>2.799320</td>
+      <td>1.289271</td>
+      <td>0.0</td>
+      <td>2.00</td>
+      <td>3.0</td>
+      <td>3.00</td>
+      <td>6.0</td>
+    </tr>
+    <tr>
+      <th>anos_compania</th>
+      <td>1470.0</td>
+      <td>7.008163</td>
+      <td>6.126525</td>
+      <td>0.0</td>
+      <td>3.00</td>
+      <td>5.0</td>
+      <td>9.00</td>
+      <td>40.0</td>
+    </tr>
+    <tr>
+      <th>anos_desde_ult_promocion</th>
+      <td>1470.0</td>
+      <td>2.187755</td>
+      <td>3.222430</td>
+      <td>0.0</td>
+      <td>0.00</td>
+      <td>1.0</td>
+      <td>3.00</td>
+      <td>15.0</td>
+    </tr>
+    <tr>
+      <th>anos_con_manager_actual</th>
+      <td>1470.0</td>
+      <td>4.123129</td>
+      <td>3.568136</td>
+      <td>0.0</td>
+      <td>2.00</td>
+      <td>3.0</td>
+      <td>7.00</td>
+      <td>17.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+```python
+# def estadisticos_cont(num):
+#     #Calculamos describe, y volteamos el cuadro
+#     estadisticos = num.describe().T
+#     #Añadimos la mediana
+#     estadisticos['median'] = num.median()
+#     #Reordenamos para que la mediana esté al lado de la media
+#     estadisticos = estadisticos.iloc[:,[0,1,8,2,3,4,5,6,7]]
+#     #Lo devolvemos
+#     return(estadisticos)
+```
+
+Conclusiones:
+- El sexo tiene valores: eliminarla, no tiene sentido (deberia ser categorica)
+- Empleado solo tiene un unico valor: eliminarla
+- Horas quincena solo tiene un valor, eliminarla
+
+
+```python
+df.drop(columns=['sexo','empleados','horas_quincena'],inplace=True)
+```
+
+
+```python
+df.head()
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>edad</th>
+      <th>abandono</th>
+      <th>viajes</th>
+      <th>departamento</th>
+      <th>distancia_casa</th>
+      <th>educacion</th>
+      <th>carrera</th>
+      <th>id</th>
+      <th>satisfaccion_entorno</th>
+      <th>implicacion</th>
+      <th>...</th>
+      <th>horas_extra</th>
+      <th>incremento_salario_porc</th>
+      <th>evaluacion</th>
+      <th>satisfaccion_companeros</th>
+      <th>nivel_acciones</th>
+      <th>anos_experiencia</th>
+      <th>num_formaciones_ult_ano</th>
+      <th>anos_compania</th>
+      <th>anos_desde_ult_promocion</th>
+      <th>anos_con_manager_actual</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>41</td>
+      <td>Yes</td>
+      <td>Travel_Rarely</td>
+      <td>Sales</td>
+      <td>1</td>
+      <td>Universitaria</td>
+      <td>Life Sciences</td>
+      <td>1</td>
+      <td>Media</td>
+      <td>Alta</td>
+      <td>...</td>
+      <td>Yes</td>
+      <td>11</td>
+      <td>Alta</td>
+      <td>Baja</td>
+      <td>0</td>
+      <td>8</td>
+      <td>0</td>
+      <td>6</td>
+      <td>0</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>49</td>
+      <td>No</td>
+      <td>Travel_Frequently</td>
+      <td>Research &amp; Development</td>
+      <td>8</td>
+      <td>Secundaria</td>
+      <td>Life Sciences</td>
+      <td>2</td>
+      <td>Alta</td>
+      <td>Media</td>
+      <td>...</td>
+      <td>No</td>
+      <td>23</td>
+      <td>Muy_Alta</td>
+      <td>Muy_Alta</td>
+      <td>1</td>
+      <td>10</td>
+      <td>3</td>
+      <td>10</td>
+      <td>1</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>37</td>
+      <td>Yes</td>
+      <td>Travel_Rarely</td>
+      <td>Research &amp; Development</td>
+      <td>2</td>
+      <td>Secundaria</td>
+      <td>Other</td>
+      <td>4</td>
+      <td>Muy_Alta</td>
+      <td>Media</td>
+      <td>...</td>
+      <td>Yes</td>
+      <td>15</td>
+      <td>Alta</td>
+      <td>Media</td>
+      <td>0</td>
+      <td>7</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>33</td>
+      <td>No</td>
+      <td>Travel_Frequently</td>
+      <td>Research &amp; Development</td>
+      <td>3</td>
+      <td>Universitaria</td>
+      <td>Life Sciences</td>
+      <td>5</td>
+      <td>Muy_Alta</td>
+      <td>Alta</td>
+      <td>...</td>
+      <td>Yes</td>
+      <td>11</td>
+      <td>Alta</td>
+      <td>Alta</td>
+      <td>0</td>
+      <td>8</td>
+      <td>3</td>
+      <td>8</td>
+      <td>3</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>27</td>
+      <td>No</td>
+      <td>Travel_Rarely</td>
+      <td>Research &amp; Development</td>
+      <td>2</td>
+      <td>Universitaria</td>
+      <td>Medical</td>
+      <td>7</td>
+      <td>Baja</td>
+      <td>Alta</td>
+      <td>...</td>
+      <td>No</td>
+      <td>12</td>
+      <td>Alta</td>
+      <td>Muy_Alta</td>
+      <td>1</td>
+      <td>6</td>
+      <td>3</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 26 columns</p>
+</div>
+
+
+
+
+```python
+df.info()
+```
+
+    <class 'pandas.core.frame.DataFrame'>
+    RangeIndex: 1470 entries, 0 to 1469
+    Data columns (total 26 columns):
+     #   Column                    Non-Null Count  Dtype 
+    ---  ------                    --------------  ----- 
+     0   edad                      1470 non-null   int64 
+     1   abandono                  1470 non-null   object
+     2   viajes                    1470 non-null   object
+     3   departamento              1470 non-null   object
+     4   distancia_casa            1470 non-null   int64 
+     5   educacion                 1470 non-null   object
+     6   carrera                   1470 non-null   object
+     7   id                        1470 non-null   int64 
+     8   satisfaccion_entorno      1470 non-null   object
+     9   implicacion               1470 non-null   object
+     10  nivel_laboral             1470 non-null   int64 
+     11  puesto                    1470 non-null   object
+     12  satisfaccion_trabajo      1470 non-null   object
+     13  estado_civil              1470 non-null   object
+     14  salario_mes               1470 non-null   int64 
+     15  num_empresas_anteriores   1470 non-null   int64 
+     16  horas_extra               1470 non-null   object
+     17  incremento_salario_porc   1470 non-null   int64 
+     18  evaluacion                1470 non-null   object
+     19  satisfaccion_companeros   1470 non-null   object
+     20  nivel_acciones            1470 non-null   int64 
+     21  anos_experiencia          1470 non-null   int64 
+     22  num_formaciones_ult_ano   1470 non-null   int64 
+     23  anos_compania             1470 non-null   int64 
+     24  anos_desde_ult_promocion  1470 non-null   int64 
+     25  anos_con_manager_actual   1470 non-null   int64 
+    dtypes: int64(13), object(13)
+    memory usage: 298.7+ KB
+    
+
+### Generación de Insights
+
+Teniamos que resolver principalmente 4 preguntas en esta seccion de Business Analytics: 
+
+- tasa de abandono
+- ver si hay un perfil de empleado que se va de la empresa
+- cuanto le está costando a la empresa esta perdida de personal 
+- estimar cuanto dinero podría ahorrarse fidelizando mejor a los empleados.
+
+1. Tasa de Abandono
+
+    Definicion: el numero de personas que se van entre el total de empleados
+
+
+```python
+# Utilizamos "normalize = True" para obtener el porcentaje
+df['abandono'].value_counts(normalize=True)*100
+```
+
+
+
+
+    abandono
+    No     83.877551
+    Yes    16.122449
+    Name: proportion, dtype: float64
+
+
+
+2. Identificando el perfil de empleado en fuga
+
+    Para esta pregunta realizaremos un análisis de penetración: cruzaremos la variable target (abandono) con aquellas que creemos que pueden tener algo que ver con ese abandono.
+
+Salario: si cobran poco es probable que se vayan
+
+Horas extras: si hacen muchas horas extras es probable que se vayan
+
+estado civil: si no tiene una familia que mantener es mas probable que se vayan
+
+puesto: si es un puesto poco estimulante pueden que se vayan / tambien si es muy demandante
+
+[otras variables]= distancia casa, satisfaccion(),...
+
+
+```python
+#recordemos de que clase son las variables que queremos estudiar
+
+variables_estudio=df[['salario_mes','horas_extra','estado_civil','puesto','distancia_casa','educacion']]
+
+variables_estudio.dtypes
+```
+
+
+
+
+    salario_mes        int64
+    horas_extra       object
+    estado_civil      object
+    puesto            object
+    distancia_casa     int64
+    educacion         object
+    dtype: object
+
+
+
+¿Cuanto cobran los que no abandonan, y cuanto cobran los que sí abandonan?
+
+
+```python
+#Estudio del salario mensual agrupados por abandono
+
+temp=df.groupby('abandono').salario_mes.mean()
+temp.plot.bar()
+```
+
+
+
+
+    <Axes: xlabel='abandono'>
+
+
+
+
+    
+![png](fuga_empleados_files/fuga_empleados_46_1.png)
+    
+
+
+
+```python
+temp=df.groupby('abandono').distancia_casa.mean().sort_values(ascending=False)*100
+temp.plot.bar()
+```
+
+
+
+
+    <Axes: xlabel='abandono'>
+
+
+
+
+    
+![png](fuga_empleados_files/fuga_empleados_47_1.png)
+    
+
+
+De los que abandonan, que porcentaje hacian horas extras, y de los que no abandonan, que porcentaje hacian horas extra?
+
+
+```python
+# # Analisis por horas extras
+# temp = df.groupby('horas_extra').abandono.mean().sort_values(ascending = False) * 100
+# temp.plot.bar();
+```
+
+Pero con este gráfico no puedo conocer las 4 situaciones cruzadas, ya que esta haciendo la media para abandono (valores 0 y 1) --> TABLAS DE CONTINGENCIA para las variables Object
+
+
+```python
+def analisis_abandono(df,variables_analisis, variable_objetivo='abandono'):
+
+    for var in variables_analisis:
+        print(f'\n Análisis de abandono según: {var}\n')
+
+        tabla=pd.crosstab(df[var],df[variable_objetivo],margins=True, normalize='index')*100
+
+        tabla_sin_total=tabla.drop(index='All',errors='ignore')
+
+        print(tabla.round(2))
+
+        #Graficar
+        tabla_sin_total.plot(kind='bar', stacked=True)
+
+        plt.gcf().set_size_inches(10, 6)
+
+        plt.title(f'% de {variable_objetivo} según {var}')
+        plt.ylabel('Porcentaje')
+        plt.xlabel(var)
+        plt.legend(title='Abandono',loc='upper right')
+        plt.xticks(rotation=90)
+        plt.ylim(0, 120)
+        plt.grid(axis='y', linestyle='--', alpha=0.7)
+        plt.tight_layout()
+        plt.show()
+
+```
+
+
+```python
+analisis_abandono(df,['horas_extra','estado_civil','puesto','educacion'])
+```
+
+    
+     Análisis de abandono según: horas_extra
+    
+    abandono        No    Yes
+    horas_extra              
+    No           89.56  10.44
+    Yes          69.47  30.53
+    All          83.88  16.12
+    
+
+
+    
+![png](fuga_empleados_files/fuga_empleados_52_1.png)
+    
+
+
+    
+     Análisis de abandono según: estado_civil
+    
+    abandono         No    Yes
+    estado_civil              
+    Divorced      89.91  10.09
+    Married       87.52  12.48
+    Single        74.47  25.53
+    All           83.88  16.12
+    
+
+
+    
+![png](fuga_empleados_files/fuga_empleados_52_3.png)
+    
+
+
+    
+     Análisis de abandono según: puesto
+    
+    abandono                      No    Yes
+    puesto                                 
+    Healthcare Representative  93.13   6.87
+    Human Resources            76.92  23.08
+    Laboratory Technician      76.06  23.94
+    Manager                    95.10   4.90
+    Manufacturing Director     93.10   6.90
+    Research Director          97.50   2.50
+    Research Scientist         83.90  16.10
+    Sales Executive            82.52  17.48
+    Sales Representative       60.24  39.76
+    All                        83.88  16.12
+    
+
+
+    
+![png](fuga_empleados_files/fuga_empleados_52_5.png)
+    
+
+
+    
+     Análisis de abandono según: educacion
+    
+    abandono          No    Yes
+    educacion                  
+    Master         91.54   8.46
+    Primaria       67.53  32.47
+    Secundaria     80.46  19.54
+    Universitaria  85.46  14.54
+    All            83.88  16.12
+    
+
+
+    
+![png](fuga_empleados_files/fuga_empleados_52_7.png)
+    
+
+
+Conclusiones:
+
+- La distancia al trabajo parece no ser significativa (descartada del analisis de perfil)
+
+Parece ser que el perfil de trabajador que suele abandonar es:
+
+- Sueldos por debajo de 5000 euros/mes
+- Suelen hacer horas extra
+- Solteros
+- Trabajan en ventas
+- Tienen solo al primaria
+
+3. ¿Cuál es el impacto económico de este problema?
+
+    Según el artículo https://www.americanprogress.org/article/there-are-significant-business-costs-to-replacing-employees:
+
+    - El coste de la fuga de los empleados que ganan menos de 30000 es del 16,1% de su salario
+
+    - El coste de la fuga de los empleados que ganan entre 30000-50000 es del 19,7% de su salario
+
+    - El coste de la fuga de los empleados que ganan entre 50000-75000 es del 20,4% de su salario
+
+    - El coste de la fuga de los empleados que ganan más de 75000 es del 21% de su salario
+
+
+```python
+# Primero: tenemos el salario/mes, tenemos que recodificarlo a salario/año
+
+df['salario_ano']=df['salario_mes'].transform(lambda x: x*12)
+
+df[['salario_mes','salario_ano']].head()
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>salario_mes</th>
+      <th>salario_ano</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>5993</td>
+      <td>71916</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>5130</td>
+      <td>61560</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2090</td>
+      <td>25080</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2909</td>
+      <td>34908</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>3468</td>
+      <td>41616</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+```python
+# Segundo: crear los filtros para cada rango de salario y aplicar el coste en porcentaje a cada rango correspondiente
+
+condiciones=[
+    (df['salario_ano']<=30000),
+    (df['salario_ano']>30000) & (df['salario_ano']<=50000),
+    (df['salario_ano']>50000) & (df['salario_ano']<=75000),
+    (df['salario_ano']>75000)
+]
+
+ponderaciones=[df['salario_ano']*0.161,df['salario_ano']*0.197,df['salario_ano']*0.204,df['salario_ano']*0.21]
+
+df['impacto_abandono'] = np.select(condiciones,ponderaciones, default = -999)  #valor que se incluirá si ninguna condición se cumple
+
+df.head()
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>edad</th>
+      <th>abandono</th>
+      <th>viajes</th>
+      <th>departamento</th>
+      <th>distancia_casa</th>
+      <th>educacion</th>
+      <th>carrera</th>
+      <th>id</th>
+      <th>satisfaccion_entorno</th>
+      <th>implicacion</th>
+      <th>...</th>
+      <th>evaluacion</th>
+      <th>satisfaccion_companeros</th>
+      <th>nivel_acciones</th>
+      <th>anos_experiencia</th>
+      <th>num_formaciones_ult_ano</th>
+      <th>anos_compania</th>
+      <th>anos_desde_ult_promocion</th>
+      <th>anos_con_manager_actual</th>
+      <th>salario_ano</th>
+      <th>impacto_abandono</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>41</td>
+      <td>Yes</td>
+      <td>Travel_Rarely</td>
+      <td>Sales</td>
+      <td>1</td>
+      <td>Universitaria</td>
+      <td>Life Sciences</td>
+      <td>1</td>
+      <td>Media</td>
+      <td>Alta</td>
+      <td>...</td>
+      <td>Alta</td>
+      <td>Baja</td>
+      <td>0</td>
+      <td>8</td>
+      <td>0</td>
+      <td>6</td>
+      <td>0</td>
+      <td>5</td>
+      <td>71916</td>
+      <td>14670.864</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>49</td>
+      <td>No</td>
+      <td>Travel_Frequently</td>
+      <td>Research &amp; Development</td>
+      <td>8</td>
+      <td>Secundaria</td>
+      <td>Life Sciences</td>
+      <td>2</td>
+      <td>Alta</td>
+      <td>Media</td>
+      <td>...</td>
+      <td>Muy_Alta</td>
+      <td>Muy_Alta</td>
+      <td>1</td>
+      <td>10</td>
+      <td>3</td>
+      <td>10</td>
+      <td>1</td>
+      <td>7</td>
+      <td>61560</td>
+      <td>12558.240</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>37</td>
+      <td>Yes</td>
+      <td>Travel_Rarely</td>
+      <td>Research &amp; Development</td>
+      <td>2</td>
+      <td>Secundaria</td>
+      <td>Other</td>
+      <td>4</td>
+      <td>Muy_Alta</td>
+      <td>Media</td>
+      <td>...</td>
+      <td>Alta</td>
+      <td>Media</td>
+      <td>0</td>
+      <td>7</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>25080</td>
+      <td>4037.880</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>33</td>
+      <td>No</td>
+      <td>Travel_Frequently</td>
+      <td>Research &amp; Development</td>
+      <td>3</td>
+      <td>Universitaria</td>
+      <td>Life Sciences</td>
+      <td>5</td>
+      <td>Muy_Alta</td>
+      <td>Alta</td>
+      <td>...</td>
+      <td>Alta</td>
+      <td>Alta</td>
+      <td>0</td>
+      <td>8</td>
+      <td>3</td>
+      <td>8</td>
+      <td>3</td>
+      <td>0</td>
+      <td>34908</td>
+      <td>6876.876</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>27</td>
+      <td>No</td>
+      <td>Travel_Rarely</td>
+      <td>Research &amp; Development</td>
+      <td>2</td>
+      <td>Universitaria</td>
+      <td>Medical</td>
+      <td>7</td>
+      <td>Baja</td>
+      <td>Alta</td>
+      <td>...</td>
+      <td>Alta</td>
+      <td>Muy_Alta</td>
+      <td>1</td>
+      <td>6</td>
+      <td>3</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>41616</td>
+      <td>8198.352</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 28 columns</p>
+</div>
+
+
+
+¿Cúanto nos ha costado este problema en el último año? (coste total)
+
+
+```python
+coste_total=df.loc[df['abandono']=='Yes'].impacto_abandono.sum()
+print(coste_total)
+```
+
+    2719005.912
+    
+
+¿Cuanto nos cuesta que los empleados no estén motivados? (pérdidas en implicación == Baja)¶
+
+
+```python
+print(df.loc[(df['abandono']=='Yes') & (df['implicacion']=='Baja')].impacto_abandono.sum())
+```
+
+    368672.688
+    
+
+¿Cuanto dinero podríamos ahorrar fidelizando mejor a nuestros empleados?
+
+Creación de escenarios de ahorro. Hacemos 3 niveles (reducir un 10, 20 y 30 % el abandono)
+
+
+```python
+print(
+    f'\nReducir un 10% la fuga de empleados nos ahorra {int(coste_total * 0.1)}$ cada año.\n'
+    f'Reducir un 20% la fuga de empleados nos ahorra {int(coste_total * 0.2)}$ cada año.\n'
+    f'Reducir un 30% la fuga de empleados nos ahorra {int(coste_total * 0.3)}$ cada año.\n'
+)
+
+```
+
+    
+    Reducir un 10% la fuga de empleados nos ahorra 271900$ cada año.
+    Reducir un 20% la fuga de empleados nos ahorra 543801$ cada año.
+    Reducir un 30% la fuga de empleados nos ahorra 815701$ cada año.
+    
+    
+
+Habíamos visto que los representantes de ventas son el puesto que más se van. ¿Tendría sentido hacer un plan específico para ellos? ¿Cual sería el coste ahorrado si disminuimos su fuga un 30%?
+
+Primero vamos a calcular el % de representantes de ventas que se han ido el año pasado
+
+
+
+
+```python
+total_ventas=len(df.loc[df['puesto']=='Sales Representative'])
+
+total_ventas_abandono=len(df.loc[(df['abandono']=='Yes') & (df['puesto']=='Sales Representative')])
+
+porc_pasado=total_ventas_abandono/total_ventas
+
+porc_pasado
+```
+
+
+
+
+    0.39759036144578314
+
+
+
+Ahora podemos estimar cuántos se nos irán este año dentro del departamento de representantes de ventas:
+
+
+```python
+import math
+
+total_ventas_actual=len(df.loc[(df['puesto']=='Sales Representative') & (df['abandono']=='No')])
+
+pronostico=math.ceil(total_ventas_actual*porc_pasado)
+
+pronostico
+```
+
+
+
+
+    20
+
+
+
+Sobre estos 20 empleados, podemos estimar cuantos podemos retener (hipótesis 30% de reduccion abandono) y cuanto dinero puede suponer para la empresa:
+
+
+```python
+retenemos = int(pronostico * 0.3)
+
+ahorramos = df.loc[(df.puesto == 'Sales Representative') & (df.abandono == 'No'),'impacto_abandono'].sum() * porc_pasado*0.3  #me cuesta entender el porc_pasado*0.3
+
+print(f'Podemos retener {retenemos} representantes de ventas y ello supondría ahorrar {ahorramos.round(3)}$.')
+```
+
+    Podemos retener 6 representantes de ventas y ello supondría ahorrar 37447.224$.
+    
+
+**IMPORTANTE**: La importancia de este dato es muy interesante, pues nos permite determinar el presupuesto para acciones de retención por departamento o perfil.
+
+Ya que sabemos que podemos gastarnos hasta 37.000$ sólo en acciones específicas para retener a representantes de ventas, vemos que se estarían pagando sólas con la pérdida evitada.
+
+## **MACHINE LEARNING**
+
+Hasta ahora hemos comprendido y cuantificado el problema desde el punto de vista de negocio, pero ahora necesitamos construir un sistema automático capaz de encontrar los patrones subyacentes en los datos, y predecir qué empleados concretos están en riesgo de dejar la empresa. Esto nos permitirá actuar empleado a empleado con precisión.
+
+Necesitamos un sistema que analice todo nuestro histórico de datos, y que encuentre los patrones que diferencian a los que abandonan de los que no Dependiendo el modelo de Machine Learning a utilizar, necesitamos preparar los datos de una forma específica.
+
+
+
+*Sentando las Bases del Machine Learning*
+
+En nuestra base de datos tenemos lo que ha sucedido hasta hoy. Un modelo de machine learning va a aprender sobre ese histórico y capture las diferencias entre los que abandonan y los que no (fase de entrenamiento), de forma que nos permita hacer predicciones a futuro.
+
+Lo que haremos es separar toda la información en dos grupos de forma aleatoria (normalmente un 70 y 30 por ciento). Sobre el primer grupo construimos el modelo, y lo ejecutamos en el 30 % restante, para contrastar así la predicción con la realidad. No lo hacemos sobre el total para evitar el problema del sobreajuste. Cuanto más se parezcan los datos a la realidad, más confianza nos dará ese modelo (testarlo).
+
+El grupo de entrenamiento es el de Train, y el otro es el de Test.
+
+-Transformando los datos para poder modelizar.-
+
+Realizaremos primero una copia del dataframe original para trabajar sobre él.
+
+
+```python
+# Transformar abandono a numérica, para facilitar los cálculos.
+df['abandono'] = df.abandono.map({'No':0, 'Yes':1})
+```
+
+
+```python
+df_ml=df.copy()
+df_ml.info()
+```
+
+    <class 'pandas.core.frame.DataFrame'>
+    RangeIndex: 1470 entries, 0 to 1469
+    Data columns (total 28 columns):
+     #   Column                    Non-Null Count  Dtype  
+    ---  ------                    --------------  -----  
+     0   edad                      1470 non-null   int64  
+     1   abandono                  1470 non-null   int64  
+     2   viajes                    1470 non-null   object 
+     3   departamento              1470 non-null   object 
+     4   distancia_casa            1470 non-null   int64  
+     5   educacion                 1470 non-null   object 
+     6   carrera                   1470 non-null   object 
+     7   id                        1470 non-null   int64  
+     8   satisfaccion_entorno      1470 non-null   object 
+     9   implicacion               1470 non-null   object 
+     10  nivel_laboral             1470 non-null   int64  
+     11  puesto                    1470 non-null   object 
+     12  satisfaccion_trabajo      1470 non-null   object 
+     13  estado_civil              1470 non-null   object 
+     14  salario_mes               1470 non-null   int64  
+     15  num_empresas_anteriores   1470 non-null   int64  
+     16  horas_extra               1470 non-null   object 
+     17  incremento_salario_porc   1470 non-null   int64  
+     18  evaluacion                1470 non-null   object 
+     19  satisfaccion_companeros   1470 non-null   object 
+     20  nivel_acciones            1470 non-null   int64  
+     21  anos_experiencia          1470 non-null   int64  
+     22  num_formaciones_ult_ano   1470 non-null   int64  
+     23  anos_compania             1470 non-null   int64  
+     24  anos_desde_ult_promocion  1470 non-null   int64  
+     25  anos_con_manager_actual   1470 non-null   int64  
+     26  salario_ano               1470 non-null   int64  
+     27  impacto_abandono          1470 non-null   float64
+    dtypes: float64(1), int64(15), object(12)
+    memory usage: 321.7+ KB
+    
+
+### Preparación de los Datos para la Modelización
+
+Tendremos una serie de transformaciones obligatorias (pues sin ellas no podemos realizar un modelo de machine learning), que son dos:
+
+1) No puede haber nulos.
+
+2) Todas las variables tienen que estar en formato numérico.
+
+Como transformaciones optativas tenemos:
+
+- Reescalar las variables: ponerlas todas en la misma escala.
+- Normalizar las variables: hacerlas parecidas a una distribución normal. (es escalar, siguiendo la distribucion normal)
+
+En este proceso nos vamos a centrar en las obligatorias.
+
+La primera ya la hemos realizado, pues hemos eliminado todos los nulos.
+
+Para la segunda condición utilizamos la librería sklearn, el método "OneHotEncoder", que tomará cada una de las variables categóricas, y generará una nueva variable con valores 0 y 1 para cada uno de esos valores. Por ejemplo, si tenemos una varible "color" con 3 valores (rojo, amarillo y verde), y la transformará en 3 variables (rojo, amarillo y verde), que tendra para las líneas que tengan el color verde, un 0 en rojo, un 0 en amarillo, y un 1 en verde.
+
+
+
+#### One Hot Encoding (OHE)
+
+
+```python
+from sklearn.preprocessing import OneHotEncoder
+
+cat = df_ml.select_dtypes('O')
+
+#Cargamos instancia 
+ohe=OneHotEncoder(sparse_output=False) # Evita devolver matriz dispersa
+
+#Entrenamos
+ohe.fit(cat)
+
+#Aplicamos
+cat_ohe=ohe.transform(cat)
+
+#Construimos df
+cat_ohe = pd.DataFrame(cat_ohe, columns = ohe.get_feature_names_out(input_features = cat.columns)).reset_index(drop = True)
+```
+
+
+```python
+cat_ohe.head()
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>viajes_Non-Travel</th>
+      <th>viajes_Travel_Frequently</th>
+      <th>viajes_Travel_Rarely</th>
+      <th>departamento_Human Resources</th>
+      <th>departamento_Research &amp; Development</th>
+      <th>departamento_Sales</th>
+      <th>educacion_Master</th>
+      <th>educacion_Primaria</th>
+      <th>educacion_Secundaria</th>
+      <th>educacion_Universitaria</th>
+      <th>...</th>
+      <th>estado_civil_Married</th>
+      <th>estado_civil_Single</th>
+      <th>horas_extra_No</th>
+      <th>horas_extra_Yes</th>
+      <th>evaluacion_Alta</th>
+      <th>evaluacion_Muy_Alta</th>
+      <th>satisfaccion_companeros_Alta</th>
+      <th>satisfaccion_companeros_Baja</th>
+      <th>satisfaccion_companeros_Media</th>
+      <th>satisfaccion_companeros_Muy_Alta</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>...</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>...</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 48 columns</p>
+</div>
+
+
+
+Lo que hemos hecho hasta ahora es transformar las variables categóricas a números, pero el objeto "cat_ohe" tiene sólo las varibles categóricas. Necesitamos juntar este dataframe con el resto de las variables numéricas.
+
+
+```python
+num=df.select_dtypes('number').reset_index(drop=True)
+```
+
+
+```python
+df_ml=pd.concat([cat_ohe,num], axis=1)
+df_ml.info()
+```
+
+    <class 'pandas.core.frame.DataFrame'>
+    RangeIndex: 1470 entries, 0 to 1469
+    Data columns (total 64 columns):
+     #   Column                               Non-Null Count  Dtype  
+    ---  ------                               --------------  -----  
+     0   viajes_Non-Travel                    1470 non-null   float64
+     1   viajes_Travel_Frequently             1470 non-null   float64
+     2   viajes_Travel_Rarely                 1470 non-null   float64
+     3   departamento_Human Resources         1470 non-null   float64
+     4   departamento_Research & Development  1470 non-null   float64
+     5   departamento_Sales                   1470 non-null   float64
+     6   educacion_Master                     1470 non-null   float64
+     7   educacion_Primaria                   1470 non-null   float64
+     8   educacion_Secundaria                 1470 non-null   float64
+     9   educacion_Universitaria              1470 non-null   float64
+     10  carrera_Human Resources              1470 non-null   float64
+     11  carrera_Life Sciences                1470 non-null   float64
+     12  carrera_Marketing                    1470 non-null   float64
+     13  carrera_Medical                      1470 non-null   float64
+     14  carrera_Other                        1470 non-null   float64
+     15  carrera_Technical Degree             1470 non-null   float64
+     16  satisfaccion_entorno_Alta            1470 non-null   float64
+     17  satisfaccion_entorno_Baja            1470 non-null   float64
+     18  satisfaccion_entorno_Media           1470 non-null   float64
+     19  satisfaccion_entorno_Muy_Alta        1470 non-null   float64
+     20  implicacion_Alta                     1470 non-null   float64
+     21  implicacion_Baja                     1470 non-null   float64
+     22  implicacion_Media                    1470 non-null   float64
+     23  implicacion_Muy_Alta                 1470 non-null   float64
+     24  puesto_Healthcare Representative     1470 non-null   float64
+     25  puesto_Human Resources               1470 non-null   float64
+     26  puesto_Laboratory Technician         1470 non-null   float64
+     27  puesto_Manager                       1470 non-null   float64
+     28  puesto_Manufacturing Director        1470 non-null   float64
+     29  puesto_Research Director             1470 non-null   float64
+     30  puesto_Research Scientist            1470 non-null   float64
+     31  puesto_Sales Executive               1470 non-null   float64
+     32  puesto_Sales Representative          1470 non-null   float64
+     33  satisfaccion_trabajo_Alta            1470 non-null   float64
+     34  satisfaccion_trabajo_Baja            1470 non-null   float64
+     35  satisfaccion_trabajo_Media           1470 non-null   float64
+     36  satisfaccion_trabajo_Muy_Alta        1470 non-null   float64
+     37  estado_civil_Divorced                1470 non-null   float64
+     38  estado_civil_Married                 1470 non-null   float64
+     39  estado_civil_Single                  1470 non-null   float64
+     40  horas_extra_No                       1470 non-null   float64
+     41  horas_extra_Yes                      1470 non-null   float64
+     42  evaluacion_Alta                      1470 non-null   float64
+     43  evaluacion_Muy_Alta                  1470 non-null   float64
+     44  satisfaccion_companeros_Alta         1470 non-null   float64
+     45  satisfaccion_companeros_Baja         1470 non-null   float64
+     46  satisfaccion_companeros_Media        1470 non-null   float64
+     47  satisfaccion_companeros_Muy_Alta     1470 non-null   float64
+     48  edad                                 1470 non-null   int64  
+     49  abandono                             1470 non-null   int64  
+     50  distancia_casa                       1470 non-null   int64  
+     51  id                                   1470 non-null   int64  
+     52  nivel_laboral                        1470 non-null   int64  
+     53  salario_mes                          1470 non-null   int64  
+     54  num_empresas_anteriores              1470 non-null   int64  
+     55  incremento_salario_porc              1470 non-null   int64  
+     56  nivel_acciones                       1470 non-null   int64  
+     57  anos_experiencia                     1470 non-null   int64  
+     58  num_formaciones_ult_ano              1470 non-null   int64  
+     59  anos_compania                        1470 non-null   int64  
+     60  anos_desde_ult_promocion             1470 non-null   int64  
+     61  anos_con_manager_actual              1470 non-null   int64  
+     62  salario_ano                          1470 non-null   int64  
+     63  impacto_abandono                     1470 non-null   float64
+    dtypes: float64(49), int64(15)
+    memory usage: 735.1 KB
+    
+
+Tenemos ahora el DataFrame con 63 columnas, pues las categóricas están en formato numérico. En esta nueva tabla todos los datos son numéricos.
+
+### Construcción del modelo ML
+
+
+```python
+# Separación predictoras y target
+
+X=df_ml.drop(columns='abandono')
+y=df_ml['abandono']
+```
+
+
+```python
+#separación de los conjunto de entrenamiento
+
+from sklearn.model_selection import train_test_split
+
+X_train, X_test, y_train, y_test = train_test_split(X,y, test_size=0.3, random_state=42)
+```
+
+**No me decido por qué modelo de ML aplicar, si Regresión Logística, KNN-Vecinos, RandomForest, o Maquinas de Vector Soporte, con lo cual voy a estimar un modelo sencillo de cada y estimaré el que mejor accuracy tenga (otra opciones realizar un ensamble, pero para un dataset tan pequeño y para este problema, no es necesario)**
+
+
+```python
+from sklearn.metrics import accuracy_score
+from sklearn.metrics import classification_report
+from sklearn.metrics import confusion_matrix
+from sklearn.model_selection import StratifiedKFold
+from sklearn.model_selection import cross_val_score
+from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.svm import SVC
+
+# Los algoritmo guardados en una lista:
+
+models=[]
+
+models.append(('LR',LogisticRegression(solver='liblinear',multi_class='ovr')))
+models.append(('KNN',KNeighborsClassifier()))
+models.append(('RF', RandomForestClassifier()))
+models.append(('SVM',SVC(gamma='auto')))
+
+#Evaluamos cada modelo:
+results=[]
+names=[]
+
+for name, model in models:
+    kfold=StratifiedKFold(n_splits=10,random_state=1,shuffle=True)
+    cv_results=cross_val_score(model,X_train,y_train, cv=kfold,scoring='accuracy')
+    names.append(name)
+    print('%s: %f (%f)' % (name, cv_results.mean(), cv_results.std()))
+```
+
+    c:\Users\alici\Desktop\Programación\Kaggle\data_scientist\Lib\site-packages\sklearn\linear_model\_logistic.py:1281: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. Use OneVsRestClassifier(LogisticRegression(..)) instead. Leave it to its default value to avoid this warning.
+      warnings.warn(
+    c:\Users\alici\Desktop\Programación\Kaggle\data_scientist\Lib\site-packages\sklearn\linear_model\_logistic.py:1281: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. Use OneVsRestClassifier(LogisticRegression(..)) instead. Leave it to its default value to avoid this warning.
+      warnings.warn(
+    c:\Users\alici\Desktop\Programación\Kaggle\data_scientist\Lib\site-packages\sklearn\linear_model\_logistic.py:1281: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. Use OneVsRestClassifier(LogisticRegression(..)) instead. Leave it to its default value to avoid this warning.
+      warnings.warn(
+    c:\Users\alici\Desktop\Programación\Kaggle\data_scientist\Lib\site-packages\sklearn\linear_model\_logistic.py:1281: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. Use OneVsRestClassifier(LogisticRegression(..)) instead. Leave it to its default value to avoid this warning.
+      warnings.warn(
+    c:\Users\alici\Desktop\Programación\Kaggle\data_scientist\Lib\site-packages\sklearn\linear_model\_logistic.py:1281: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. Use OneVsRestClassifier(LogisticRegression(..)) instead. Leave it to its default value to avoid this warning.
+      warnings.warn(
+    c:\Users\alici\Desktop\Programación\Kaggle\data_scientist\Lib\site-packages\sklearn\linear_model\_logistic.py:1281: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. Use OneVsRestClassifier(LogisticRegression(..)) instead. Leave it to its default value to avoid this warning.
+      warnings.warn(
+    c:\Users\alici\Desktop\Programación\Kaggle\data_scientist\Lib\site-packages\sklearn\linear_model\_logistic.py:1281: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. Use OneVsRestClassifier(LogisticRegression(..)) instead. Leave it to its default value to avoid this warning.
+      warnings.warn(
+    c:\Users\alici\Desktop\Programación\Kaggle\data_scientist\Lib\site-packages\sklearn\linear_model\_logistic.py:1281: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. Use OneVsRestClassifier(LogisticRegression(..)) instead. Leave it to its default value to avoid this warning.
+      warnings.warn(
+    c:\Users\alici\Desktop\Programación\Kaggle\data_scientist\Lib\site-packages\sklearn\linear_model\_logistic.py:1281: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. Use OneVsRestClassifier(LogisticRegression(..)) instead. Leave it to its default value to avoid this warning.
+      warnings.warn(
+    c:\Users\alici\Desktop\Programación\Kaggle\data_scientist\Lib\site-packages\sklearn\linear_model\_logistic.py:1281: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. Use OneVsRestClassifier(LogisticRegression(..)) instead. Leave it to its default value to avoid this warning.
+      warnings.warn(
+    
+
+    LR: 0.834799 (0.013630)
+    KNN: 0.805654 (0.017183)
+    RF: 0.850333 (0.013245)
+    SVM: 0.828964 (0.004580)
+    
+
+**El ganador es RandomForest**
+
+BUSQUEDA DE PARAMETROS PARA UN MODELO RF
+
+
+```python
+from sklearn.model_selection import RandomizedSearchCV
+
+# Modelo
+model = RandomForestClassifier()
+
+# Espacio de hiperparámetros
+param_dist = {
+    'n_estimators': [50, 100, 200, 300],
+    'max_depth': [None, 10, 20, 30],
+    'min_samples_split': [2, 5, 10],
+    'min_samples_leaf': [1,2,4],
+    'max_features':['sqrt','log2']
+}
+
+# Configuramos la búsqueda aleatoria
+random_search = RandomizedSearchCV(
+    estimator=model,  
+    param_distributions=param_dist, 
+    n_iter=50,  # ajustar según el tiempo disponible
+    cv=5,   # más robusto, pero más costoso
+    scoring='f1_macro',
+    verbose=2,
+    n_jobs=-1,
+    random_state=42)
+
+# Entrenamos
+random_search.fit(X_train, y_train)
+
+# Mejor combinación
+print("Mejores parámetros encontrados:")
+print(random_search.best_params_)
+
+print("\nMejor puntuación f1_macro:")
+print(random_search.best_score_)
+```
+
+    Fitting 5 folds for each of 50 candidates, totalling 250 fits
+    Mejores parámetros encontrados:
+    {'n_estimators': 50, 'min_samples_split': 10, 'min_samples_leaf': 1, 'max_features': 'sqrt', 'max_depth': 30}
+    
+    Mejor puntuación f1_macro:
+    0.6370326022490961
+    
+
+
+```python
+#Entrenamiento del modelo con los mejores parámetros encontrados
+
+RF=RandomForestClassifier(**random_search.best_params_)
+
+RF.fit(X_train,y_train)
+
+# Predicciones
+
+RF_pred=RF.predict(X_test)
+
+RF_pred[:10]
+```
+
+
+
+
+    array([0, 0, 1, 0, 0, 0, 0, 0, 0, 0])
+
+
+
+### Evaluación de Random Forest Classifier
+
+```python
+#Evaluación del modelo RF
+
+print(accuracy_score(y_test, RF_pred))
+print(confusion_matrix(y_test, RF_pred))
+print(classification_report(y_test, RF_pred))
+```
+
+    0.873015873015873
+    [[378   2]
+     [ 54   7]]
+                  precision    recall  f1-score   support
+    
+               0       0.88      0.99      0.93       380
+               1       0.78      0.11      0.20        61
+    
+        accuracy                           0.87       441
+       macro avg       0.83      0.55      0.57       441
+    weighted avg       0.86      0.87      0.83       441
+    
+    
+
+Obtenemos un buen accuracy pero según la *matriz de confusión*, hay 57 casos (53+4) casos mal clasificados, concretamente clasifica mal la clase de los que en la realidad SÍ abandonan pero el modelo predice que no abandonan
+
+Interpretación
+
+376 → Casos donde el empleado realmente NO abandonó (clase 0) y el modelo también predijo NO abandono. ✅
+
+4 → Casos donde realmente NO abandonó (0) pero el modelo predijo sí abandono (1). ❌
+
+53 → Casos donde realmente SÍ abandonó (1) pero el modelo predijo NO abandono (0). ❌ ← Estos son tus 61 casos mal clasificados.
+
+8 → Casos donde realmente SÍ abandonó (1) y el modelo lo predijo correctamente. ✅
+
+Seguramente se deba a que, como vimos en el modelo exploratorio de la variable target 'abandono', la clase 'yes' estaba desbalanceada respecto a la clase 'no'. Pero, ¿tendria sentido balancearla artificialmente en este problema? No es un caso real que haya una proporcion similar entre los que se quedan y los que se van, a ninguna empresa le interesa eso
+
+### Importancia de las Variables
+
+
+```python
+# Obtener importancias de características
+importancias = RF.feature_importances_
+caracteristicas = X_train.columns
+
+# Crear DataFrame ordenado por importancia
+df_importancias = pd.DataFrame({
+    'Característica': caracteristicas,
+    'Importancia': importancias
+}).sort_values(by='Importancia', ascending=False)
+
+# Graficar
+plt.figure(figsize=(10, 6))
+plt.barh(df_importancias['Característica'][:15], df_importancias['Importancia'][:15], color='skyblue')
+plt.xlabel('Importancia')
+plt.ylabel('Características')
+plt.title('Top 15 características más importantes - Random Forest')
+plt.gca().invert_yaxis()  # para que la más importante quede arriba
+plt.show()
+```
+
+
+    
+![png](fuga_empleados_files/fuga_empleados_99_0.png)
+    
+
+
+Las variables mas importantes son:
+- salario_mes(salario_ano, son la misma)
+- impacto_abandono 
+- edad
+- años_experiencia
+- años_compañia
+- distancia_casa
+- horas_extra(si/no)
+
+#### Explotación
+
+Incoporación del scoring al dataframe principal. Explotación (huso directo de obtención de resultados) y descarga del resultados.
+
+Vamos a exportar el vector de números de predicción que habíamos calculado.
+
+Todos los algoritmos en sklearn funcionan igual: fit para entrenar y predict para predecir (en este caso con "_proba", porque queremos la probabilidad)
+
+Partimos del dataset total, el inicial (df), y construir una nueva variable "scoring de abandono", que rellenaremos con la predicción una vez que hemos eliminado nuestra columna de abandono de nuestro dataframe de machine learning. Esta predicción nos va a devolver dos cosas, la prob de que no abandone y la de que si, y nos vamos a quedar con la de que si (que sean unos).
+
+*un Bayesiano Ingenuo te da las probabilidades directamente, no?. O incluso un GMM si queremos usar tecnicas no supervisadas*
+
+
+```python
+# Ese [:, 1] está diciendo:
+# “Dame todas las filas (:), pero solo la columna 1” del resultado que devuelve predict_proba.
+
+df['scoring_abandono']=RF.predict_proba(df_ml.drop(columns='abandono'))[:,1]
+
+df.head()
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>edad</th>
+      <th>abandono</th>
+      <th>viajes</th>
+      <th>departamento</th>
+      <th>distancia_casa</th>
+      <th>educacion</th>
+      <th>carrera</th>
+      <th>id</th>
+      <th>satisfaccion_entorno</th>
+      <th>implicacion</th>
+      <th>...</th>
+      <th>satisfaccion_companeros</th>
+      <th>nivel_acciones</th>
+      <th>anos_experiencia</th>
+      <th>num_formaciones_ult_ano</th>
+      <th>anos_compania</th>
+      <th>anos_desde_ult_promocion</th>
+      <th>anos_con_manager_actual</th>
+      <th>salario_ano</th>
+      <th>impacto_abandono</th>
+      <th>scoring_abandono</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>41</td>
+      <td>1</td>
+      <td>Travel_Rarely</td>
+      <td>Sales</td>
+      <td>1</td>
+      <td>Universitaria</td>
+      <td>Life Sciences</td>
+      <td>1</td>
+      <td>Media</td>
+      <td>Alta</td>
+      <td>...</td>
+      <td>Baja</td>
+      <td>0</td>
+      <td>8</td>
+      <td>0</td>
+      <td>6</td>
+      <td>0</td>
+      <td>5</td>
+      <td>71916</td>
+      <td>14670.864</td>
+      <td>0.570483</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>49</td>
+      <td>0</td>
+      <td>Travel_Frequently</td>
+      <td>Research &amp; Development</td>
+      <td>8</td>
+      <td>Secundaria</td>
+      <td>Life Sciences</td>
+      <td>2</td>
+      <td>Alta</td>
+      <td>Media</td>
+      <td>...</td>
+      <td>Muy_Alta</td>
+      <td>1</td>
+      <td>10</td>
+      <td>3</td>
+      <td>10</td>
+      <td>1</td>
+      <td>7</td>
+      <td>61560</td>
+      <td>12558.240</td>
+      <td>0.080278</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>37</td>
+      <td>1</td>
+      <td>Travel_Rarely</td>
+      <td>Research &amp; Development</td>
+      <td>2</td>
+      <td>Secundaria</td>
+      <td>Other</td>
+      <td>4</td>
+      <td>Muy_Alta</td>
+      <td>Media</td>
+      <td>...</td>
+      <td>Media</td>
+      <td>0</td>
+      <td>7</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>25080</td>
+      <td>4037.880</td>
+      <td>0.784237</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>33</td>
+      <td>0</td>
+      <td>Travel_Frequently</td>
+      <td>Research &amp; Development</td>
+      <td>3</td>
+      <td>Universitaria</td>
+      <td>Life Sciences</td>
+      <td>5</td>
+      <td>Muy_Alta</td>
+      <td>Alta</td>
+      <td>...</td>
+      <td>Alta</td>
+      <td>0</td>
+      <td>8</td>
+      <td>3</td>
+      <td>8</td>
+      <td>3</td>
+      <td>0</td>
+      <td>34908</td>
+      <td>6876.876</td>
+      <td>0.234665</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>27</td>
+      <td>0</td>
+      <td>Travel_Rarely</td>
+      <td>Research &amp; Development</td>
+      <td>2</td>
+      <td>Universitaria</td>
+      <td>Medical</td>
+      <td>7</td>
+      <td>Baja</td>
+      <td>Alta</td>
+      <td>...</td>
+      <td>Muy_Alta</td>
+      <td>1</td>
+      <td>6</td>
+      <td>3</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>41616</td>
+      <td>8198.352</td>
+      <td>0.066250</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 29 columns</p>
+</div>
+
+
+
+Con esta nueva información, podemos empezar a buscar casos concretos sobre los que trabajar. Por ejemplo:
+
+Los 10 empleados con mayor probabilidad de dejar la empresa.
+
+Tomamos el dataframe original (df), mediante "sort_values" los ordenamos por el scoring_abandono en descendente, e imprimimos los 10 primeros.
+
+
+```python
+df.sort_values(by='scoring_abandono',ascending=False)[:10]
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>edad</th>
+      <th>abandono</th>
+      <th>viajes</th>
+      <th>departamento</th>
+      <th>distancia_casa</th>
+      <th>educacion</th>
+      <th>carrera</th>
+      <th>id</th>
+      <th>satisfaccion_entorno</th>
+      <th>implicacion</th>
+      <th>...</th>
+      <th>satisfaccion_companeros</th>
+      <th>nivel_acciones</th>
+      <th>anos_experiencia</th>
+      <th>num_formaciones_ult_ano</th>
+      <th>anos_compania</th>
+      <th>anos_desde_ult_promocion</th>
+      <th>anos_con_manager_actual</th>
+      <th>salario_ano</th>
+      <th>impacto_abandono</th>
+      <th>scoring_abandono</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>911</th>
+      <td>25</td>
+      <td>1</td>
+      <td>Travel_Frequently</td>
+      <td>Sales</td>
+      <td>24</td>
+      <td>Primaria</td>
+      <td>Life Sciences</td>
+      <td>1273</td>
+      <td>Alta</td>
+      <td>Baja</td>
+      <td>...</td>
+      <td>Muy_Alta</td>
+      <td>0</td>
+      <td>1</td>
+      <td>4</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>13416</td>
+      <td>2159.976</td>
+      <td>0.904598</td>
+    </tr>
+    <tr>
+      <th>1332</th>
+      <td>29</td>
+      <td>1</td>
+      <td>Travel_Frequently</td>
+      <td>Research &amp; Development</td>
+      <td>24</td>
+      <td>Secundaria</td>
+      <td>Life Sciences</td>
+      <td>1868</td>
+      <td>Muy_Alta</td>
+      <td>Media</td>
+      <td>...</td>
+      <td>Media</td>
+      <td>0</td>
+      <td>1</td>
+      <td>3</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>29268</td>
+      <td>4712.148</td>
+      <td>0.848357</td>
+    </tr>
+    <tr>
+      <th>688</th>
+      <td>19</td>
+      <td>1</td>
+      <td>Travel_Rarely</td>
+      <td>Sales</td>
+      <td>21</td>
+      <td>Secundaria</td>
+      <td>Other</td>
+      <td>959</td>
+      <td>Muy_Alta</td>
+      <td>Media</td>
+      <td>...</td>
+      <td>Media</td>
+      <td>0</td>
+      <td>1</td>
+      <td>3</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>25452</td>
+      <td>4097.772</td>
+      <td>0.845452</td>
+    </tr>
+    <tr>
+      <th>463</th>
+      <td>26</td>
+      <td>1</td>
+      <td>Travel_Rarely</td>
+      <td>Research &amp; Development</td>
+      <td>24</td>
+      <td>Primaria</td>
+      <td>Technical Degree</td>
+      <td>622</td>
+      <td>Alta</td>
+      <td>Baja</td>
+      <td>...</td>
+      <td>Media</td>
+      <td>0</td>
+      <td>1</td>
+      <td>3</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>28080</td>
+      <td>4520.880</td>
+      <td>0.830845</td>
+    </tr>
+    <tr>
+      <th>1339</th>
+      <td>22</td>
+      <td>1</td>
+      <td>Travel_Rarely</td>
+      <td>Research &amp; Development</td>
+      <td>7</td>
+      <td>Universitaria</td>
+      <td>Life Sciences</td>
+      <td>1878</td>
+      <td>Muy_Alta</td>
+      <td>Alta</td>
+      <td>...</td>
+      <td>Baja</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>29664</td>
+      <td>4775.904</td>
+      <td>0.827929</td>
+    </tr>
+    <tr>
+      <th>127</th>
+      <td>19</td>
+      <td>1</td>
+      <td>Travel_Rarely</td>
+      <td>Sales</td>
+      <td>22</td>
+      <td>Universitaria</td>
+      <td>Marketing</td>
+      <td>167</td>
+      <td>Muy_Alta</td>
+      <td>Alta</td>
+      <td>...</td>
+      <td>Muy_Alta</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>20100</td>
+      <td>3236.100</td>
+      <td>0.827060</td>
+    </tr>
+    <tr>
+      <th>457</th>
+      <td>18</td>
+      <td>1</td>
+      <td>Travel_Frequently</td>
+      <td>Sales</td>
+      <td>5</td>
+      <td>Universitaria</td>
+      <td>Marketing</td>
+      <td>614</td>
+      <td>Media</td>
+      <td>Alta</td>
+      <td>...</td>
+      <td>Muy_Alta</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>22536</td>
+      <td>3628.296</td>
+      <td>0.826478</td>
+    </tr>
+    <tr>
+      <th>1273</th>
+      <td>22</td>
+      <td>1</td>
+      <td>Travel_Rarely</td>
+      <td>Research &amp; Development</td>
+      <td>8</td>
+      <td>Universitaria</td>
+      <td>Medical</td>
+      <td>1783</td>
+      <td>Alta</td>
+      <td>Alta</td>
+      <td>...</td>
+      <td>Alta</td>
+      <td>0</td>
+      <td>1</td>
+      <td>6</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>28776</td>
+      <td>4632.936</td>
+      <td>0.824371</td>
+    </tr>
+    <tr>
+      <th>1153</th>
+      <td>18</td>
+      <td>1</td>
+      <td>Travel_Frequently</td>
+      <td>Sales</td>
+      <td>3</td>
+      <td>Universitaria</td>
+      <td>Medical</td>
+      <td>1624</td>
+      <td>Media</td>
+      <td>Alta</td>
+      <td>...</td>
+      <td>Alta</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>18828</td>
+      <td>3031.308</td>
+      <td>0.820246</td>
+    </tr>
+    <tr>
+      <th>892</th>
+      <td>19</td>
+      <td>1</td>
+      <td>Non-Travel</td>
+      <td>Research &amp; Development</td>
+      <td>10</td>
+      <td>Secundaria</td>
+      <td>Medical</td>
+      <td>1248</td>
+      <td>Baja</td>
+      <td>Media</td>
+      <td>...</td>
+      <td>Media</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>22308</td>
+      <td>3591.588</td>
+      <td>0.818044</td>
+    </tr>
+  </tbody>
+</table>
+<p>10 rows × 29 columns</p>
+</div>
+
+
+
+Otro ejemplo sería: riesgo de dejar la empresa en función del puesto de trabajo
+
+
+```python
+df.boxplot(column='scoring_abandono',by='puesto',figsize=(20,10))
+```
+
+
+
+
+    <Axes: title={'center': 'scoring_abandono'}, xlabel='puesto'>
+
+
+
+
+    
+![png](fuga_empleados_files/fuga_empleados_107_1.png)
+    
+
+
+El gráfico nos confirma que las áreas de ventas son las que tienen mayor probabilidad de abandono de la empresa.
+
+#### Guardar el resultado
+
+
+
+```python
+# df["id"] = df["id"].astype(str)
+# df.to_csv(ruta+r'/data/abandono_con_scoring.csv', index=False)
+# print("Archivo 'abandono_con_scoring.csv' guardado con éxito.")
+
+```
+
+## **VISUALIZACIÓN Y COMUNICACIÓN**
+
+<div style="text-align: center; margin: 2rem 0;">
+  <!-- Enlace al dashboard con estilo de botón -->
+  <p>
+    <a href="https://public.tableau.com/app/profile/alicia.gil.matute/viz/DashboardAbandonoEmpleados_17549150031180/Dashboard1" 
+       target="_blank" class="btn-contact">
+       Ver Dashboard
+    </a>
+  </p>
+
+

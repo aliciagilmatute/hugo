@@ -56,7 +56,7 @@
 
 /* Evitar colores de resaltado de sintaxis */
 .code-container pre code span {
-  color: inherit !important;
+  color: var(--text-color) !important;
   background: none !important;
 }
 
@@ -225,7 +225,7 @@
         <div id="stickySideBar" class="sticky-sidebar">
           {{ if .Params.toc | default true}}
           <aside class="toc">
-              <h5>{{ .Site.Params.terms.toc | default "Table Of Contents" }}</h5>
+              <h5>{{ .Site.Params.terms.toc | default "Tabla de Contenidos" }}</h5>
               <div class="toc-content">{{.TableOfContents}}</div>
           </aside>
           {{ end }}

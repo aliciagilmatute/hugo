@@ -16,18 +16,22 @@ El gran objetivo del proyecto en el que vas a trabajar es reducir la fuga de emp
 El principal problema es la rotación de empleados. Deberás trabajar en un sistema que consiga reducir la fuga de empleados.
 <br><br>
 
-## Objetivos<br>
+### Objetivos<br>
 1. Entender y cuantificar el problema desde el punto de vista de negocio
 2. Desarrollar un sistema automatizado de machine learning que identifique a los empleados que están en mayor riesgo de fuga
 3. Comunicar los resultados de forma exitosa a la dirección
 <br><br>
 
-## Fases<br>
+### Fases<br>
 - **Business Analytics**: entender y cuantificar el problema
 - **Machine Learning**: desarrollar un modelo predictivo
-- **Productivización**: generar un cuadro de mando
+- **Visualización y Comunicación**: generar un cuadro de mando
 <br><br>
-## Carga de librerías y dataset
+
+
+## Business Analytics<br>
+
+### Carga de librerías y dataset
 
 ```python
 import numpy as np
@@ -41,14 +45,14 @@ df.head()
 df.info()
 ```
 
-## Análisis de nulos
+### Análisis de nulos
 ```python
 df.isnull().sum().sort_values(ascending=False)
 ```
 
 Conclusiones:
 - Eliminamos columnas con muchos nulos: `años_en_puesto` y `conciliacion`.
-- Imputamos valores en sexo, educación, satisfacción e implicación.
+- Imputamos valores en `sexo`, `educación`, `satisfacción` e `implicación`.
 
 ```python
 df.drop(columns = ['anos_en_puesto','conciliacion'], inplace = True)
@@ -57,7 +61,7 @@ df['implicacion'] = df['implicacion'].fillna('Alta')
 df['satisfaccion_trabajo'] = df['satisfaccion_trabajo'].fillna('Alta')
 ```
 
-## Variables numéricas
+### Variables numéricas
 Conclusiones:
 - Eliminamos `sexo`, `empleados`, `horas_quincena`.
 
@@ -65,7 +69,7 @@ Conclusiones:
 df.drop(columns=['sexo','empleados','horas_quincena'], inplace=True)
 ```
 
-## Generación de insights
+### Generación de insights
 **Tasa de abandono**
 ```python
 df['abandono'].value_counts(normalize=True)*100
@@ -89,7 +93,7 @@ coste_total = df.loc[df['abandono']=='Yes'].impacto_abandono.sum()
 
 ## Machine Learning
 
-**Preparación de datos**
+### Preparación de datos
 ```python
 df['abandono'] = df.abandono.map({'No':0, 'Yes':1})
 from sklearn.preprocessing import OneHotEncoder
@@ -104,7 +108,7 @@ num = df_ml.select_dtypes('number').reset_index(drop=True)
 df_ml = pd.concat([cat_ohe, num], axis=1)
 ```
 
-**Modelos candidatos**
+### Modelos candidatos
 ```python
 from sklearn.model_selection import train_test_split, StratifiedKFold, cross_val_score
 from sklearn.linear_model import LogisticRegression
@@ -129,7 +133,7 @@ for name, model in models:
     print(f"{name}: {cv_results.mean():.4f} ({cv_results.std():.4f})")
 ```
 
-**Random Forest optimizado**
+### RF optimizado: Mejores parámetros
 ```python
 from sklearn.model_selection import RandomizedSearchCV
 
@@ -150,8 +154,7 @@ random_search = RandomizedSearchCV(
 random_search.fit(X_train, y_train)
 print(random_search.best_params_)
 ```
-
-**Evaluación**
+### Evaluación RF optimizado
 ```python
 RF = RandomForestClassifier(**random_search.best_params_)
 RF.fit(X_train, y_train)
@@ -164,7 +167,7 @@ print(confusion_matrix(y_test, RF_pred))
 print(classification_report(y_test, RF_pred))
 ```
 
-**Scoring de abandono**
+### Scoring de abandono
 ```python
 df['scoring_abandono'] = RF.predict_proba(df_ml.drop(columns='abandono'))[:,1]
 df.sort_values(by='scoring_abandono', ascending=False).head(10)
