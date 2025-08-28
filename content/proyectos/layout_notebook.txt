@@ -1,0 +1,49 @@
+¡Genial! 🙌 Si quieres usar **nbviewer** (visualización estática de tus notebooks con input/output ya ejecutados), los pasos son muy sencillos.
+
+---
+
+## 🔹 Pasos para embeber notebooks con **nbviewer**
+
+1. **Sube tu notebook `.ipynb` a GitHub**
+
+   * Ejemplo:
+
+     ```
+     https://github.com/aliciagilmatute/proyectos/blob/main/fuga_empleados/analisis.ipynb
+     ```
+
+2. **Obtén el enlace de nbviewer**
+
+   * Ve a [https://nbviewer.org](https://nbviewer.org).
+   * Pega la URL del notebook en GitHub.
+   * Te devolverá una URL como:
+
+     ```
+     https://nbviewer.org/github/aliciagilmatute/proyectos/blob/main/fuga_empleados/analisis.ipynb
+     ```
+
+3. **Incrústalo en tu web con `<iframe>`**
+   En tu página (`proyectos/fuga_empleados/index.html` o el archivo HTML donde quieras mostrarlo) añade algo así:
+
+   ```html
+   <h2>Notebook interactivo (vista estática)</h2>
+   <iframe src="https://nbviewer.org/github/aliciagilmatute/proyectos/blob/main/fuga_empleados/analisis.ipynb" 
+           width="100%" height="800" style="border:none;">
+   </iframe>
+   ```
+
+   🔧 Ajusta `height="800"` al tamaño que necesites.
+
+4. **Sube los cambios a GitHub Pages**
+
+   * Haz `git add`, `git commit`, `git push` en tu repo.
+   * GitHub Pages actualizará tu web.
+   * Ahora el notebook se verá embebido en tu página 🎉
+
+---
+
+✅ Con este método se verán **todas las celdas de input y output ya ejecutadas**, pero **no será interactivo** (no podrás volver a ejecutar el código).
+
+---
+
+¿Quieres que te arme un **ejemplo real** con un notebook de prueba en tu repo `proyectos/fuga_empleados`, para que copies/pegues el iframe ya configurado?

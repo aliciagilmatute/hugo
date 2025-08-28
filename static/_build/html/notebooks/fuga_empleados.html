@@ -1,0 +1,3228 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Emulación de una semana de trabajo en DataScientist &#8212; Portafolio de Notebooks</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/fuga_empleados';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Welcome to your Jupyter Book" href="../intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Portafolio de Notebooks</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Emulación de una semana de trabajo en DataScientist</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/aliciagilmatute/jupyter-notebooks-hugo" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/notebooks/fuga_empleados.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Emulación de una semana de trabajo en DataScientist</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importante-entender-el-tipo-de-solucion-de-data-science-que-vamos-a-construir">IMPORTANTE : Entender el tipo de solución de data science que vamos a construir</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fase-de-business-analytics">Fase de BUSINESS ANALYTICS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fase-de-machine-learning">Fase de MACHINE LEARNING</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fase-de-productivizacion">Fase de PRODUCTIVIZACIÓN</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#business-analytics"><strong>BUSINESS ANALYTICS</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cargamos-las-librerias-y-el-dataset">Cargamos las librerias y el dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-de-nulos">Análisis de Nulos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eda-de-las-variables-categoricas">EDA de las Variables Categóricas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eda-de-las-variables-numericas">EDA de las Variables Numéricas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generacion-de-insights">Generación de Insights</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-learning"><strong>Machine Learning</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preparacion-de-los-datos-para-la-modelizacion">PREPARACIÓN DE LOS DATOS PARA LA MODELIZACIÓN¶</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#one-hot-encoding-ohe">One Hot Encoding (OHE)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#construccion-del-modelo-ml">Construcción del  modelo ML</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#importancia-de-las-variables">Importancia de las variables</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#explotacion">Explotación</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#guardar-el-resultado">Guardar el resultado</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizacion-y-comunicacion"><strong>VISUALIZACIÓN Y COMUNICACIÓN</strong></a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="emulacion-de-una-semana-de-trabajo-en-datascientist">
+<h1>Emulación de una semana de trabajo en DataScientist<a class="headerlink" href="#emulacion-de-una-semana-de-trabajo-en-datascientist" title="Link to this heading">#</a></h1>
+<p>El gran objetivo del proyecto en el que vas a trabajar es reducir la fuga de empleados de la empresa. El principal problema es la rotación de empleados. Deberás trabajar en un sistema que consiga reducir la fuga de empleados. La empresa no tiene una metrica clara de abandono, además de la perdida de talento, le está ocasionado a la empresa grandes gastos en costes de reemplazo. No saben siquiera si hay un perfil claro de empleados que puedan estar en riesgo.</p>
+<p>La empresa necesita entender cuantitativamente qué está pasando a nivel de negocio, y crear un sistema basado en datos que ayude a solucinar el problema.</p>
+<p>Para ello durante esta semana vas a trabajar en 3 grandes cosas:</p>
+<ol class="arabic simple">
+<li><p>Entender y cuantificar el problema desde el punto de vista de negocio</p></li>
+<li><p>Desarrollar un sistema automatizado de machine learning que identifique a los empleados que están en mayor riesgo de fuga</p></li>
+<li><p>Comunicar los resultados de forma exitosa a la dirección</p></li>
+</ol>
+<section id="importante-entender-el-tipo-de-solucion-de-data-science-que-vamos-a-construir">
+<h2>IMPORTANTE : Entender el tipo de solución de data science que vamos a construir<a class="headerlink" href="#importante-entender-el-tipo-de-solucion-de-data-science-que-vamos-a-construir" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>BUSINESS ANALYTICS: generar insights, conclusiones que permitan entender y cuantificar el problema desde el punto de vista del negocio.</p></li>
+<li><p>MACHINE LEARNING: desarrollar un modelo de Machine Learning que automatice la predicción de lo que nos está interesando en cada proyecto.</p></li>
+<li><p>PRODUCTIVIZACIÓN: generar un producto de datos sobre las conclusiones y resultados de las dos fases anteriores. Una vez que realizas el trabajo, hay que “paquetizarlo” o “productivizarlo”. Generalmente un cuadro de mando.</p></li>
+</ol>
+<section id="fase-de-business-analytics">
+<h3>Fase de BUSINESS ANALYTICS<a class="headerlink" href="#fase-de-business-analytics" title="Link to this heading">#</a></h3>
+<p>Necesitamos unos datos, hacemos análisis para señalar la Señal del Ruido (la parte importante de la que no dentro de los datos).</p>
+<p>En nuestro ejemplo necesitamos saber cual es la tasa de abandono, cuales son las razones, etc…</p>
+<p>Los insights son las conclusiones que tienen mucha importancia o relevancia para la empresa.</p>
+</section>
+<section id="fase-de-machine-learning">
+<h3>Fase de MACHINE LEARNING<a class="headerlink" href="#fase-de-machine-learning" title="Link to this heading">#</a></h3>
+<p>Generalmente se accede a la fase de datos que tendrá un cierto histórico (por ejemplo los últimos 3 años), a partir de ahí generamos los modelos de Machine Learning. Una vez que el modelo está entrenado, lo utilizamos para generar predicciones sobre nuevos datos.</p>
+</section>
+<section id="fase-de-productivizacion">
+<h3>Fase de PRODUCTIVIZACIÓN<a class="headerlink" href="#fase-de-productivizacion" title="Link to this heading">#</a></h3>
+<p>Se genera un producto de datos. Generalmente es un cuadro de mando que graficamente nos permita realizar la toma de decisiones.</p>
+</section>
+</section>
+<section id="business-analytics">
+<h2><strong>BUSINESS ANALYTICS</strong><a class="headerlink" href="#business-analytics" title="Link to this heading">#</a></h2>
+<p>Las tareas para hoy son entender la tasa de abandono, ver si hay un perfil de empleado que se va de la empresa, cuanto le está costando a la empresa esta perdida de personal, y por último estimar cuanto dinero podría ahorrarse fidelizando mejor a los empleados.</p>
+<p>Tenemos entonces que encontrar insights de valor.</p>
+<p>Nuestra tarea de Bussiness Analytics sigue 3 grandes subfases:</p>
+<ol class="arabic simple">
+<li><p>Análisis de la calidad de los datos: entender los datos con los que estamos trabajando, aplicando una serie de técnicas para “garantizar” que la calidad de esos datos es correcta. Con esos errores podemos buscar soluciones con nuevas extracciones o datos alternativos. La intención es intentar no arrastrar errores a los siguientes pasos.</p></li>
+<li><p>Análisis exploratorio de Variables: EDA, entender qué variables tenemos en el DataSet y qué información nos ofrecen. Y</p></li>
+<li><p>Análisis y generación de insights: la idea es buscar las preguntas semillas. Con el conocimiento que tenemos buscamos las “preguntas más importantes”, cuyas respuestas nos ayudarán a encontrar nuevos focos de atención.</p></li>
+</ol>
+<section id="cargamos-las-librerias-y-el-dataset">
+<h3>Cargamos las librerias y el dataset<a class="headerlink" href="#cargamos-las-librerias-y-el-dataset" title="Link to this heading">#</a></h3>
+<p><em>Nota</em>: crea un entorno para instalar los modulos</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#!pip install requirements.txt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> 
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ruta</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span>
+<span class="n">ruta</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;c:\\Users\\alici\\Desktop\\Programación\\Kaggle&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">ruta</span><span class="o">+</span><span class="sa">r</span><span class="s1">&#39;/data/AbandonoEmpleados.csv&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;;&#39;</span><span class="p">,</span><span class="n">na_values</span><span class="o">=</span><span class="s1">&#39;#N/D&#39;</span><span class="p">)</span>  <span class="c1">#index_col=&#39;id&#39;</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>edad</th>
+      <th>abandono</th>
+      <th>viajes</th>
+      <th>departamento</th>
+      <th>distancia_casa</th>
+      <th>educacion</th>
+      <th>carrera</th>
+      <th>empleados</th>
+      <th>id</th>
+      <th>satisfaccion_entorno</th>
+      <th>...</th>
+      <th>satisfaccion_companeros</th>
+      <th>horas_quincena</th>
+      <th>nivel_acciones</th>
+      <th>anos_experiencia</th>
+      <th>num_formaciones_ult_ano</th>
+      <th>conciliacion</th>
+      <th>anos_compania</th>
+      <th>anos_en_puesto</th>
+      <th>anos_desde_ult_promocion</th>
+      <th>anos_con_manager_actual</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>41</td>
+      <td>Yes</td>
+      <td>Travel_Rarely</td>
+      <td>Sales</td>
+      <td>1</td>
+      <td>Universitaria</td>
+      <td>Life Sciences</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Media</td>
+      <td>...</td>
+      <td>Baja</td>
+      <td>80</td>
+      <td>0</td>
+      <td>8</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>6</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>49</td>
+      <td>No</td>
+      <td>Travel_Frequently</td>
+      <td>Research &amp; Development</td>
+      <td>8</td>
+      <td>Secundaria</td>
+      <td>Life Sciences</td>
+      <td>1</td>
+      <td>2</td>
+      <td>Alta</td>
+      <td>...</td>
+      <td>Muy_Alta</td>
+      <td>80</td>
+      <td>1</td>
+      <td>10</td>
+      <td>3</td>
+      <td>NaN</td>
+      <td>10</td>
+      <td>NaN</td>
+      <td>1</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>37</td>
+      <td>Yes</td>
+      <td>Travel_Rarely</td>
+      <td>Research &amp; Development</td>
+      <td>2</td>
+      <td>Secundaria</td>
+      <td>Other</td>
+      <td>1</td>
+      <td>4</td>
+      <td>Muy_Alta</td>
+      <td>...</td>
+      <td>Media</td>
+      <td>80</td>
+      <td>0</td>
+      <td>7</td>
+      <td>3</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>2.0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>33</td>
+      <td>No</td>
+      <td>Travel_Frequently</td>
+      <td>Research &amp; Development</td>
+      <td>3</td>
+      <td>Universitaria</td>
+      <td>Life Sciences</td>
+      <td>1</td>
+      <td>5</td>
+      <td>Muy_Alta</td>
+      <td>...</td>
+      <td>Alta</td>
+      <td>80</td>
+      <td>0</td>
+      <td>8</td>
+      <td>3</td>
+      <td>NaN</td>
+      <td>8</td>
+      <td>3.0</td>
+      <td>3</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>27</td>
+      <td>No</td>
+      <td>Travel_Rarely</td>
+      <td>Research &amp; Development</td>
+      <td>2</td>
+      <td>Universitaria</td>
+      <td>Medical</td>
+      <td>1</td>
+      <td>7</td>
+      <td>Baja</td>
+      <td>...</td>
+      <td>Muy_Alta</td>
+      <td>80</td>
+      <td>1</td>
+      <td>6</td>
+      <td>3</td>
+      <td>NaN</td>
+      <td>2</td>
+      <td>NaN</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 32 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 1470 entries, 0 to 1469
+Data columns (total 32 columns):
+ #   Column                    Non-Null Count  Dtype  
+---  ------                    --------------  -----  
+ 0   edad                      1470 non-null   int64  
+ 1   abandono                  1470 non-null   object 
+ 2   viajes                    1470 non-null   object 
+ 3   departamento              1470 non-null   object 
+ 4   distancia_casa            1470 non-null   int64  
+ 5   educacion                 1369 non-null   object 
+ 6   carrera                   1470 non-null   object 
+ 7   empleados                 1470 non-null   int64  
+ 8   id                        1470 non-null   int64  
+ 9   satisfaccion_entorno      1470 non-null   object 
+ 10  sexo                      1271 non-null   float64
+ 11  implicacion               1452 non-null   object 
+ 12  nivel_laboral             1470 non-null   int64  
+ 13  puesto                    1470 non-null   object 
+ 14  satisfaccion_trabajo      1394 non-null   object 
+ 15  estado_civil              1470 non-null   object 
+ 16  salario_mes               1470 non-null   int64  
+ 17  num_empresas_anteriores   1470 non-null   int64  
+ 18  mayor_edad                1470 non-null   object 
+ 19  horas_extra               1470 non-null   object 
+ 20  incremento_salario_porc   1470 non-null   int64  
+ 21  evaluacion                1470 non-null   object 
+ 22  satisfaccion_companeros   1470 non-null   object 
+ 23  horas_quincena            1470 non-null   int64  
+ 24  nivel_acciones            1470 non-null   int64  
+ 25  anos_experiencia          1470 non-null   int64  
+ 26  num_formaciones_ult_ano   1470 non-null   int64  
+ 27  conciliacion              459 non-null    object 
+ 28  anos_compania             1470 non-null   int64  
+ 29  anos_en_puesto            232 non-null    float64
+ 30  anos_desde_ult_promocion  1470 non-null   int64  
+ 31  anos_con_manager_actual   1470 non-null   int64  
+dtypes: float64(2), int64(15), object(15)
+memory usage: 367.6+ KB
+</pre></div>
+</div>
+</div>
+</div>
+<p>Abandono es la variable target</p>
+</section>
+<section id="analisis-de-nulos">
+<h3>Análisis de Nulos<a class="headerlink" href="#analisis-de-nulos" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>anos_en_puesto              1238
+conciliacion                1011
+sexo                         199
+educacion                    101
+satisfaccion_trabajo          76
+implicacion                   18
+departamento                   0
+edad                           0
+empleados                      0
+carrera                        0
+distancia_casa                 0
+satisfaccion_entorno           0
+id                             0
+nivel_laboral                  0
+viajes                         0
+abandono                       0
+estado_civil                   0
+puesto                         0
+salario_mes                    0
+num_empresas_anteriores        0
+incremento_salario_porc        0
+evaluacion                     0
+mayor_edad                     0
+horas_extra                    0
+horas_quincena                 0
+satisfaccion_companeros        0
+anos_experiencia               0
+nivel_acciones                 0
+num_formaciones_ult_ano        0
+anos_compania                  0
+anos_desde_ult_promocion       0
+anos_con_manager_actual        0
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Hay valores perdidos en:</p>
+<ul class="simple">
+<li><p>años en el puesto: 1238</p></li>
+<li><p>conciliacion: 1011</p></li>
+<li><p>sexo: 199</p></li>
+<li><p>educacion: 101</p></li>
+<li><p>satisfaccion trabajo: 76</p></li>
+<li><p>implicacion: 18</p></li>
+</ul>
+<p>Conclusiones:</p>
+<ul class="simple">
+<li><p>Eliminamos “años en el puesto” y “conciliacion” porque tienen muchos valores perdidos</p></li>
+<li><p>sexo, educacion, satisfaccion e implicacion las sobrescribirimos con un valor mas probable (imputacion)</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;anos_en_puesto&#39;</span><span class="p">,</span><span class="s1">&#39;conciliacion&#39;</span><span class="p">],</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 1470 entries, 0 to 1469
+Data columns (total 30 columns):
+ #   Column                    Non-Null Count  Dtype  
+---  ------                    --------------  -----  
+ 0   edad                      1470 non-null   int64  
+ 1   abandono                  1470 non-null   object 
+ 2   viajes                    1470 non-null   object 
+ 3   departamento              1470 non-null   object 
+ 4   distancia_casa            1470 non-null   int64  
+ 5   educacion                 1369 non-null   object 
+ 6   carrera                   1470 non-null   object 
+ 7   empleados                 1470 non-null   int64  
+ 8   id                        1470 non-null   int64  
+ 9   satisfaccion_entorno      1470 non-null   object 
+ 10  sexo                      1271 non-null   float64
+ 11  implicacion               1452 non-null   object 
+ 12  nivel_laboral             1470 non-null   int64  
+ 13  puesto                    1470 non-null   object 
+ 14  satisfaccion_trabajo      1394 non-null   object 
+ 15  estado_civil              1470 non-null   object 
+ 16  salario_mes               1470 non-null   int64  
+ 17  num_empresas_anteriores   1470 non-null   int64  
+ 18  mayor_edad                1470 non-null   object 
+ 19  horas_extra               1470 non-null   object 
+ 20  incremento_salario_porc   1470 non-null   int64  
+ 21  evaluacion                1470 non-null   object 
+ 22  satisfaccion_companeros   1470 non-null   object 
+ 23  horas_quincena            1470 non-null   int64  
+ 24  nivel_acciones            1470 non-null   int64  
+ 25  anos_experiencia          1470 non-null   int64  
+ 26  num_formaciones_ult_ano   1470 non-null   int64  
+ 27  anos_compania             1470 non-null   int64  
+ 28  anos_desde_ult_promocion  1470 non-null   int64  
+ 29  anos_con_manager_actual   1470 non-null   int64  
+dtypes: float64(1), int64(15), object(14)
+memory usage: 344.7+ KB
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="eda-de-las-variables-categoricas">
+<h3>EDA de las Variables Categóricas<a class="headerlink" href="#eda-de-las-variables-categoricas" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">variables_categoricas</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="s1">&#39;O&#39;</span><span class="p">)</span>
+
+<span class="n">variables_categoricas</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 1470 entries, 0 to 1469
+Data columns (total 14 columns):
+ #   Column                   Non-Null Count  Dtype 
+---  ------                   --------------  ----- 
+ 0   abandono                 1470 non-null   object
+ 1   viajes                   1470 non-null   object
+ 2   departamento             1470 non-null   object
+ 3   educacion                1369 non-null   object
+ 4   carrera                  1470 non-null   object
+ 5   satisfaccion_entorno     1470 non-null   object
+ 6   implicacion              1452 non-null   object
+ 7   puesto                   1470 non-null   object
+ 8   satisfaccion_trabajo     1394 non-null   object
+ 9   estado_civil             1470 non-null   object
+ 10  mayor_edad               1470 non-null   object
+ 11  horas_extra              1470 non-null   object
+ 12  evaluacion               1470 non-null   object
+ 13  satisfaccion_companeros  1470 non-null   object
+dtypes: object(14)
+memory usage: 160.9+ KB
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Problema:</span>
+<span class="c1"># Si divides directamente: n_vars / n_cols → te da un número decimal (que no sirve para subplots).</span>
+
+<span class="c1"># Necesitas hacer una división entera hacia arriba (lo que en matemáticas sería &quot;ceil(n_vars / n_cols)&quot;).</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># reset.index(): convierte el índice actual (que son los valores únicos de col) en una columna normal.</span>
+
+<span class="c1"># El índice de la Serie pasa a ser numérico (0, 1, 2, ...).</span>
+
+<span class="c1"># Resultado: un DataFrame con dos columnas.</span>
+
+<span class="c1"># La primera columna son los valores únicos.</span>
+
+<span class="c1"># La segunda columna es la frecuencia (con un nombre automático, por ejemplo, color).</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+
+<span class="k">def</span> <span class="nf">plot_var_categoricas</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">variables</span><span class="p">):</span>
+    <span class="n">n_vars</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">variables_categoricas</span><span class="p">)</span>
+    <span class="n">n_cols</span><span class="o">=</span><span class="mi">2</span> <span class="c1">#columnas del grafico</span>
+    <span class="n">n_rows</span><span class="o">=</span><span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">n_vars</span><span class="o">/</span><span class="n">n_cols</span><span class="p">)</span> <span class="c1"># Ahora sí, redondea hacia arriba</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="n">n_rows</span><span class="o">*</span><span class="mi">8</span><span class="p">))</span>
+
+    <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">variables_categoricas</span><span class="p">):</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">n_rows</span><span class="p">,</span><span class="n">n_cols</span><span class="p">,</span> <span class="n">idx</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="n">frecuencias</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+        <span class="n">frecuencias</span><span class="o">.</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="n">col</span><span class="p">,</span><span class="s1">&#39;frecuencia&#39;</span><span class="p">]</span>
+
+        <span class="n">plt</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">frecuencias</span><span class="p">[</span><span class="n">col</span><span class="p">],</span><span class="n">frecuencias</span><span class="p">[</span><span class="s1">&#39;frecuencia&#39;</span><span class="p">])</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Frecuencia Vs </span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Frecuencia&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="n">col</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_var_categoricas</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">variables_categoricas</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2669f9d376d8bd0e57abb5f260f0996c3ddf5e5e1e1e32c5de2fab1d49fa34df.png" src="../_images/2669f9d376d8bd0e57abb5f260f0996c3ddf5e5e1e1e32c5de2fab1d49fa34df.png" />
+</div>
+</div>
+<p>Conclusiones:</p>
+<ol class="arabic simple">
+<li><p>La variable mayor_edad solo tiene un valor unico. Decidimos eliminarla.</p></li>
+<li><p>Las variables pendientes por imputar las imputaremos por su categoria mas numerosa:</p>
+<ul class="simple">
+<li><p>Implicacion: NA’s –&gt; Alta</p></li>
+<li><p>Educacion: NA’s –&gt; Universitaria</p></li>
+<li><p>Satisfaccion trabajo: NA’s –&gt; Alta</p></li>
+</ul>
+</li>
+<li><p>La variable target “abandono” tiene desbalanceo de clases y puede que tengamos que balancearlos mediante algun metodo en la fase de machine learning</p></li>
+</ol>
+<p>NOTA: hoy otros métodos más complejos de imputacion que se podrían explorar</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;mayor_edad&#39;</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1">#NO: df=df.drop(columns=&#39;mayor_edad&#39;,inplace=True)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;educacion&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;educacion&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s1">&#39;Universitaria&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;implicacion&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;implicacion&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s1">&#39;Alta&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;satisfaccion_trabajo&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;satisfaccion_trabajo&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s1">&#39;Alta&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="eda-de-las-variables-numericas">
+<h3>EDA de las Variables Numéricas<a class="headerlink" href="#eda-de-las-variables-numericas" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">variables_numericas</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="s1">&#39;number&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">variables_numericas</span><span class="o">.</span><span class="n">describe</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>count</th>
+      <th>mean</th>
+      <th>std</th>
+      <th>min</th>
+      <th>25%</th>
+      <th>50%</th>
+      <th>75%</th>
+      <th>max</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>edad</th>
+      <td>1470.0</td>
+      <td>36.923810</td>
+      <td>9.135373</td>
+      <td>18.0</td>
+      <td>30.00</td>
+      <td>36.0</td>
+      <td>43.00</td>
+      <td>60.0</td>
+    </tr>
+    <tr>
+      <th>distancia_casa</th>
+      <td>1470.0</td>
+      <td>9.192517</td>
+      <td>8.106864</td>
+      <td>1.0</td>
+      <td>2.00</td>
+      <td>7.0</td>
+      <td>14.00</td>
+      <td>29.0</td>
+    </tr>
+    <tr>
+      <th>empleados</th>
+      <td>1470.0</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>1.0</td>
+      <td>1.00</td>
+      <td>1.0</td>
+      <td>1.00</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>id</th>
+      <td>1470.0</td>
+      <td>1024.865306</td>
+      <td>602.024335</td>
+      <td>1.0</td>
+      <td>491.25</td>
+      <td>1020.5</td>
+      <td>1555.75</td>
+      <td>2068.0</td>
+    </tr>
+    <tr>
+      <th>sexo</th>
+      <td>1271.0</td>
+      <td>2.727773</td>
+      <td>0.720788</td>
+      <td>1.0</td>
+      <td>2.00</td>
+      <td>3.0</td>
+      <td>3.00</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>nivel_laboral</th>
+      <td>1470.0</td>
+      <td>2.063946</td>
+      <td>1.106940</td>
+      <td>1.0</td>
+      <td>1.00</td>
+      <td>2.0</td>
+      <td>3.00</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>salario_mes</th>
+      <td>1470.0</td>
+      <td>6502.931293</td>
+      <td>4707.956783</td>
+      <td>1009.0</td>
+      <td>2911.00</td>
+      <td>4919.0</td>
+      <td>8379.00</td>
+      <td>19999.0</td>
+    </tr>
+    <tr>
+      <th>num_empresas_anteriores</th>
+      <td>1470.0</td>
+      <td>2.693197</td>
+      <td>2.498009</td>
+      <td>0.0</td>
+      <td>1.00</td>
+      <td>2.0</td>
+      <td>4.00</td>
+      <td>9.0</td>
+    </tr>
+    <tr>
+      <th>incremento_salario_porc</th>
+      <td>1470.0</td>
+      <td>15.209524</td>
+      <td>3.659938</td>
+      <td>11.0</td>
+      <td>12.00</td>
+      <td>14.0</td>
+      <td>18.00</td>
+      <td>25.0</td>
+    </tr>
+    <tr>
+      <th>horas_quincena</th>
+      <td>1470.0</td>
+      <td>80.000000</td>
+      <td>0.000000</td>
+      <td>80.0</td>
+      <td>80.00</td>
+      <td>80.0</td>
+      <td>80.00</td>
+      <td>80.0</td>
+    </tr>
+    <tr>
+      <th>nivel_acciones</th>
+      <td>1470.0</td>
+      <td>0.793878</td>
+      <td>0.852077</td>
+      <td>0.0</td>
+      <td>0.00</td>
+      <td>1.0</td>
+      <td>1.00</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>anos_experiencia</th>
+      <td>1470.0</td>
+      <td>11.279592</td>
+      <td>7.780782</td>
+      <td>0.0</td>
+      <td>6.00</td>
+      <td>10.0</td>
+      <td>15.00</td>
+      <td>40.0</td>
+    </tr>
+    <tr>
+      <th>num_formaciones_ult_ano</th>
+      <td>1470.0</td>
+      <td>2.799320</td>
+      <td>1.289271</td>
+      <td>0.0</td>
+      <td>2.00</td>
+      <td>3.0</td>
+      <td>3.00</td>
+      <td>6.0</td>
+    </tr>
+    <tr>
+      <th>anos_compania</th>
+      <td>1470.0</td>
+      <td>7.008163</td>
+      <td>6.126525</td>
+      <td>0.0</td>
+      <td>3.00</td>
+      <td>5.0</td>
+      <td>9.00</td>
+      <td>40.0</td>
+    </tr>
+    <tr>
+      <th>anos_desde_ult_promocion</th>
+      <td>1470.0</td>
+      <td>2.187755</td>
+      <td>3.222430</td>
+      <td>0.0</td>
+      <td>0.00</td>
+      <td>1.0</td>
+      <td>3.00</td>
+      <td>15.0</td>
+    </tr>
+    <tr>
+      <th>anos_con_manager_actual</th>
+      <td>1470.0</td>
+      <td>4.123129</td>
+      <td>3.568136</td>
+      <td>0.0</td>
+      <td>2.00</td>
+      <td>3.0</td>
+      <td>7.00</td>
+      <td>17.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># def estadisticos_cont(num):</span>
+<span class="c1">#     #Calculamos describe, y volteamos el cuadro</span>
+<span class="c1">#     estadisticos = num.describe().T</span>
+<span class="c1">#     #Añadimos la mediana</span>
+<span class="c1">#     estadisticos[&#39;median&#39;] = num.median()</span>
+<span class="c1">#     #Reordenamos para que la mediana esté al lado de la media</span>
+<span class="c1">#     estadisticos = estadisticos.iloc[:,[0,1,8,2,3,4,5,6,7]]</span>
+<span class="c1">#     #Lo devolvemos</span>
+<span class="c1">#     return(estadisticos)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Conclusiones:</p>
+<ul class="simple">
+<li><p>El sexo tiene valores: eliminarla, no tiene sentido (deberia ser categorica)</p></li>
+<li><p>Empleado solo tiene un unico valor: eliminarla</p></li>
+<li><p>Horas quincena solo tiene un valor, eliminarla</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;sexo&#39;</span><span class="p">,</span><span class="s1">&#39;empleados&#39;</span><span class="p">,</span><span class="s1">&#39;horas_quincena&#39;</span><span class="p">],</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>edad</th>
+      <th>abandono</th>
+      <th>viajes</th>
+      <th>departamento</th>
+      <th>distancia_casa</th>
+      <th>educacion</th>
+      <th>carrera</th>
+      <th>id</th>
+      <th>satisfaccion_entorno</th>
+      <th>implicacion</th>
+      <th>...</th>
+      <th>horas_extra</th>
+      <th>incremento_salario_porc</th>
+      <th>evaluacion</th>
+      <th>satisfaccion_companeros</th>
+      <th>nivel_acciones</th>
+      <th>anos_experiencia</th>
+      <th>num_formaciones_ult_ano</th>
+      <th>anos_compania</th>
+      <th>anos_desde_ult_promocion</th>
+      <th>anos_con_manager_actual</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>41</td>
+      <td>Yes</td>
+      <td>Travel_Rarely</td>
+      <td>Sales</td>
+      <td>1</td>
+      <td>Universitaria</td>
+      <td>Life Sciences</td>
+      <td>1</td>
+      <td>Media</td>
+      <td>Alta</td>
+      <td>...</td>
+      <td>Yes</td>
+      <td>11</td>
+      <td>Alta</td>
+      <td>Baja</td>
+      <td>0</td>
+      <td>8</td>
+      <td>0</td>
+      <td>6</td>
+      <td>0</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>49</td>
+      <td>No</td>
+      <td>Travel_Frequently</td>
+      <td>Research &amp; Development</td>
+      <td>8</td>
+      <td>Secundaria</td>
+      <td>Life Sciences</td>
+      <td>2</td>
+      <td>Alta</td>
+      <td>Media</td>
+      <td>...</td>
+      <td>No</td>
+      <td>23</td>
+      <td>Muy_Alta</td>
+      <td>Muy_Alta</td>
+      <td>1</td>
+      <td>10</td>
+      <td>3</td>
+      <td>10</td>
+      <td>1</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>37</td>
+      <td>Yes</td>
+      <td>Travel_Rarely</td>
+      <td>Research &amp; Development</td>
+      <td>2</td>
+      <td>Secundaria</td>
+      <td>Other</td>
+      <td>4</td>
+      <td>Muy_Alta</td>
+      <td>Media</td>
+      <td>...</td>
+      <td>Yes</td>
+      <td>15</td>
+      <td>Alta</td>
+      <td>Media</td>
+      <td>0</td>
+      <td>7</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>33</td>
+      <td>No</td>
+      <td>Travel_Frequently</td>
+      <td>Research &amp; Development</td>
+      <td>3</td>
+      <td>Universitaria</td>
+      <td>Life Sciences</td>
+      <td>5</td>
+      <td>Muy_Alta</td>
+      <td>Alta</td>
+      <td>...</td>
+      <td>Yes</td>
+      <td>11</td>
+      <td>Alta</td>
+      <td>Alta</td>
+      <td>0</td>
+      <td>8</td>
+      <td>3</td>
+      <td>8</td>
+      <td>3</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>27</td>
+      <td>No</td>
+      <td>Travel_Rarely</td>
+      <td>Research &amp; Development</td>
+      <td>2</td>
+      <td>Universitaria</td>
+      <td>Medical</td>
+      <td>7</td>
+      <td>Baja</td>
+      <td>Alta</td>
+      <td>...</td>
+      <td>No</td>
+      <td>12</td>
+      <td>Alta</td>
+      <td>Muy_Alta</td>
+      <td>1</td>
+      <td>6</td>
+      <td>3</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 26 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 1470 entries, 0 to 1469
+Data columns (total 26 columns):
+ #   Column                    Non-Null Count  Dtype 
+---  ------                    --------------  ----- 
+ 0   edad                      1470 non-null   int64 
+ 1   abandono                  1470 non-null   object
+ 2   viajes                    1470 non-null   object
+ 3   departamento              1470 non-null   object
+ 4   distancia_casa            1470 non-null   int64 
+ 5   educacion                 1470 non-null   object
+ 6   carrera                   1470 non-null   object
+ 7   id                        1470 non-null   int64 
+ 8   satisfaccion_entorno      1470 non-null   object
+ 9   implicacion               1470 non-null   object
+ 10  nivel_laboral             1470 non-null   int64 
+ 11  puesto                    1470 non-null   object
+ 12  satisfaccion_trabajo      1470 non-null   object
+ 13  estado_civil              1470 non-null   object
+ 14  salario_mes               1470 non-null   int64 
+ 15  num_empresas_anteriores   1470 non-null   int64 
+ 16  horas_extra               1470 non-null   object
+ 17  incremento_salario_porc   1470 non-null   int64 
+ 18  evaluacion                1470 non-null   object
+ 19  satisfaccion_companeros   1470 non-null   object
+ 20  nivel_acciones            1470 non-null   int64 
+ 21  anos_experiencia          1470 non-null   int64 
+ 22  num_formaciones_ult_ano   1470 non-null   int64 
+ 23  anos_compania             1470 non-null   int64 
+ 24  anos_desde_ult_promocion  1470 non-null   int64 
+ 25  anos_con_manager_actual   1470 non-null   int64 
+dtypes: int64(13), object(13)
+memory usage: 298.7+ KB
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="generacion-de-insights">
+<h3>Generación de Insights<a class="headerlink" href="#generacion-de-insights" title="Link to this heading">#</a></h3>
+<p>Teniamos que resolver principalmente 4 preguntas en esta seccion de Business Analytics:</p>
+<ul class="simple">
+<li><p>tasa de abandono</p></li>
+<li><p>ver si hay un perfil de empleado que se va de la empresa</p></li>
+<li><p>cuanto le está costando a la empresa esta perdida de personal</p></li>
+<li><p>estimar cuanto dinero podría ahorrarse fidelizando mejor a los empleados.</p></li>
+</ul>
+<ol class="arabic">
+<li><p>Tasa de Abandono</p>
+<p>Definicion: el numero de personas que se van entre el total de empleados</p>
+</li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Utilizamos &quot;normalize = True&quot; para obtener el porcentaje</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;abandono&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>abandono
+No     83.877551
+Yes    16.122449
+Name: proportion, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic" start="2">
+<li><p>Identificando el perfil de empleado en fuga</p>
+<p>Para esta pregunta realizaremos un análisis de penetración: cruzaremos la variable target (abandono) con aquellas que creemos que pueden tener algo que ver con ese abandono.</p>
+</li>
+</ol>
+<p>Salario: si cobran poco es probable que se vayan</p>
+<p>Horas extras: si hacen muchas horas extras es probable que se vayan</p>
+<p>estado civil: si no tiene una familia que mantener es mas probable que se vayan</p>
+<p>puesto: si es un puesto poco estimulante pueden que se vayan / tambien si es muy demandante</p>
+<p>[otras variables]= distancia casa, satisfaccion(),…</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#recordemos de que clase son las variables que queremos estudiar</span>
+
+<span class="n">variables_estudio</span><span class="o">=</span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;salario_mes&#39;</span><span class="p">,</span><span class="s1">&#39;horas_extra&#39;</span><span class="p">,</span><span class="s1">&#39;estado_civil&#39;</span><span class="p">,</span><span class="s1">&#39;puesto&#39;</span><span class="p">,</span><span class="s1">&#39;distancia_casa&#39;</span><span class="p">,</span><span class="s1">&#39;educacion&#39;</span><span class="p">]]</span>
+
+<span class="n">variables_estudio</span><span class="o">.</span><span class="n">dtypes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>salario_mes        int64
+horas_extra       object
+estado_civil      object
+puesto            object
+distancia_casa     int64
+educacion         object
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>¿Cuanto cobran los que no abandonan, y cuanto cobran los que sí abandonan?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Estudio del salario mensual agrupados por abandono</span>
+
+<span class="n">temp</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;abandono&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">salario_mes</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">temp</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;abandono&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/743f65aaeedfd3bfdbbb9b6bd4a77594b9ad29f60ce68c40e92af5793e1dddb0.png" src="../_images/743f65aaeedfd3bfdbbb9b6bd4a77594b9ad29f60ce68c40e92af5793e1dddb0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temp</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;abandono&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">distancia_casa</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span>
+<span class="n">temp</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;abandono&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/ff9d89b6fc393278ff38ebef2a6fb52d21cdd8d61df398aabf127aeebba992cd.png" src="../_images/ff9d89b6fc393278ff38ebef2a6fb52d21cdd8d61df398aabf127aeebba992cd.png" />
+</div>
+</div>
+<p>De los que abandonan, que porcentaje hacian horas extras, y de los que no abandonan, que porcentaje hacian horas extra?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # Analisis por horas extras</span>
+<span class="c1"># temp = df.groupby(&#39;horas_extra&#39;).abandono.mean().sort_values(ascending = False) * 100</span>
+<span class="c1"># temp.plot.bar();</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Pero con este gráfico no puedo conocer las 4 situaciones cruzadas, ya que esta haciendo la media para abandono (valores 0 y 1) –&gt; TABLAS DE CONTINGENCIA para las variables Object</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">analisis_abandono</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">variables_analisis</span><span class="p">,</span> <span class="n">variable_objetivo</span><span class="o">=</span><span class="s1">&#39;abandono&#39;</span><span class="p">):</span>
+
+    <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">variables_analisis</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1"> Análisis de abandono según: </span><span class="si">{</span><span class="n">var</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+        <span class="n">tabla</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">var</span><span class="p">],</span><span class="n">df</span><span class="p">[</span><span class="n">variable_objetivo</span><span class="p">],</span><span class="n">margins</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span>
+
+        <span class="n">tabla_sin_total</span><span class="o">=</span><span class="n">tabla</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;All&#39;</span><span class="p">,</span><span class="n">errors</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="n">tabla</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+
+        <span class="c1">#Graficar</span>
+        <span class="n">tabla_sin_total</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">stacked</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;% de </span><span class="si">{</span><span class="n">variable_objetivo</span><span class="si">}</span><span class="s1"> según </span><span class="si">{</span><span class="n">var</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Porcentaje&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">var</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Abandono&#39;</span><span class="p">,</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">120</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">analisis_abandono</span><span class="p">(</span><span class="n">df</span><span class="p">,[</span><span class="s1">&#39;horas_extra&#39;</span><span class="p">,</span><span class="s1">&#39;estado_civil&#39;</span><span class="p">,</span><span class="s1">&#39;puesto&#39;</span><span class="p">,</span><span class="s1">&#39;educacion&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Análisis de abandono según: horas_extra
+
+abandono        No    Yes
+horas_extra              
+No           89.56  10.44
+Yes          69.47  30.53
+All          83.88  16.12
+</pre></div>
+</div>
+<img alt="../_images/f5fa226906c012dc70ea3c9c9e19c1052a4de6b3fa0600199a1911d96e706b75.png" src="../_images/f5fa226906c012dc70ea3c9c9e19c1052a4de6b3fa0600199a1911d96e706b75.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Análisis de abandono según: estado_civil
+
+abandono         No    Yes
+estado_civil              
+Divorced      89.91  10.09
+Married       87.52  12.48
+Single        74.47  25.53
+All           83.88  16.12
+</pre></div>
+</div>
+<img alt="../_images/d510c56a448f35ef01ff8dfdc7e3841951a2c8735a0c01b09a71266025785e99.png" src="../_images/d510c56a448f35ef01ff8dfdc7e3841951a2c8735a0c01b09a71266025785e99.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Análisis de abandono según: puesto
+
+abandono                      No    Yes
+puesto                                 
+Healthcare Representative  93.13   6.87
+Human Resources            76.92  23.08
+Laboratory Technician      76.06  23.94
+Manager                    95.10   4.90
+Manufacturing Director     93.10   6.90
+Research Director          97.50   2.50
+Research Scientist         83.90  16.10
+Sales Executive            82.52  17.48
+Sales Representative       60.24  39.76
+All                        83.88  16.12
+</pre></div>
+</div>
+<img alt="../_images/a8668f4ea68fce78c4603dcdf72b15a75b96ef8b865eb166d61a944a363ff0bd.png" src="../_images/a8668f4ea68fce78c4603dcdf72b15a75b96ef8b865eb166d61a944a363ff0bd.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Análisis de abandono según: educacion
+
+abandono          No    Yes
+educacion                  
+Master         91.54   8.46
+Primaria       67.53  32.47
+Secundaria     80.46  19.54
+Universitaria  85.46  14.54
+All            83.88  16.12
+</pre></div>
+</div>
+<img alt="../_images/3276b57690fb5a4df17417527e1cd51fb325f471e0af754ba591a35387464353.png" src="../_images/3276b57690fb5a4df17417527e1cd51fb325f471e0af754ba591a35387464353.png" />
+</div>
+</div>
+<p>Conclusiones:</p>
+<ul class="simple">
+<li><p>La distancia al trabajo parece no ser significativa (descartada del analisis de perfil)</p></li>
+</ul>
+<p>Parece ser que el perfil de trabajador que suele abandonar es:</p>
+<ul class="simple">
+<li><p>Sueldos por debajo de 5000 euros/mes</p></li>
+<li><p>Suelen hacer horas extra</p></li>
+<li><p>Solteros</p></li>
+<li><p>Trabajan en ventas</p></li>
+<li><p>Tienen solo al primaria</p></li>
+</ul>
+<ol class="arabic" start="3">
+<li><p>¿Cuál es el impacto económico de este problema?</p>
+<p>Según el artículo <a class="reference external" href="https://www.americanprogress.org/article/there-are-significant-business-costs-to-replacing-employees:">https://www.americanprogress.org/article/there-are-significant-business-costs-to-replacing-employees:</a></p>
+<ul class="simple">
+<li><p>El coste de la fuga de los empleados que ganan menos de 30000 es del 16,1% de su salario</p></li>
+<li><p>El coste de la fuga de los empleados que ganan entre 30000-50000 es del 19,7% de su salario</p></li>
+<li><p>El coste de la fuga de los empleados que ganan entre 50000-75000 es del 20,4% de su salario</p></li>
+<li><p>El coste de la fuga de los empleados que ganan más de 75000 es del 21% de su salario</p></li>
+</ul>
+</li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Primero: tenemos el salario/mes, tenemos que recodificarlo a salario/año</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;salario_ano&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;salario_mes&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">*</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="n">df</span><span class="p">[[</span><span class="s1">&#39;salario_mes&#39;</span><span class="p">,</span><span class="s1">&#39;salario_ano&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>salario_mes</th>
+      <th>salario_ano</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>5993</td>
+      <td>71916</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>5130</td>
+      <td>61560</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2090</td>
+      <td>25080</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2909</td>
+      <td>34908</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>3468</td>
+      <td>41616</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Segundo: crear los filtros para cada rango de salario y aplicar el coste en porcentaje a cada rango correspondiente</span>
+
+<span class="n">condiciones</span><span class="o">=</span><span class="p">[</span>
+    <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;salario_ano&#39;</span><span class="p">]</span><span class="o">&lt;=</span><span class="mi">30000</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;salario_ano&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">30000</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;salario_ano&#39;</span><span class="p">]</span><span class="o">&lt;=</span><span class="mi">50000</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;salario_ano&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">50000</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;salario_ano&#39;</span><span class="p">]</span><span class="o">&lt;=</span><span class="mi">75000</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;salario_ano&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">75000</span><span class="p">)</span>
+<span class="p">]</span>
+
+<span class="n">ponderaciones</span><span class="o">=</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;salario_ano&#39;</span><span class="p">]</span><span class="o">*</span><span class="mf">0.161</span><span class="p">,</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;salario_ano&#39;</span><span class="p">]</span><span class="o">*</span><span class="mf">0.197</span><span class="p">,</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;salario_ano&#39;</span><span class="p">]</span><span class="o">*</span><span class="mf">0.204</span><span class="p">,</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;salario_ano&#39;</span><span class="p">]</span><span class="o">*</span><span class="mf">0.21</span><span class="p">]</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;impacto_abandono&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">condiciones</span><span class="p">,</span><span class="n">ponderaciones</span><span class="p">,</span> <span class="n">default</span> <span class="o">=</span> <span class="o">-</span><span class="mi">999</span><span class="p">)</span>  <span class="c1">#valor que se incluirá si ninguna condición se cumple</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>edad</th>
+      <th>abandono</th>
+      <th>viajes</th>
+      <th>departamento</th>
+      <th>distancia_casa</th>
+      <th>educacion</th>
+      <th>carrera</th>
+      <th>id</th>
+      <th>satisfaccion_entorno</th>
+      <th>implicacion</th>
+      <th>...</th>
+      <th>evaluacion</th>
+      <th>satisfaccion_companeros</th>
+      <th>nivel_acciones</th>
+      <th>anos_experiencia</th>
+      <th>num_formaciones_ult_ano</th>
+      <th>anos_compania</th>
+      <th>anos_desde_ult_promocion</th>
+      <th>anos_con_manager_actual</th>
+      <th>salario_ano</th>
+      <th>impacto_abandono</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>41</td>
+      <td>Yes</td>
+      <td>Travel_Rarely</td>
+      <td>Sales</td>
+      <td>1</td>
+      <td>Universitaria</td>
+      <td>Life Sciences</td>
+      <td>1</td>
+      <td>Media</td>
+      <td>Alta</td>
+      <td>...</td>
+      <td>Alta</td>
+      <td>Baja</td>
+      <td>0</td>
+      <td>8</td>
+      <td>0</td>
+      <td>6</td>
+      <td>0</td>
+      <td>5</td>
+      <td>71916</td>
+      <td>14670.864</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>49</td>
+      <td>No</td>
+      <td>Travel_Frequently</td>
+      <td>Research &amp; Development</td>
+      <td>8</td>
+      <td>Secundaria</td>
+      <td>Life Sciences</td>
+      <td>2</td>
+      <td>Alta</td>
+      <td>Media</td>
+      <td>...</td>
+      <td>Muy_Alta</td>
+      <td>Muy_Alta</td>
+      <td>1</td>
+      <td>10</td>
+      <td>3</td>
+      <td>10</td>
+      <td>1</td>
+      <td>7</td>
+      <td>61560</td>
+      <td>12558.240</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>37</td>
+      <td>Yes</td>
+      <td>Travel_Rarely</td>
+      <td>Research &amp; Development</td>
+      <td>2</td>
+      <td>Secundaria</td>
+      <td>Other</td>
+      <td>4</td>
+      <td>Muy_Alta</td>
+      <td>Media</td>
+      <td>...</td>
+      <td>Alta</td>
+      <td>Media</td>
+      <td>0</td>
+      <td>7</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>25080</td>
+      <td>4037.880</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>33</td>
+      <td>No</td>
+      <td>Travel_Frequently</td>
+      <td>Research &amp; Development</td>
+      <td>3</td>
+      <td>Universitaria</td>
+      <td>Life Sciences</td>
+      <td>5</td>
+      <td>Muy_Alta</td>
+      <td>Alta</td>
+      <td>...</td>
+      <td>Alta</td>
+      <td>Alta</td>
+      <td>0</td>
+      <td>8</td>
+      <td>3</td>
+      <td>8</td>
+      <td>3</td>
+      <td>0</td>
+      <td>34908</td>
+      <td>6876.876</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>27</td>
+      <td>No</td>
+      <td>Travel_Rarely</td>
+      <td>Research &amp; Development</td>
+      <td>2</td>
+      <td>Universitaria</td>
+      <td>Medical</td>
+      <td>7</td>
+      <td>Baja</td>
+      <td>Alta</td>
+      <td>...</td>
+      <td>Alta</td>
+      <td>Muy_Alta</td>
+      <td>1</td>
+      <td>6</td>
+      <td>3</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>41616</td>
+      <td>8198.352</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 28 columns</p>
+</div></div></div>
+</div>
+<p>¿Cúanto nos ha costado este problema en el último año? (coste total)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coste_total</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;abandono&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;Yes&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">impacto_abandono</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">coste_total</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2719005.912
+</pre></div>
+</div>
+</div>
+</div>
+<p>¿Cuanto nos cuesta que los empleados no estén motivados? (pérdidas en implicación == Baja)¶</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;abandono&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;Yes&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;implicacion&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;Baja&#39;</span><span class="p">)]</span><span class="o">.</span><span class="n">impacto_abandono</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>368672.688
+</pre></div>
+</div>
+</div>
+</div>
+<p>¿Cuanto dinero podríamos ahorrar fidelizando mejor a nuestros empleados?</p>
+<p>Creación de escenarios de ahorro. Hacemos 3 niveles (reducir un 10, 20 y 30 % el abandono)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Reducir un 10% la fuga de empleados nos ahorra </span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">coste_total</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">0.1</span><span class="p">)</span><span class="si">}</span><span class="s1">$ cada año.</span><span class="se">\n</span><span class="s1">&#39;</span>
+    <span class="sa">f</span><span class="s1">&#39;Reducir un 20% la fuga de empleados nos ahorra </span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">coste_total</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">0.2</span><span class="p">)</span><span class="si">}</span><span class="s1">$ cada año.</span><span class="se">\n</span><span class="s1">&#39;</span>
+    <span class="sa">f</span><span class="s1">&#39;Reducir un 30% la fuga de empleados nos ahorra </span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">coste_total</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">0.3</span><span class="p">)</span><span class="si">}</span><span class="s1">$ cada año.</span><span class="se">\n</span><span class="s1">&#39;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reducir un 10% la fuga de empleados nos ahorra 271900$ cada año.
+Reducir un 20% la fuga de empleados nos ahorra 543801$ cada año.
+Reducir un 30% la fuga de empleados nos ahorra 815701$ cada año.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Habíamos visto que los representantes de ventas son el puesto que más se van. ¿Tendría sentido hacer un plan específico para ellos? ¿Cual sería el coste ahorrado si disminuimos su fuga un 30%?</p>
+<p>Primero vamos a calcular el % de representantes de ventas que se han ido el año pasado</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">total_ventas</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;puesto&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;Sales Representative&#39;</span><span class="p">])</span>
+
+<span class="n">total_ventas_abandono</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;abandono&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;Yes&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;puesto&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;Sales Representative&#39;</span><span class="p">)])</span>
+
+<span class="n">porc_pasado</span><span class="o">=</span><span class="n">total_ventas_abandono</span><span class="o">/</span><span class="n">total_ventas</span>
+
+<span class="n">porc_pasado</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.39759036144578314
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ahora podemos estimar cuántos se nos irán este año dentro del departamento de representantes de ventas:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+
+<span class="n">total_ventas_actual</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;puesto&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;Sales Representative&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;abandono&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;No&#39;</span><span class="p">)])</span>
+
+<span class="n">pronostico</span><span class="o">=</span><span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">total_ventas_actual</span><span class="o">*</span><span class="n">porc_pasado</span><span class="p">)</span>
+
+<span class="n">pronostico</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20
+</pre></div>
+</div>
+</div>
+</div>
+<p>Sobre estos 20 empleados, podemos estimar cuantos podemos retener (hipótesis 30% de reduccion abandono) y cuanto dinero puede suponer para la empresa:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">retenemos</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">pronostico</span> <span class="o">*</span> <span class="mf">0.3</span><span class="p">)</span>
+
+<span class="n">ahorramos</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df</span><span class="o">.</span><span class="n">puesto</span> <span class="o">==</span> <span class="s1">&#39;Sales Representative&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">abandono</span> <span class="o">==</span> <span class="s1">&#39;No&#39;</span><span class="p">),</span><span class="s1">&#39;impacto_abandono&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">*</span> <span class="n">porc_pasado</span><span class="o">*</span><span class="mf">0.3</span>  <span class="c1">#me cuesta entender el porc_pasado*0.3</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Podemos retener </span><span class="si">{</span><span class="n">retenemos</span><span class="si">}</span><span class="s1"> representantes de ventas y ello supondría ahorrar </span><span class="si">{</span><span class="n">ahorramos</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s1">$.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Podemos retener 6 representantes de ventas y ello supondría ahorrar 37447.224$.
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>IMPORTANTE</strong>: La importancia de este dato es muy interesante, pues nos permite determinar el presupuesto para acciones de retención por departamento o perfil.</p>
+<p>Ya que sabemos que podemos gastarnos hasta 37.000$ sólo en acciones específicas para retener a representantes de ventas, vemos que se estarían pagando sólas con la pérdida evitada.</p>
+</section>
+</section>
+<section id="machine-learning">
+<h2><strong>Machine Learning</strong><a class="headerlink" href="#machine-learning" title="Link to this heading">#</a></h2>
+<p>Hasta ahora hemos comprendido y cuantificado el problema desde el punto de vista de negocio, pero ahora necesitamos construir un sistema automático capaz de encontrar los patrones subyacentes en los datos, y predecir qué empleados concretos están en riesgo de dejar la empresa. Esto nos permitirá actuar empleado a empleado con precisión.</p>
+<p>Necesitamos un sistema que analice todo nuestro histórico de datos, y que encuentre los patrones que diferencian a los que abandonan de los que no Dependiendo el modelo de Machine Learning a utilizar, necesitamos preparar los datos de una forma específica.</p>
+<p><em>Sentando las Bases del Machine Learning</em></p>
+<p>En nuestra base de datos tenemos lo que ha sucedido hasta hoy. Un modelo de machine learning va a aprender sobre ese histórico y capture las diferencias entre los que abandonan y los que no (fase de entrenamiento), de forma que nos permita hacer predicciones a futuro.</p>
+<p>Lo que haremos es separar toda la información en dos grupos de forma aleatoria (normalmente un 70 y 30 por ciento). Sobre el primer grupo construimos el modelo, y lo ejecutamos en el 30 % restante, para contrastar así la predicción con la realidad. No lo hacemos sobre el total para evitar el problema del sobreajuste. Cuanto más se parezcan los datos a la realidad, más confianza nos dará ese modelo (testarlo).</p>
+<p>El grupo de entrenamiento es el de Train, y el otro es el de Test.</p>
+<p>-Transformando los datos para poder modelizar.-</p>
+<p>Realizaremos primero una copia del dataframe original para trabajar sobre él.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Transformar abandono a numérica, para facilitar los cálculos.</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;abandono&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">abandono</span><span class="o">.</span><span class="n">map</span><span class="p">({</span><span class="s1">&#39;No&#39;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;Yes&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_ml</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">df_ml</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 1470 entries, 0 to 1469
+Data columns (total 28 columns):
+ #   Column                    Non-Null Count  Dtype  
+---  ------                    --------------  -----  
+ 0   edad                      1470 non-null   int64  
+ 1   abandono                  1470 non-null   int64  
+ 2   viajes                    1470 non-null   object 
+ 3   departamento              1470 non-null   object 
+ 4   distancia_casa            1470 non-null   int64  
+ 5   educacion                 1470 non-null   object 
+ 6   carrera                   1470 non-null   object 
+ 7   id                        1470 non-null   int64  
+ 8   satisfaccion_entorno      1470 non-null   object 
+ 9   implicacion               1470 non-null   object 
+ 10  nivel_laboral             1470 non-null   int64  
+ 11  puesto                    1470 non-null   object 
+ 12  satisfaccion_trabajo      1470 non-null   object 
+ 13  estado_civil              1470 non-null   object 
+ 14  salario_mes               1470 non-null   int64  
+ 15  num_empresas_anteriores   1470 non-null   int64  
+ 16  horas_extra               1470 non-null   object 
+ 17  incremento_salario_porc   1470 non-null   int64  
+ 18  evaluacion                1470 non-null   object 
+ 19  satisfaccion_companeros   1470 non-null   object 
+ 20  nivel_acciones            1470 non-null   int64  
+ 21  anos_experiencia          1470 non-null   int64  
+ 22  num_formaciones_ult_ano   1470 non-null   int64  
+ 23  anos_compania             1470 non-null   int64  
+ 24  anos_desde_ult_promocion  1470 non-null   int64  
+ 25  anos_con_manager_actual   1470 non-null   int64  
+ 26  salario_ano               1470 non-null   int64  
+ 27  impacto_abandono          1470 non-null   float64
+dtypes: float64(1), int64(15), object(12)
+memory usage: 321.7+ KB
+</pre></div>
+</div>
+</div>
+</div>
+<section id="preparacion-de-los-datos-para-la-modelizacion">
+<h3>PREPARACIÓN DE LOS DATOS PARA LA MODELIZACIÓN¶<a class="headerlink" href="#preparacion-de-los-datos-para-la-modelizacion" title="Link to this heading">#</a></h3>
+<p>Tendremos una serie de transformaciones obligatorias (pues sin ellas no podemos realizar un modelo de machine learning), que son dos:</p>
+<ol class="arabic simple">
+<li><p>No puede haber nulos.</p></li>
+<li><p>Todas las variables tienen que estar en formato numérico.</p></li>
+</ol>
+<p>Como transformaciones optativas tenemos:</p>
+<ul class="simple">
+<li><p>Reescalar las variables: ponerlas todas en la misma escala.</p></li>
+<li><p>Normalizar las variables: hacerlas parecidas a una distribución normal. (es escalar, siguiendo la distribucion normal)</p></li>
+</ul>
+<p>En este proceso nos vamos a centrar en las obligatorias.</p>
+<p>La primera ya la hemos realizado, pues hemos eliminado todos los nulos.</p>
+<p>Para la segunda condición utilizamos la librería sklearn, el método “OneHotEncoder”, que tomará cada una de las variables categóricas, y generará una nueva variable con valores 0 y 1 para cada uno de esos valores. Por ejemplo, si tenemos una varible “color” con 3 valores (rojo, amarillo y verde), y la transformará en 3 variables (rojo, amarillo y verde), que tendra para las líneas que tengan el color verde, un 0 en rojo, un 0 en amarillo, y un 1 en verde.</p>
+<section id="one-hot-encoding-ohe">
+<h4>One Hot Encoding (OHE)<a class="headerlink" href="#one-hot-encoding-ohe" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">OneHotEncoder</span>
+
+<span class="n">cat</span> <span class="o">=</span> <span class="n">df_ml</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="s1">&#39;O&#39;</span><span class="p">)</span>
+
+<span class="c1">#Cargamos instancia </span>
+<span class="n">ohe</span><span class="o">=</span><span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">sparse_output</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="c1"># Evita devolver matriz dispersa</span>
+
+<span class="c1">#Entrenamos</span>
+<span class="n">ohe</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">cat</span><span class="p">)</span>
+
+<span class="c1">#Aplicamos</span>
+<span class="n">cat_ohe</span><span class="o">=</span><span class="n">ohe</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">cat</span><span class="p">)</span>
+
+<span class="c1">#Construimos df</span>
+<span class="n">cat_ohe</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">cat_ohe</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">ohe</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">(</span><span class="n">input_features</span> <span class="o">=</span> <span class="n">cat</span><span class="o">.</span><span class="n">columns</span><span class="p">))</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cat_ohe</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>viajes_Non-Travel</th>
+      <th>viajes_Travel_Frequently</th>
+      <th>viajes_Travel_Rarely</th>
+      <th>departamento_Human Resources</th>
+      <th>departamento_Research &amp; Development</th>
+      <th>departamento_Sales</th>
+      <th>educacion_Master</th>
+      <th>educacion_Primaria</th>
+      <th>educacion_Secundaria</th>
+      <th>educacion_Universitaria</th>
+      <th>...</th>
+      <th>estado_civil_Married</th>
+      <th>estado_civil_Single</th>
+      <th>horas_extra_No</th>
+      <th>horas_extra_Yes</th>
+      <th>evaluacion_Alta</th>
+      <th>evaluacion_Muy_Alta</th>
+      <th>satisfaccion_companeros_Alta</th>
+      <th>satisfaccion_companeros_Baja</th>
+      <th>satisfaccion_companeros_Media</th>
+      <th>satisfaccion_companeros_Muy_Alta</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>...</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>...</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 48 columns</p>
+</div></div></div>
+</div>
+<p>Lo que hemos hecho hasta ahora es transformar las variables categóricas a números, pero el objeto “cat_ohe” tiene sólo las varibles categóricas. Necesitamos juntar este dataframe con el resto de las variables numéricas.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="s1">&#39;number&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_ml</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">cat_ohe</span><span class="p">,</span><span class="n">num</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">df_ml</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 1470 entries, 0 to 1469
+Data columns (total 64 columns):
+ #   Column                               Non-Null Count  Dtype  
+---  ------                               --------------  -----  
+ 0   viajes_Non-Travel                    1470 non-null   float64
+ 1   viajes_Travel_Frequently             1470 non-null   float64
+ 2   viajes_Travel_Rarely                 1470 non-null   float64
+ 3   departamento_Human Resources         1470 non-null   float64
+ 4   departamento_Research &amp; Development  1470 non-null   float64
+ 5   departamento_Sales                   1470 non-null   float64
+ 6   educacion_Master                     1470 non-null   float64
+ 7   educacion_Primaria                   1470 non-null   float64
+ 8   educacion_Secundaria                 1470 non-null   float64
+ 9   educacion_Universitaria              1470 non-null   float64
+ 10  carrera_Human Resources              1470 non-null   float64
+ 11  carrera_Life Sciences                1470 non-null   float64
+ 12  carrera_Marketing                    1470 non-null   float64
+ 13  carrera_Medical                      1470 non-null   float64
+ 14  carrera_Other                        1470 non-null   float64
+ 15  carrera_Technical Degree             1470 non-null   float64
+ 16  satisfaccion_entorno_Alta            1470 non-null   float64
+ 17  satisfaccion_entorno_Baja            1470 non-null   float64
+ 18  satisfaccion_entorno_Media           1470 non-null   float64
+ 19  satisfaccion_entorno_Muy_Alta        1470 non-null   float64
+ 20  implicacion_Alta                     1470 non-null   float64
+ 21  implicacion_Baja                     1470 non-null   float64
+ 22  implicacion_Media                    1470 non-null   float64
+ 23  implicacion_Muy_Alta                 1470 non-null   float64
+ 24  puesto_Healthcare Representative     1470 non-null   float64
+ 25  puesto_Human Resources               1470 non-null   float64
+ 26  puesto_Laboratory Technician         1470 non-null   float64
+ 27  puesto_Manager                       1470 non-null   float64
+ 28  puesto_Manufacturing Director        1470 non-null   float64
+ 29  puesto_Research Director             1470 non-null   float64
+ 30  puesto_Research Scientist            1470 non-null   float64
+ 31  puesto_Sales Executive               1470 non-null   float64
+ 32  puesto_Sales Representative          1470 non-null   float64
+ 33  satisfaccion_trabajo_Alta            1470 non-null   float64
+ 34  satisfaccion_trabajo_Baja            1470 non-null   float64
+ 35  satisfaccion_trabajo_Media           1470 non-null   float64
+ 36  satisfaccion_trabajo_Muy_Alta        1470 non-null   float64
+ 37  estado_civil_Divorced                1470 non-null   float64
+ 38  estado_civil_Married                 1470 non-null   float64
+ 39  estado_civil_Single                  1470 non-null   float64
+ 40  horas_extra_No                       1470 non-null   float64
+ 41  horas_extra_Yes                      1470 non-null   float64
+ 42  evaluacion_Alta                      1470 non-null   float64
+ 43  evaluacion_Muy_Alta                  1470 non-null   float64
+ 44  satisfaccion_companeros_Alta         1470 non-null   float64
+ 45  satisfaccion_companeros_Baja         1470 non-null   float64
+ 46  satisfaccion_companeros_Media        1470 non-null   float64
+ 47  satisfaccion_companeros_Muy_Alta     1470 non-null   float64
+ 48  edad                                 1470 non-null   int64  
+ 49  abandono                             1470 non-null   int64  
+ 50  distancia_casa                       1470 non-null   int64  
+ 51  id                                   1470 non-null   int64  
+ 52  nivel_laboral                        1470 non-null   int64  
+ 53  salario_mes                          1470 non-null   int64  
+ 54  num_empresas_anteriores              1470 non-null   int64  
+ 55  incremento_salario_porc              1470 non-null   int64  
+ 56  nivel_acciones                       1470 non-null   int64  
+ 57  anos_experiencia                     1470 non-null   int64  
+ 58  num_formaciones_ult_ano              1470 non-null   int64  
+ 59  anos_compania                        1470 non-null   int64  
+ 60  anos_desde_ult_promocion             1470 non-null   int64  
+ 61  anos_con_manager_actual              1470 non-null   int64  
+ 62  salario_ano                          1470 non-null   int64  
+ 63  impacto_abandono                     1470 non-null   float64
+dtypes: float64(49), int64(15)
+memory usage: 735.1 KB
+</pre></div>
+</div>
+</div>
+</div>
+<p>Tenemos ahora el DataFrame con 63 columnas, pues las categóricas están en formato numérico. En esta nueva tabla todos los datos son numéricos.</p>
+</section>
+<section id="construccion-del-modelo-ml">
+<h4>Construcción del  modelo ML<a class="headerlink" href="#construccion-del-modelo-ml" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Separación predictoras y target</span>
+
+<span class="n">X</span><span class="o">=</span><span class="n">df_ml</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;abandono&#39;</span><span class="p">)</span>
+<span class="n">y</span><span class="o">=</span><span class="n">df_ml</span><span class="p">[</span><span class="s1">&#39;abandono&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#separación de los conjunto de entrenamiento</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>No me decido por qué modelo de ML aplicar, si Regresión Logística, KNN-Vecinos, RandomForest, o Maquinas de Vector Soporte, con lo cual voy a estimar un modelo sencillo de cada y estimaré el que mejor accuracy tenga (otra opciones realizar un ensamble, pero para un dataset tan pequeño y para este problema, no es necesario)</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">classification_report</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">StratifiedKFold</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
+
+<span class="c1"># Los algoritmo guardados en una lista:</span>
+
+<span class="n">models</span><span class="o">=</span><span class="p">[]</span>
+
+<span class="n">models</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s1">&#39;LR&#39;</span><span class="p">,</span><span class="n">LogisticRegression</span><span class="p">(</span><span class="n">solver</span><span class="o">=</span><span class="s1">&#39;liblinear&#39;</span><span class="p">,</span><span class="n">multi_class</span><span class="o">=</span><span class="s1">&#39;ovr&#39;</span><span class="p">)))</span>
+<span class="n">models</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s1">&#39;KNN&#39;</span><span class="p">,</span><span class="n">KNeighborsClassifier</span><span class="p">()))</span>
+<span class="n">models</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s1">&#39;RF&#39;</span><span class="p">,</span> <span class="n">RandomForestClassifier</span><span class="p">()))</span>
+<span class="n">models</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s1">&#39;SVM&#39;</span><span class="p">,</span><span class="n">SVC</span><span class="p">(</span><span class="n">gamma</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">)))</span>
+
+<span class="c1">#Evaluamos cada modelo:</span>
+<span class="n">results</span><span class="o">=</span><span class="p">[]</span>
+<span class="n">names</span><span class="o">=</span><span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models</span><span class="p">:</span>
+    <span class="n">kfold</span><span class="o">=</span><span class="n">StratifiedKFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">cv_results</span><span class="o">=</span><span class="n">cross_val_score</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">kfold</span><span class="p">,</span><span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;accuracy&#39;</span><span class="p">)</span>
+    <span class="n">names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">: </span><span class="si">%f</span><span class="s1"> (</span><span class="si">%f</span><span class="s1">)&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">cv_results</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">cv_results</span><span class="o">.</span><span class="n">std</span><span class="p">()))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\alici\Desktop\Programación\Kaggle\data_scientist\Lib\site-packages\sklearn\linear_model\_logistic.py:1281: FutureWarning: &#39;multi_class&#39; was deprecated in version 1.5 and will be removed in 1.7. Use OneVsRestClassifier(LogisticRegression(..)) instead. Leave it to its default value to avoid this warning.
+  warnings.warn(
+c:\Users\alici\Desktop\Programación\Kaggle\data_scientist\Lib\site-packages\sklearn\linear_model\_logistic.py:1281: FutureWarning: &#39;multi_class&#39; was deprecated in version 1.5 and will be removed in 1.7. Use OneVsRestClassifier(LogisticRegression(..)) instead. Leave it to its default value to avoid this warning.
+  warnings.warn(
+c:\Users\alici\Desktop\Programación\Kaggle\data_scientist\Lib\site-packages\sklearn\linear_model\_logistic.py:1281: FutureWarning: &#39;multi_class&#39; was deprecated in version 1.5 and will be removed in 1.7. Use OneVsRestClassifier(LogisticRegression(..)) instead. Leave it to its default value to avoid this warning.
+  warnings.warn(
+c:\Users\alici\Desktop\Programación\Kaggle\data_scientist\Lib\site-packages\sklearn\linear_model\_logistic.py:1281: FutureWarning: &#39;multi_class&#39; was deprecated in version 1.5 and will be removed in 1.7. Use OneVsRestClassifier(LogisticRegression(..)) instead. Leave it to its default value to avoid this warning.
+  warnings.warn(
+c:\Users\alici\Desktop\Programación\Kaggle\data_scientist\Lib\site-packages\sklearn\linear_model\_logistic.py:1281: FutureWarning: &#39;multi_class&#39; was deprecated in version 1.5 and will be removed in 1.7. Use OneVsRestClassifier(LogisticRegression(..)) instead. Leave it to its default value to avoid this warning.
+  warnings.warn(
+c:\Users\alici\Desktop\Programación\Kaggle\data_scientist\Lib\site-packages\sklearn\linear_model\_logistic.py:1281: FutureWarning: &#39;multi_class&#39; was deprecated in version 1.5 and will be removed in 1.7. Use OneVsRestClassifier(LogisticRegression(..)) instead. Leave it to its default value to avoid this warning.
+  warnings.warn(
+c:\Users\alici\Desktop\Programación\Kaggle\data_scientist\Lib\site-packages\sklearn\linear_model\_logistic.py:1281: FutureWarning: &#39;multi_class&#39; was deprecated in version 1.5 and will be removed in 1.7. Use OneVsRestClassifier(LogisticRegression(..)) instead. Leave it to its default value to avoid this warning.
+  warnings.warn(
+c:\Users\alici\Desktop\Programación\Kaggle\data_scientist\Lib\site-packages\sklearn\linear_model\_logistic.py:1281: FutureWarning: &#39;multi_class&#39; was deprecated in version 1.5 and will be removed in 1.7. Use OneVsRestClassifier(LogisticRegression(..)) instead. Leave it to its default value to avoid this warning.
+  warnings.warn(
+c:\Users\alici\Desktop\Programación\Kaggle\data_scientist\Lib\site-packages\sklearn\linear_model\_logistic.py:1281: FutureWarning: &#39;multi_class&#39; was deprecated in version 1.5 and will be removed in 1.7. Use OneVsRestClassifier(LogisticRegression(..)) instead. Leave it to its default value to avoid this warning.
+  warnings.warn(
+c:\Users\alici\Desktop\Programación\Kaggle\data_scientist\Lib\site-packages\sklearn\linear_model\_logistic.py:1281: FutureWarning: &#39;multi_class&#39; was deprecated in version 1.5 and will be removed in 1.7. Use OneVsRestClassifier(LogisticRegression(..)) instead. Leave it to its default value to avoid this warning.
+  warnings.warn(
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LR: 0.834799 (0.013630)
+KNN: 0.805654 (0.017183)
+RF: 0.850333 (0.013245)
+SVM: 0.828964 (0.004580)
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>El ganador es RandomForest</strong></p>
+<p>BUSQUEDA DE PARAMETROS PARA UN MODELO RF</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">RandomizedSearchCV</span>
+
+<span class="c1"># Modelo</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">()</span>
+
+<span class="c1"># Espacio de hiperparámetros</span>
+<span class="n">param_dist</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">300</span><span class="p">],</span>
+    <span class="s1">&#39;max_depth&#39;</span><span class="p">:</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span>
+    <span class="s1">&#39;min_samples_split&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>
+    <span class="s1">&#39;min_samples_leaf&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span>
+    <span class="s1">&#39;max_features&#39;</span><span class="p">:[</span><span class="s1">&#39;sqrt&#39;</span><span class="p">,</span><span class="s1">&#39;log2&#39;</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="c1"># Configuramos la búsqueda aleatoria</span>
+<span class="n">random_search</span> <span class="o">=</span> <span class="n">RandomizedSearchCV</span><span class="p">(</span>
+    <span class="n">estimator</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>  
+    <span class="n">param_distributions</span><span class="o">=</span><span class="n">param_dist</span><span class="p">,</span> 
+    <span class="n">n_iter</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>  <span class="c1"># ajustar según el tiempo disponible</span>
+    <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>   <span class="c1"># más robusto, pero más costoso</span>
+    <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;f1_macro&#39;</span><span class="p">,</span>
+    <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># Entrenamos</span>
+<span class="n">random_search</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Mejor combinación</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mejores parámetros encontrados:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">random_search</span><span class="o">.</span><span class="n">best_params_</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Mejor puntuación f1_macro:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">random_search</span><span class="o">.</span><span class="n">best_score_</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fitting 5 folds for each of 50 candidates, totalling 250 fits
+Mejores parámetros encontrados:
+{&#39;n_estimators&#39;: 50, &#39;min_samples_split&#39;: 10, &#39;min_samples_leaf&#39;: 1, &#39;max_features&#39;: &#39;sqrt&#39;, &#39;max_depth&#39;: 30}
+
+Mejor puntuación f1_macro:
+0.6370326022490961
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Entrenamiento del modelo con los mejores parámetros encontrados</span>
+
+<span class="n">RF</span><span class="o">=</span><span class="n">RandomForestClassifier</span><span class="p">(</span><span class="o">**</span><span class="n">random_search</span><span class="o">.</span><span class="n">best_params_</span><span class="p">)</span>
+
+<span class="n">RF</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Predicciones</span>
+
+<span class="n">RF_pred</span><span class="o">=</span><span class="n">RF</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="n">RF_pred</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0, 0, 1, 0, 0, 0, 0, 0, 0, 0])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Evaluación del modelo RF</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">RF_pred</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">RF_pred</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">RF_pred</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.873015873015873
+[[378   2]
+ [ 54   7]]
+              precision    recall  f1-score   support
+
+           0       0.88      0.99      0.93       380
+           1       0.78      0.11      0.20        61
+
+    accuracy                           0.87       441
+   macro avg       0.83      0.55      0.57       441
+weighted avg       0.86      0.87      0.83       441
+</pre></div>
+</div>
+</div>
+</div>
+<p>Obtenemos un buen accuracy pero según la <em>matriz de confusión</em>, hay 57 casos (53+4) casos mal clasificados, concretamente clasifica mal la clase de los que en la realidad SÍ abandonan pero el modelo predice que no abandonan</p>
+<p>Interpretación</p>
+<p>376 → Casos donde el empleado realmente NO abandonó (clase 0) y el modelo también predijo NO abandono. ✅</p>
+<p>4 → Casos donde realmente NO abandonó (0) pero el modelo predijo sí abandono (1). ❌</p>
+<p>53 → Casos donde realmente SÍ abandonó (1) pero el modelo predijo NO abandono (0). ❌ ← Estos son tus 61 casos mal clasificados.</p>
+<p>8 → Casos donde realmente SÍ abandonó (1) y el modelo lo predijo correctamente. ✅</p>
+<p>Seguramente se deba a que, como vimos en el modelo exploratorio de la variable target ‘abandono’, la clase ‘yes’ estaba desbalanceada respecto a la clase ‘no’. Pero, ¿tendria sentido balancearla artificialmente en este problema? No es un caso real que haya una proporcion similar entre los que se quedan y los que se van, a ninguna empresa le interesa eso</p>
+</section>
+<section id="importancia-de-las-variables">
+<h4>Importancia de las variables<a class="headerlink" href="#importancia-de-las-variables" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Obtener importancias de características</span>
+<span class="n">importancias</span> <span class="o">=</span> <span class="n">RF</span><span class="o">.</span><span class="n">feature_importances_</span>
+<span class="n">caracteristicas</span> <span class="o">=</span> <span class="n">X_train</span><span class="o">.</span><span class="n">columns</span>
+
+<span class="c1"># Crear DataFrame ordenado por importancia</span>
+<span class="n">df_importancias</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Característica&#39;</span><span class="p">:</span> <span class="n">caracteristicas</span><span class="p">,</span>
+    <span class="s1">&#39;Importancia&#39;</span><span class="p">:</span> <span class="n">importancias</span>
+<span class="p">})</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;Importancia&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># Graficar</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">df_importancias</span><span class="p">[</span><span class="s1">&#39;Característica&#39;</span><span class="p">][:</span><span class="mi">15</span><span class="p">],</span> <span class="n">df_importancias</span><span class="p">[</span><span class="s1">&#39;Importancia&#39;</span><span class="p">][:</span><span class="mi">15</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;skyblue&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Importancia&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Características&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Top 15 características más importantes - Random Forest&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>  <span class="c1"># para que la más importante quede arriba</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/ddec9f347e1cc351a3ba2465946f131e1120e14ecfa823b246d3d2b7ddb17fbb.png" src="../_images/ddec9f347e1cc351a3ba2465946f131e1120e14ecfa823b246d3d2b7ddb17fbb.png" />
+</div>
+</div>
+<p>Las variables mas importantes son:</p>
+<ul class="simple">
+<li><p>salario_mes(salario_ano, son la misma)</p></li>
+<li><p>impacto_abandono</p></li>
+<li><p>edad</p></li>
+<li><p>años_experiencia</p></li>
+<li><p>años_compañia</p></li>
+<li><p>distancia_casa</p></li>
+<li><p>horas_extra(si/no)</p></li>
+</ul>
+</section>
+<section id="explotacion">
+<h4>Explotación<a class="headerlink" href="#explotacion" title="Link to this heading">#</a></h4>
+<p>Incoporación del scoring al dataframe principal. Explotación (huso directo de obtención de resultados) y descarga del resultados.</p>
+<p>Vamos a exportar el vector de números de predicción que habíamos calculado.</p>
+<p>Todos los algoritmos en sklearn funcionan igual: fit para entrenar y predict para predecir (en este caso con “_proba”, porque queremos la probabilidad)</p>
+<p>Partimos del dataset total, el inicial (df), y construir una nueva variable “scoring de abandono”, que rellenaremos con la predicción una vez que hemos eliminado nuestra columna de abandono de nuestro dataframe de machine learning. Esta predicción nos va a devolver dos cosas, la prob de que no abandone y la de que si, y nos vamos a quedar con la de que si (que sean unos).</p>
+<p><em>un Bayesiano Ingenuo te da las probabilidades directamente, no?. O incluso un GMM si queremos usar tecnicas no supervisadas</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ese [:, 1] está diciendo:</span>
+<span class="c1"># “Dame todas las filas (:), pero solo la columna 1” del resultado que devuelve predict_proba.</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;scoring_abandono&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">RF</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">df_ml</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;abandono&#39;</span><span class="p">))[:,</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>edad</th>
+      <th>abandono</th>
+      <th>viajes</th>
+      <th>departamento</th>
+      <th>distancia_casa</th>
+      <th>educacion</th>
+      <th>carrera</th>
+      <th>id</th>
+      <th>satisfaccion_entorno</th>
+      <th>implicacion</th>
+      <th>...</th>
+      <th>satisfaccion_companeros</th>
+      <th>nivel_acciones</th>
+      <th>anos_experiencia</th>
+      <th>num_formaciones_ult_ano</th>
+      <th>anos_compania</th>
+      <th>anos_desde_ult_promocion</th>
+      <th>anos_con_manager_actual</th>
+      <th>salario_ano</th>
+      <th>impacto_abandono</th>
+      <th>scoring_abandono</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>41</td>
+      <td>1</td>
+      <td>Travel_Rarely</td>
+      <td>Sales</td>
+      <td>1</td>
+      <td>Universitaria</td>
+      <td>Life Sciences</td>
+      <td>1</td>
+      <td>Media</td>
+      <td>Alta</td>
+      <td>...</td>
+      <td>Baja</td>
+      <td>0</td>
+      <td>8</td>
+      <td>0</td>
+      <td>6</td>
+      <td>0</td>
+      <td>5</td>
+      <td>71916</td>
+      <td>14670.864</td>
+      <td>0.570483</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>49</td>
+      <td>0</td>
+      <td>Travel_Frequently</td>
+      <td>Research &amp; Development</td>
+      <td>8</td>
+      <td>Secundaria</td>
+      <td>Life Sciences</td>
+      <td>2</td>
+      <td>Alta</td>
+      <td>Media</td>
+      <td>...</td>
+      <td>Muy_Alta</td>
+      <td>1</td>
+      <td>10</td>
+      <td>3</td>
+      <td>10</td>
+      <td>1</td>
+      <td>7</td>
+      <td>61560</td>
+      <td>12558.240</td>
+      <td>0.080278</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>37</td>
+      <td>1</td>
+      <td>Travel_Rarely</td>
+      <td>Research &amp; Development</td>
+      <td>2</td>
+      <td>Secundaria</td>
+      <td>Other</td>
+      <td>4</td>
+      <td>Muy_Alta</td>
+      <td>Media</td>
+      <td>...</td>
+      <td>Media</td>
+      <td>0</td>
+      <td>7</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>25080</td>
+      <td>4037.880</td>
+      <td>0.784237</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>33</td>
+      <td>0</td>
+      <td>Travel_Frequently</td>
+      <td>Research &amp; Development</td>
+      <td>3</td>
+      <td>Universitaria</td>
+      <td>Life Sciences</td>
+      <td>5</td>
+      <td>Muy_Alta</td>
+      <td>Alta</td>
+      <td>...</td>
+      <td>Alta</td>
+      <td>0</td>
+      <td>8</td>
+      <td>3</td>
+      <td>8</td>
+      <td>3</td>
+      <td>0</td>
+      <td>34908</td>
+      <td>6876.876</td>
+      <td>0.234665</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>27</td>
+      <td>0</td>
+      <td>Travel_Rarely</td>
+      <td>Research &amp; Development</td>
+      <td>2</td>
+      <td>Universitaria</td>
+      <td>Medical</td>
+      <td>7</td>
+      <td>Baja</td>
+      <td>Alta</td>
+      <td>...</td>
+      <td>Muy_Alta</td>
+      <td>1</td>
+      <td>6</td>
+      <td>3</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>41616</td>
+      <td>8198.352</td>
+      <td>0.066250</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 29 columns</p>
+</div></div></div>
+</div>
+<p>Con esta nueva información, podemos empezar a buscar casos concretos sobre los que trabajar. Por ejemplo:</p>
+<p>Los 10 empleados con mayor probabilidad de dejar la empresa.</p>
+<p>Tomamos el dataframe original (df), mediante “sort_values” los ordenamos por el scoring_abandono en descendente, e imprimimos los 10 primeros.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;scoring_abandono&#39;</span><span class="p">,</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)[:</span><span class="mi">10</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>edad</th>
+      <th>abandono</th>
+      <th>viajes</th>
+      <th>departamento</th>
+      <th>distancia_casa</th>
+      <th>educacion</th>
+      <th>carrera</th>
+      <th>id</th>
+      <th>satisfaccion_entorno</th>
+      <th>implicacion</th>
+      <th>...</th>
+      <th>satisfaccion_companeros</th>
+      <th>nivel_acciones</th>
+      <th>anos_experiencia</th>
+      <th>num_formaciones_ult_ano</th>
+      <th>anos_compania</th>
+      <th>anos_desde_ult_promocion</th>
+      <th>anos_con_manager_actual</th>
+      <th>salario_ano</th>
+      <th>impacto_abandono</th>
+      <th>scoring_abandono</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>911</th>
+      <td>25</td>
+      <td>1</td>
+      <td>Travel_Frequently</td>
+      <td>Sales</td>
+      <td>24</td>
+      <td>Primaria</td>
+      <td>Life Sciences</td>
+      <td>1273</td>
+      <td>Alta</td>
+      <td>Baja</td>
+      <td>...</td>
+      <td>Muy_Alta</td>
+      <td>0</td>
+      <td>1</td>
+      <td>4</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>13416</td>
+      <td>2159.976</td>
+      <td>0.904598</td>
+    </tr>
+    <tr>
+      <th>1332</th>
+      <td>29</td>
+      <td>1</td>
+      <td>Travel_Frequently</td>
+      <td>Research &amp; Development</td>
+      <td>24</td>
+      <td>Secundaria</td>
+      <td>Life Sciences</td>
+      <td>1868</td>
+      <td>Muy_Alta</td>
+      <td>Media</td>
+      <td>...</td>
+      <td>Media</td>
+      <td>0</td>
+      <td>1</td>
+      <td>3</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>29268</td>
+      <td>4712.148</td>
+      <td>0.848357</td>
+    </tr>
+    <tr>
+      <th>688</th>
+      <td>19</td>
+      <td>1</td>
+      <td>Travel_Rarely</td>
+      <td>Sales</td>
+      <td>21</td>
+      <td>Secundaria</td>
+      <td>Other</td>
+      <td>959</td>
+      <td>Muy_Alta</td>
+      <td>Media</td>
+      <td>...</td>
+      <td>Media</td>
+      <td>0</td>
+      <td>1</td>
+      <td>3</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>25452</td>
+      <td>4097.772</td>
+      <td>0.845452</td>
+    </tr>
+    <tr>
+      <th>463</th>
+      <td>26</td>
+      <td>1</td>
+      <td>Travel_Rarely</td>
+      <td>Research &amp; Development</td>
+      <td>24</td>
+      <td>Primaria</td>
+      <td>Technical Degree</td>
+      <td>622</td>
+      <td>Alta</td>
+      <td>Baja</td>
+      <td>...</td>
+      <td>Media</td>
+      <td>0</td>
+      <td>1</td>
+      <td>3</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>28080</td>
+      <td>4520.880</td>
+      <td>0.830845</td>
+    </tr>
+    <tr>
+      <th>1339</th>
+      <td>22</td>
+      <td>1</td>
+      <td>Travel_Rarely</td>
+      <td>Research &amp; Development</td>
+      <td>7</td>
+      <td>Universitaria</td>
+      <td>Life Sciences</td>
+      <td>1878</td>
+      <td>Muy_Alta</td>
+      <td>Alta</td>
+      <td>...</td>
+      <td>Baja</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>29664</td>
+      <td>4775.904</td>
+      <td>0.827929</td>
+    </tr>
+    <tr>
+      <th>127</th>
+      <td>19</td>
+      <td>1</td>
+      <td>Travel_Rarely</td>
+      <td>Sales</td>
+      <td>22</td>
+      <td>Universitaria</td>
+      <td>Marketing</td>
+      <td>167</td>
+      <td>Muy_Alta</td>
+      <td>Alta</td>
+      <td>...</td>
+      <td>Muy_Alta</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>20100</td>
+      <td>3236.100</td>
+      <td>0.827060</td>
+    </tr>
+    <tr>
+      <th>457</th>
+      <td>18</td>
+      <td>1</td>
+      <td>Travel_Frequently</td>
+      <td>Sales</td>
+      <td>5</td>
+      <td>Universitaria</td>
+      <td>Marketing</td>
+      <td>614</td>
+      <td>Media</td>
+      <td>Alta</td>
+      <td>...</td>
+      <td>Muy_Alta</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>22536</td>
+      <td>3628.296</td>
+      <td>0.826478</td>
+    </tr>
+    <tr>
+      <th>1273</th>
+      <td>22</td>
+      <td>1</td>
+      <td>Travel_Rarely</td>
+      <td>Research &amp; Development</td>
+      <td>8</td>
+      <td>Universitaria</td>
+      <td>Medical</td>
+      <td>1783</td>
+      <td>Alta</td>
+      <td>Alta</td>
+      <td>...</td>
+      <td>Alta</td>
+      <td>0</td>
+      <td>1</td>
+      <td>6</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>28776</td>
+      <td>4632.936</td>
+      <td>0.824371</td>
+    </tr>
+    <tr>
+      <th>1153</th>
+      <td>18</td>
+      <td>1</td>
+      <td>Travel_Frequently</td>
+      <td>Sales</td>
+      <td>3</td>
+      <td>Universitaria</td>
+      <td>Medical</td>
+      <td>1624</td>
+      <td>Media</td>
+      <td>Alta</td>
+      <td>...</td>
+      <td>Alta</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>18828</td>
+      <td>3031.308</td>
+      <td>0.820246</td>
+    </tr>
+    <tr>
+      <th>892</th>
+      <td>19</td>
+      <td>1</td>
+      <td>Non-Travel</td>
+      <td>Research &amp; Development</td>
+      <td>10</td>
+      <td>Secundaria</td>
+      <td>Medical</td>
+      <td>1248</td>
+      <td>Baja</td>
+      <td>Media</td>
+      <td>...</td>
+      <td>Media</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>22308</td>
+      <td>3591.588</td>
+      <td>0.818044</td>
+    </tr>
+  </tbody>
+</table>
+<p>10 rows × 29 columns</p>
+</div></div></div>
+</div>
+<p>Otro ejemplo sería: riesgo de dejar la empresa en función del puesto de trabajo</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="s1">&#39;scoring_abandono&#39;</span><span class="p">,</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;puesto&#39;</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: title={&#39;center&#39;: &#39;scoring_abandono&#39;}, xlabel=&#39;puesto&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/973940ac8326618d6f56240a741717ecf52eb6f58bebf157d5e512ede063e138.png" src="../_images/973940ac8326618d6f56240a741717ecf52eb6f58bebf157d5e512ede063e138.png" />
+</div>
+</div>
+<p>El gráfico nos confirma que las áreas de ventas son las que tienen mayor probabilidad de abandono de la empresa.</p>
+</section>
+<section id="guardar-el-resultado">
+<h4>Guardar el resultado<a class="headerlink" href="#guardar-el-resultado" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># df[&quot;id&quot;] = df[&quot;id&quot;].astype(str)</span>
+<span class="c1"># df.to_csv(ruta+r&#39;/data/abandono_con_scoring.csv&#39;, index=False)</span>
+<span class="c1"># print(&quot;Archivo &#39;abandono_con_scoring.csv&#39; guardado con éxito.&quot;)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="visualizacion-y-comunicacion">
+<h2><strong>VISUALIZACIÓN Y COMUNICACIÓN</strong><a class="headerlink" href="#visualizacion-y-comunicacion" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://public.tableau.com/app/profile/alicia.gil.matute/viz/DashboardAbandonoEmpleados_17549150031180/Dashboard1">https://public.tableau.com/app/profile/alicia.gil.matute/viz/DashboardAbandonoEmpleados_17549150031180/Dashboard1</a></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Welcome to your Jupyter Book</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importante-entender-el-tipo-de-solucion-de-data-science-que-vamos-a-construir">IMPORTANTE : Entender el tipo de solución de data science que vamos a construir</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fase-de-business-analytics">Fase de BUSINESS ANALYTICS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fase-de-machine-learning">Fase de MACHINE LEARNING</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fase-de-productivizacion">Fase de PRODUCTIVIZACIÓN</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#business-analytics"><strong>BUSINESS ANALYTICS</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cargamos-las-librerias-y-el-dataset">Cargamos las librerias y el dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-de-nulos">Análisis de Nulos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eda-de-las-variables-categoricas">EDA de las Variables Categóricas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eda-de-las-variables-numericas">EDA de las Variables Numéricas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generacion-de-insights">Generación de Insights</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-learning"><strong>Machine Learning</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preparacion-de-los-datos-para-la-modelizacion">PREPARACIÓN DE LOS DATOS PARA LA MODELIZACIÓN¶</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#one-hot-encoding-ohe">One Hot Encoding (OHE)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#construccion-del-modelo-ml">Construcción del  modelo ML</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#importancia-de-las-variables">Importancia de las variables</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#explotacion">Explotación</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#guardar-el-resultado">Guardar el resultado</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizacion-y-comunicacion"><strong>VISUALIZACIÓN Y COMUNICACIÓN</strong></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Alicia Gil Matute
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
