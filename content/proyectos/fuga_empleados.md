@@ -28,16 +28,11 @@ El principal problema es la rotación de empleados. Deberás trabajar en un sist
 - **Visualización y Comunicación**: generar un cuadro de mando
 <br><br>
 
-## Notebook interactivo
-
-<div style="text-align:center; margin: 2rem 0;">
-  <iframe 
-      src="/notebooks/fuga_empleados"
-      width="100%" height="900px" frameborder="0" scrolling="yes" allowfullscreen>
-  </iframe>
-</div>
-
-
+<!-- <iframe 
+    src="/jupyter-notebooks-hugo/_build/html/notebooks/fuga_empleados.html"
+    width="100%" height="1000" frameborder="0" scrolling="yes">
+</iframe>
+ -->
 
 ## Business Analytics<br>
 
