@@ -31,19 +31,18 @@ Nuestra hipótesis vaticina que las estimaciones y los índices de ajuste del mo
 
 ## Método
 
-La base de datos empleada es la llamada "Liderazgo.sav" donde se incluyen 15 variables de las cuales 13 son ítems que miden 3 factores relacionados con el liderazgo, pero de los cuales solo 11 forman parte de la estructura factorial (los items 3 y 9 no forman parte de la estructura factorial, como se puede ver en la imagen). Los ítems están medidos en una escala Likert con valores 1-7. El tamaño de la muestra es de 96 sujetos y todos los análisis se han realizado con el software R.
+La base de datos empleada es la llamada "Liderazgo.sav" donde se incluyen 15 variables de las cuales 13 son ítems que miden 3 factores relacionados con el liderazgo, pero de los cuales solo 11 forman parte de la estructura factorial (los items 3 y 9 no forman parte de la estructura factorial, como se puede ver en la Figura 1). Los ítems están medidos en una escala Likert con valores 1-7. El tamaño de la muestra es de 96 sujetos y todos los análisis se han realizado con el software R.
 
 <br>
 <div style="display:flex; justify-content:center; gap:30px; align-items:center;">
-  <figure style="margin:0;">
+  <figure style="margin:0; width:360px; text-align:center;">
     <img src="/Estructura_AFC.png" alt="Estructura Factorial del Modelo de Liderazgo de Frutos (1998)" width="360">
-    <figcaption style="text-align:center; font-style:italic; margin-top:8px;">
-      Estructura Factorial del Modelo de Liderazgo de Frutos (1998)
+    <figcaption style="font-style:italic; margin-top:8px;">
+      Figura 1. Estructura Factorial del Modelo de Liderazgo de Frutos (1998).
     </figcaption>
   </figure>
 </div>
 <br><br>
-
 
 
 En primer lugar, se cargan los archivos y se eliminan de la base de datos los ítems 3 y 9 que no forman parte de la estructura, y 2 variables que servían a otros objetivos del estudio. Después se calcula la matriz de varianzas y covarianzas de los datos originales que utilizaremos después para extraer la matriz residual y tener una primera impresión de sí se ha realizado bien o no la imputación múltiple.
@@ -56,24 +55,26 @@ Por último, calculamos el modelo AFC con los datos originales (sin valores perd
 
 <br><br>
 
-## Resultados<br><br>
+## Resultados
+<br>
+
 ### Índices de Ajuste AFC imputado VS Índices de Ajuste AFC original
 <br>
 
-<div style="display:flex; justify-content:center; gap:30px; align-items:center;">
-  <figure style="margin:0;">
-    <img src="/ajuste_imp.png" alt="Output de R de los índices de ajuste 
-    del modelo imputado" width="360">
-    <figcaption style="text-align:center; font-style:italic; margin-top:8px;">
-      Output de R de los índices de ajuste del modelo imputado
+<div style="display:flex; justify-content:center; gap:30px; align-items:flex-start;">
+  <figure style="margin:0; width:360px; text-align:center;">
+    <img src="/ajuste_imp.png" alt="Output de R de los índices de ajuste del modelo imputado" width="355">
+    <figcaption style="font-style:italic; margin-top:8px;">
+      Figura 2. Índices de ajuste 
+      del modelo AFC imputado.
     </figcaption>
   </figure>
 
-  <figure style="margin:0;">
-    <img src="/ajuste_raw.png" alt="Output de R de los índices de ajuste 
-    del modelo no imputado" width="370">
-    <figcaption style="text-align:center; font-style:italic; margin-top:8px;">
-      Output de R de los índices de ajuste del modelo no imputado
+  <figure style="margin:0; width:370px; text-align:center;">
+    <img src="/Ajuste_raw.png" alt="Output de R de los índices de ajuste del modelo no imputado" width="380">
+    <figcaption style="font-style:italic; margin-top:8px;">
+      Figura 3. Índices de ajuste 
+      del modelo AFC no imputado.
     </figcaption>
   </figure>
 </div>
@@ -93,14 +94,16 @@ Respecto a los índices TLI y CFI hay diferencias más claras entre ambos modelo
   <figure>
     <img src="/estimaciones_imp.png" alt="Output de R de las estimaciones de los parámetros del modelo imputado" width="440">
     <figcaption style="text-align:center; font-style:italic; margin-top:8px;">
-      Output de R de las estimaciones de los parámetros del modelo imputado
+      Figura 4. Estimaciones de los parámetros 
+      del modelo AFC imputado.
     </figcaption>
   </figure>
 
   <figure>
     <img src="/estimaciones_raw.png" alt="Output de R de las estimaciones de los parámetros del modelo no imputado" width="440">
     <figcaption style="text-align:center; font-style:italic; margin-top:8px;">
-      Output de R de las estimaciones de los parámetros del modelo no imputado
+      Figura 5. Estimaciones de los parámetros 
+      del modelo AFC no imputado.
     </figcaption>
   </figure>
 </div>
