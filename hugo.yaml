@@ -474,6 +474,22 @@ params:
          - icon: fab fa-github fa-2x
            url: https://github.com/aliciagilmatute/Algoritmo-Genetico
       
+      - title: Análisis de Ventas Ecommerce
+        cluster: "Estratégicos"
+        content: >
+          Proyecto de Business Intelligence para analizar y aumentar las ventas de 'SanoyFresco'
+        image: /media/ecommerce.png
+
+        badges:
+          - "Python"
+          - "SQL"
+          - "PowerBI"
+          - "Business Intelligence"
+        links:
+          - icon: fab fa-github fa-2x
+            url: https://github.com/aliciagilmatute/
+              
+        
       - title: Análisis Abandono de Empleados
         cluster: "Estratégicos"
         content: >
@@ -487,6 +503,7 @@ params:
         links:
           - icon: fab fa-github fa-2x
             url: https://github.com/aliciagilmatute/Fuga-Empleados
+
 
       
     

@@ -5,7 +5,7 @@ date: "2025-08-12"
 cluster: "Python"
 slug: "ecommerce"
 draft: false
-github: "https://github.com/arrobarsandias/tu_repositorio"
+github: "https://github.com/aliciagilmatute/tu_repositorio"
 kaggle: "https://www.kaggle.com/code/arrobarsandias/"
 ---
 <br><br>
