@@ -1,6 +1,6 @@
 ---
-title: "Análisis Fuga de Empleados"
-description: "Proyecto de análisis y machine learning para predecir la fuga de empleados, medir su impacto económico y proponer estrategias de retención."
+title: "Análisis Abandono de Empleados"
+description: "Proyecto de Business Intelligence para predecir el abandono de empleados, medir su impacto económico y proponer estrategias de retención."
 date: "2025-08-21"
 cluster: "Python"
 slug: "fuga_empleados"
@@ -12,7 +12,7 @@ tableau: "https://public.tableau.com/views/DashboardAbandonoEmpleados_1754915003
 
 <!-- # Emulación de una semana de trabajo en DataScientist -->
 <br><br>
-El gran objetivo del proyecto en el que vas a trabajar es reducir la fuga de empleados de la empresa. 
+El gran objetivo del proyecto en el que vas a trabajar es reducir el abandono de empleados de la empresa. 
 El principal problema es la rotación de empleados. Deberás trabajar en un sistema que consiga reducir la fuga de empleados.
 <br><br>
 
